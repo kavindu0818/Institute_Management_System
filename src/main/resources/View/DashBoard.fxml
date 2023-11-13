@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="MainDashobordAncPage" prefHeight="650.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.DashBoardController">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="15.0" prefHeight="622.0" prefWidth="198.0" style="-fx-background-radius: 20; -fx-background-color: #080F47;">
+         <children>
+            <JFXButton layoutX="32.0" layoutY="174.0" onAction="#RegistationOnAction" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Registation" textFill="#fcf6f6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="32.0" layoutY="212.0" onAction="#AttendanceOnAction" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Attendance" textFill="#fcf6f6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="32.0" layoutY="249.0" onAction="#PaymentOnAction" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Payment" textFill="#fcf6f6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="34.0" layoutY="285.0" onAction="#StudnetDetailsOnAction" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Student Details" textFill="#fcf6f6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="36.0" layoutY="321.0" onAction="#EmployeeMainOnAction" prefHeight="17.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Employee" textFill="#fcf6f6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="DashBoard" layoutX="33.0" layoutY="134.0" onAction="#DashboardOnAction" prefHeight="17.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Dashboard" textFill="#fcf6f6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="142.0" fitWidth="200.0" layoutX="1.0" layoutY="-5.0">
+               <image>
+                  <Image url="@../Assets/WhiteLogo.png" />
+               </image>
+            </ImageView>
+            <Separator layoutX="19.0" layoutY="89.0" prefHeight="5.0" prefWidth="166.0" />
+            <JFXButton layoutX="37.0" layoutY="363.0" onAction="#EmployeeMainOnAction" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Send Mail" textFill="#fcf6f6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="38.0" layoutY="399.0" onAction="#EmployeeMainOnAction" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Shedule" textFill="#fcf6f6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </JFXButton>
+         </children></AnchorPane>
+      <ImageView fitHeight="150.0" fitWidth="216.0" layoutX="271.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" />
+      <AnchorPane fx:id="Twonc" layoutX="220.0" layoutY="104.0" prefHeight="532.0" prefWidth="1052.0" style="-fx-background-color: #DFE0E7; -fx-border-radius: bold; -fx-background-radius: 20;">
+         <children>
+            <Pane layoutX="17.0" layoutY="118.0" prefHeight="112.0" prefWidth="242.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <children>
+                  <Label layoutX="22.0" layoutY="7.0" prefHeight="35.0" prefWidth="86.0" text="Students" textFill="#250202">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="51.0" fitWidth="57.0" layoutX="21.0" layoutY="49.0">
+                     <image>
+                        <Image url="@../Assets/57073.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="274.0" layoutY="118.0" prefHeight="112.0" prefWidth="242.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <children>
+                  <Label layoutX="17.0" layoutY="6.0" prefHeight="35.0" prefWidth="86.0" text="Halls" textFill="#0d0101">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="51.0" fitWidth="57.0" layoutX="16.0" layoutY="47.0">
+                     <image>
+                        <Image url="@../Assets/Hall.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="534.0" layoutY="118.0" prefHeight="112.0" prefWidth="229.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <children>
+                  <Label layoutX="23.0" layoutY="7.0" prefHeight="35.0" prefWidth="86.0" text="Tutor" textFill="#360606">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="40.0" fitWidth="57.0" layoutX="18.0" layoutY="49.0">
+                     <image>
+                        <Image url="@../Assets/teacher.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="805.0" layoutY="18.0" prefHeight="229.0" prefWidth="235.0" style="-fx-background-color: white;" />
+            <Pane layoutX="799.0" layoutY="415.0" prefHeight="79.0" prefWidth="248.0" style="-fx-background-color: white; -fx-background-radius: 20;" />
+            <Pane layoutX="15.0" layoutY="11.0" prefHeight="94.0" prefWidth="746.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <children>
+                  <Label layoutX="49.0" layoutY="34.0" prefHeight="51.0" prefWidth="468.0" text="SAHAJA HIGHER EDUCATION CENTER">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="25.0" layoutY="12.0" prefHeight="35.0" prefWidth="116.0" text="Welcome to,">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="24.0" layoutY="247.0" prefHeight="229.0" prefWidth="330.0" style="-fx-background-color: white;" />
+            <Pane layoutX="382.0" layoutY="247.0" prefHeight="229.0" prefWidth="385.0" style="-fx-background-color: white;" />
+            <Separator layoutX="788.0" layoutY="18.0" orientation="VERTICAL" prefHeight="505.0" prefWidth="0.0" />
+         </children></AnchorPane>
+      <AnchorPane layoutX="219.0" layoutY="18.0" prefHeight="79.0" prefWidth="1052.0" style="-fx-background-color: #DFE0E7; -fx-background-radius: 20;">
+         <children>
+            <TextField layoutX="161.0" layoutY="32.0" prefHeight="25.0" prefWidth="498.0" promptText="Search" style="-fx-background-radius: 20;" />
+            <Pane layoutX="826.0" layoutY="9.0" prefHeight="61.0" prefWidth="216.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+               <children>
+                  <ImageView fitHeight="51.0" fitWidth="63.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="61.0" fitWidth="63.0" layoutX="10.0" layoutY="1.0">
+                     <image>
+                        <Image url="@../Assets/Profile picture Icon.png" />
+                     </image>
+                  </ImageView>
+                  <JFXTextArea layoutX="73.0" layoutY="4.0" prefHeight="25.0" prefWidth="132.0" />
+                  <Label layoutX="74.0" layoutY="39.0" prefHeight="17.0" prefWidth="63.0" text="Admin User" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

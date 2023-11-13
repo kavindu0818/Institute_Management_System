@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="532.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.StudentDetailsFormController">
+   <children>
+      <Label layoutX="27.0" layoutY="14.0" prefHeight="56.0" prefWidth="333.0" text="Student Details">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <TextField layoutX="26.0" layoutY="93.0" prefHeight="25.0" prefWidth="202.0" promptText="Student Id" />
+      <Button layoutX="241.0" layoutY="93.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="Search" />
+      <Separator layoutX="27.0" layoutY="56.0" prefHeight="3.0" prefWidth="782.0" />
+      <TableView layoutX="26.0" layoutY="167.0" prefHeight="56.0" prefWidth="977.0">
+        <columns>
+          <TableColumn prefWidth="122.0" text="Student ID" />
+          <TableColumn prefWidth="145.0" text="Registaion ID" />
+            <TableColumn prefWidth="145.0" text="Student Name" />
+            <TableColumn prefWidth="257.0" text="Gmail" />
+            <TableColumn prefWidth="156.0" text="Contact Number" />
+            <TableColumn prefWidth="151.0" text="Address" />
+            <TableColumn prefWidth="122.0" text="Student ID" />
+        </columns>
+      </TableView>
+      <TableView layoutX="20.0" layoutY="276.0" prefHeight="42.0" prefWidth="696.0">
+         <columns>
+            <TableColumn prefWidth="215.0" text="Perant Name" />
+            <TableColumn prefWidth="282.0" text="Gmail" />
+            <TableColumn prefWidth="198.0" text="Contact Number" />
+         </columns>
+      </TableView>
+      <TableView layoutX="20.0" layoutY="376.0" prefHeight="125.0" prefWidth="475.0">
+         <columns>
+            <TableColumn prefWidth="130.0" text="Date" />
+            <TableColumn prefWidth="167.0" text="Subject" />
+            <TableColumn prefWidth="177.0" text="Time" />
+            <TableColumn prefWidth="177.0" text="Time" />
+         </columns>
+      </TableView>
+      <Label layoutX="23.0" layoutY="252.0" prefHeight="17.0" prefWidth="178.0" text="Perant Details" textFill="#2f1085">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Separator layoutX="23.0" layoutY="245.0" prefHeight="3.0" prefWidth="1031.0" />
+      <Label layoutX="23.0" layoutY="353.0" prefHeight="17.0" prefWidth="178.0" text="Attendance Details" textFill="#2f1085">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Separator layoutX="23.0" layoutY="341.0" prefHeight="3.0" prefWidth="1031.0" />
+      <Separator layoutX="526.0" layoutY="339.0" orientation="VERTICAL" prefHeight="200.0" />
+      <TableView layoutX="553.0" layoutY="375.0" prefHeight="125.0" prefWidth="475.0">
+         <columns>
+            <TableColumn prefWidth="142.0" text="Payment Month" />
+            <TableColumn prefWidth="161.0" text="Subject" />
+            <TableColumn prefWidth="164.0" text="Payment Day" />
+            <TableColumn prefWidth="184.0" text="Time" />
+         </columns>
+      </TableView>
+      <Label layoutX="557.0" layoutY="353.0" prefHeight="17.0" prefWidth="178.0" text="Payment Details" textFill="#2f1085">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

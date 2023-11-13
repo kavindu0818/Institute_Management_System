@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="RegistationUpdate" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.RegistationUpdateformController">
+   <children>
+      <Label layoutX="476.0" layoutY="17.0" prefHeight="17.0" prefWidth="238.0" text="Registation Update">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSearchId" layoutX="44.0" layoutY="86.0" prefHeight="25.0" prefWidth="215.0" />
+      <Button layoutX="258.0" layoutY="86.0" mnemonicParsing="false" onAction="#LoarUpdateDetails" prefHeight="25.0" prefWidth="64.0" text="Search" />
+      <TextField fx:id="txtUpdateName" layoutX="579.0" layoutY="140.0" prefHeight="25.0" prefWidth="386.0" promptText="First Name" />
+      <TextField fx:id="txtUpdateRegidd" layoutX="389.0" layoutY="140.0" prefHeight="25.0" prefWidth="171.0" promptText="Student Id" />
+      <TextField fx:id="txtUpdateStuGmail" layoutX="223.0" layoutY="217.0" prefHeight="25.0" prefWidth="545.0" promptText="Gmail" />
+      <TextField fx:id="txtUpdateGrade" layoutX="389.0" layoutY="181.0" prefHeight="25.0" prefWidth="171.0" promptText="Grade" />
+      <TextField fx:id="txtUpdateId" layoutX="221.0" layoutY="140.0" prefHeight="25.0" prefWidth="159.0" promptText="Registation ID" />
+      <TextField fx:id="txtUpdateContact" layoutX="221.0" layoutY="181.0" prefHeight="25.0" prefWidth="159.0" promptText="Contact Number" />
+      <TextField fx:id="txtUpdateStuAge" layoutX="579.0" layoutY="181.0" prefHeight="25.0" prefWidth="187.0" promptText="Age" />
+      <TextField fx:id="txtUpdateRegDate" layoutX="787.0" layoutY="181.0" prefHeight="25.0" prefWidth="179.0" promptText="Registation Date" />
+      <Pane layoutX="50.0" layoutY="132.0" prefHeight="144.0" prefWidth="159.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="63.0" layoutY="52.0">
+               <image>
+                  <Image url="@../Assets/7727852.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <ComboBox layoutX="789.0" layoutY="217.0" prefHeight="25.0" prefWidth="187.0" promptText="Subject" />
+      <TextArea fx:id="txtUpdateSubject" layoutX="790.0" layoutY="243.0" prefHeight="144.0" prefWidth="187.0" />
+      <TextField fx:id="txtUpdateAddress" layoutX="223.0" layoutY="254.0" prefHeight="25.0" prefWidth="545.0" promptText="Address" />
+      <Separator layoutX="50.0" layoutY="305.0" prefHeight="2.0" prefWidth="719.0" />
+      <TextField fx:id="txtUpdatePerantName" layoutX="50.0" layoutY="323.0" prefHeight="25.0" prefWidth="337.0" promptText="Name" />
+      <TextField fx:id="txtUpdatePerantContact" layoutX="395.0" layoutY="323.0" prefHeight="25.0" prefWidth="159.0" promptText="Contact Number" />
+      <TextField fx:id="txtUpdatePerantId" layoutX="571.0" layoutY="323.0" prefHeight="25.0" prefWidth="159.0" promptText="Perant ID" />
+      <TextField fx:id="txtUpdatePerantGmail" layoutX="50.0" layoutY="362.0" prefHeight="25.0" prefWidth="508.0" promptText="Gmail" />
+      <Button layoutX="852.0" layoutY="438.0" mnemonicParsing="false" onAction="#SaveUpdateOnAction" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #044040;" text="Save " textFill="#fcfcfc">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="18.0" layoutY="19.0" mnemonicParsing="false" onAction="#UpdateBackAction" text="Back" />
+   </children>
+</AnchorPane>

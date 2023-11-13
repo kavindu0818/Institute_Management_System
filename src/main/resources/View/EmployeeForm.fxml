@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="EmployeeMain" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.EmployeeFormController">
+   <children>
+      <Pane layoutX="76.0" layoutY="113.0" prefHeight="86.0" prefWidth="223.0" style="-fx-background-color: white; -fx-background-radius: 20;">
+         <children>
+            <ImageView layoutX="29.0" layoutY="14.0">
+               <image>
+                  <Image url="@../Assets/Employee%20Icon.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="18.0" layoutY="47.0" prefHeight="17.0" prefWidth="84.0" text="Employee">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="125.0" layoutY="18.0" prefHeight="30.0" prefWidth="41.0" style="-fx-background-color: white;" />
+         </children>
+      </Pane>
+      <Pane layoutX="474.0" layoutY="176.0" prefHeight="342.0" prefWidth="315.0" style="-fx-background-color: white;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Pane>
+   </children>
+</AnchorPane>
