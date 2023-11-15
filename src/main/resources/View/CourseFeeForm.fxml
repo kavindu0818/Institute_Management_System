@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="CourseFeesAnc" prefHeight="408.0" prefWidth="482.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.CourseFeeFormController">
+   <children>
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="124.0" layoutY="-25.0">
+         <image>
+            <Image url="@../Assets/SHAJALOGO.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="148.0" layoutY="94.0" prefHeight="17.0" prefWidth="181.0" text="Course fees Payment">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="StuNameCourse" layoutX="37.0" layoutY="182.0" prefHeight="25.0" prefWidth="434.0" promptText="Student Name" />
+      <TextField fx:id="courseDfullid" layoutX="269.0" layoutY="222.0" prefHeight="25.0" prefWidth="193.0" promptText="COURSE PAYMENT ID" />
+      <TextField fx:id="txtAmountCourse" layoutX="37.0" layoutY="263.0" prefHeight="25.0" prefWidth="267.0" promptText="Amount" />
+      <Button layoutX="326.0" layoutY="353.0" mnemonicParsing="false" onAction="#PaymentSubmitOnAction" prefHeight="25.0" prefWidth="68.0" text="Pay" />
+      <TextField fx:id="CoursePayStuIDSarch" layoutX="39.0" layoutY="132.0" onAction="#txtCourseStuIdSearchIdOnAction" prefHeight="25.0" prefWidth="120.0" promptText="Student ID" />
+      <TextField fx:id="stuiDCursePayment" layoutX="37.0" layoutY="222.0" prefHeight="25.0" prefWidth="225.0" promptText="Student ID" />
+   </children>
+</AnchorPane>

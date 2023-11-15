@@ -65,7 +65,7 @@
       <JFXTextArea layoutX="768.0" layoutY="81.0" prefHeight="353.0" prefWidth="249.0" style="-fx-background-color: white;" />
       <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="778.0" layoutY="59.0">
          <image>
-            <Image url="@../Assets/SHAJA LOGO.png" />
+            <Image url="@../Assets/SHAJALOGO.png" />
          </image>
       </ImageView>
       <Button layoutX="765.0" layoutY="17.0" mnemonicParsing="false" onAction="#UpdateRegistationOnAction" prefHeight="21.0" prefWidth="104.0" style="-fx-background-color: #F2C12E; -fx-background-radius: 20;" text="Update" textFill="#fff8f8">

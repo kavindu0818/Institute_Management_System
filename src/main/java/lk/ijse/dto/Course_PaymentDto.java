@@ -9,8 +9,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class StuDetailsDto {
-    private String full_id;
-    private String stu_id;
-    private String class_id;
+public class Course_PaymentDto {
+    private int cusPayId;
+    private double payment;
+
+    private String Date;
+    private String time;
+    private String cusDfull;
 }

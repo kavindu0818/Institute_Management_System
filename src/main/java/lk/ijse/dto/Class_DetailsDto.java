@@ -9,11 +9,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class StudentAttendance {
-    private String name;
-    private String date;
+public class Class_DetailsDto {
     private String full_id;
     private String stu_id;
     private String class_id;
-    private String time;
+    private String stu_name;
 }

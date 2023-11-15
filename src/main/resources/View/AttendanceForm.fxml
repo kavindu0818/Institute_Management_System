@@ -19,13 +19,14 @@
             <Font name="System Bold" size="31.0" />
          </font>
       </Label>
-      <TableView layoutX="14.0" layoutY="219.0" prefHeight="295.0" prefWidth="1005.0">
+      <TableView fx:id="AttendanceViewTable" layoutX="14.0" layoutY="344.0" prefHeight="170.0" prefWidth="1005.0">
         <columns>
-          <TableColumn prefWidth="182.0" text="C1" />
-          <TableColumn prefWidth="181.0" text="C2" />
-            <TableColumn prefWidth="178.0" text="C2" />
-            <TableColumn prefWidth="230.0" text="C2" />
-            <TableColumn prefWidth="232.0" text="C2" />
+          <TableColumn fx:id="AttendIdCol" prefWidth="129.0" text="Attendance id" />
+          <TableColumn fx:id="stuIdcol" prefWidth="134.0" text="Student ID" />
+            <TableColumn fx:id="stuNamecol" prefWidth="219.0" text="Student Name" />
+            <TableColumn fx:id="Datecol" minWidth="6.0" prefWidth="158.0" text="Date" />
+            <TableColumn fx:id="Timecol" minWidth="0.0" prefWidth="184.0" text="Time" />
+            <TableColumn fx:id="clssIdcol" prefWidth="180.0" text="Class ID" />
         </columns>
       </TableView>
       <Pane layoutX="31.0" layoutY="78.0" prefHeight="86.0" prefWidth="223.0" style="-fx-background-color: white; -fx-background-radius: 20;">
@@ -43,18 +44,23 @@
             </ImageView>
          </children>
       </Pane>
-      <Button layoutX="760.0" layoutY="177.0" mnemonicParsing="false" onAction="#AttendanceOnStartOnAction" prefHeight="21.0" prefWidth="104.0" style="-fx-background-color: green; -fx-background-radius: 20;" text="Start" textFill="#fff8f8">
+      <Button layoutX="760.0" layoutY="276.0" mnemonicParsing="false" onAction="#AttendneStarOnAction" prefHeight="21.0" prefWidth="104.0" style="-fx-background-color: green; -fx-background-radius: 20;" text="Start" textFill="#fff8f8">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="876.0" layoutY="177.0" mnemonicParsing="false" onAction="#AttendanceOffStartOnAction" prefHeight="21.0" prefWidth="104.0" style="-fx-background-color: red; -fx-background-radius: 20;" text="Stop" textFill="#fff8f8">
+      <Button layoutX="876.0" layoutY="276.0" mnemonicParsing="false" onAction="#AttendanceOffSOnAction" prefHeight="21.0" prefWidth="104.0" style="-fx-background-color: red; -fx-background-radius: 20;" text="Stop" textFill="#fff8f8">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
       <Separator layoutX="22.0" layoutY="46.0" prefHeight="1.0" prefWidth="819.0" />
-      <TextField fx:id="txtScannerValue" layoutX="414.0" layoutY="139.0" />
+      <TextField fx:id="txtScannerValue" layoutX="407.0" layoutY="309.0" onAction="#txtScannerValueOnAction" prefHeight="25.0" prefWidth="210.0" />
       <Label fx:id="ScannerLable" layoutX="432.0" layoutY="70.0" prefHeight="52.0" prefWidth="149.0" />
+      <AnchorPane fx:id="mainPane" layoutX="344.0" layoutY="53.0" prefHeight="240.0" prefWidth="363.0" style="-fx-background-color: white;">
+         <children>
+            <AnchorPane fx:id="miniPane" layoutX="13.0" layoutY="3.0" prefHeight="229.0" prefWidth="327.0" style="-fx-background-color: black;" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

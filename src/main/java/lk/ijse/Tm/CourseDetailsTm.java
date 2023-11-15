@@ -1,4 +1,4 @@
-package lk.ijse.dto;
+package lk.ijse.Tm;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,11 +9,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class StudentAttendance {
-    private String name;
-    private String date;
-    private String full_id;
+public class CourseDetailsTm {
+    private String cusDfull;
+    private String Cus_Id;
     private String stu_id;
-    private String class_id;
-    private String time;
+    private String stu_Name;
+    private String cus_Name;
+    private Double amount;
+
 }
