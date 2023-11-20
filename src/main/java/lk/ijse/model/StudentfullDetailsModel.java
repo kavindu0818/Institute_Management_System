@@ -186,6 +186,24 @@ public class StudentfullDetailsModel {
         }
         return dtoList;
     }
+
+    public int howMachStudent() throws SQLException {
+
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql ="select count(stu_id) from studentfull_details";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+
+        int a = 0;
+
+        if (resultSet.next()){
+            return resultSet.getInt(1);
+
+        }
+        return 0;
+
     }
+}
 
 

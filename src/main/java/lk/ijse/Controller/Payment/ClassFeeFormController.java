@@ -51,6 +51,7 @@ public class ClassFeeFormController {
     public String Gmonth;
     public String date;
     public String toStugmail;
+    public String className;
     public String fromGmail ="kavindumaduranga184@gmail.com";
 
     private GmailMain gm = new GmailMain();
@@ -101,12 +102,14 @@ public class ClassFeeFormController {
 
        amount = txtAmount.getText();
         Gmonth = (String) cmbMonth.getValue();
+        className = txtFieldClassName.getText();
 
         date = lblDate.getText();
-            String text ="Your student Payment to class fees Rs" + amount + "fees Month is" +Gmonth+"pay to" + date;
+            String text ="Your student has rs for " + className +" today "+amount +" was paid as class fees on " + date;
+            String text2 ="Your Payment Sucsesfull";
             String topic = "Pay Class Fees";
             gm.addGmailDEtails(fromGmail,togmail,topic,text);
-            gm.addGmailDEtails(fromGmail,toStugmail,topic,text);
+            gm.addGmailDEtails(fromGmail,toStugmail,topic,text2);
 
     }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -32,7 +32,10 @@
         </columns>
       </TableView>
       <DatePicker fx:id="txtAttendanceDate" layoutX="30.0" layoutY="102.0" prefHeight="25.0" prefWidth="214.0" promptText="Date" />
-      <TextField fx:id="txtSerachAttendnceClass" layoutX="30.0" layoutY="67.0" prefHeight="25.0" prefWidth="214.0" promptText="Class ID" />
-      <Button layoutX="164.0" layoutY="146.0" mnemonicParsing="false" onAction="#SearchClassAndDateOnAction" prefHeight="25.0" prefWidth="80.0" text="Serach" />
+      <Button layoutX="164.0" layoutY="141.0" mnemonicParsing="false" onAction="#SearchClassAndDateOnAction" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: #000030; -fx-background-radius: 30;" text="Serach" textFill="#fcf6f6">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font></Button>
+      <ComboBox fx:id="cmbSubjectID" layoutX="30.0" layoutY="64.0" prefHeight="25.0" prefWidth="214.0" />
    </children>
 </AnchorPane>

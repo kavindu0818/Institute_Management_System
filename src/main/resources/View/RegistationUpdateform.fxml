@@ -40,7 +40,7 @@
             <Button fx:id="openBrowser" layoutX="34.0" layoutY="149.0" mnemonicParsing="false" onAction="#OpenBrowserOnAction" text="Open Browser" />
          </children>
       </Pane>
-      <ComboBox layoutX="789.0" layoutY="217.0" prefHeight="25.0" prefWidth="187.0" promptText="Subject" />
+      <ComboBox fx:id="cmbSubjct" layoutX="789.0" layoutY="217.0" prefHeight="25.0" prefWidth="187.0" promptText="Subject" />
       <TextArea fx:id="txtUpdateSubject" layoutX="790.0" layoutY="243.0" prefHeight="144.0" prefWidth="187.0" />
       <TextField fx:id="txtUpdateAddress" layoutX="223.0" layoutY="254.0" prefHeight="25.0" prefWidth="545.0" promptText="Address" />
       <Separator layoutX="50.0" layoutY="305.0" prefHeight="2.0" prefWidth="719.0" />

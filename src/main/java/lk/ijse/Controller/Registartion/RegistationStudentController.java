@@ -12,16 +12,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import lk.ijse.dto.*;
-import lk.ijse.model.PerantModel;
-import lk.ijse.model.RegistationModel;
-import lk.ijse.model.StudentModel;
-import lk.ijse.model.StudentfullDetailsModel;
+import lk.ijse.model.*;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 
 public class RegistationStudentController {
@@ -56,6 +54,10 @@ public class RegistationStudentController {
     private StudentfullDetailsModel studentfullDetailsModel = new StudentfullDetailsModel();
 
     private StudentfullDetailsModel sfd = new StudentfullDetailsModel();
+
+    public void initialize(){
+        setClassIDcmb();
+    }
 
     public void SubmitOnAction(ActionEvent actionEvent) throws SQLException {
 
@@ -158,6 +160,28 @@ public class RegistationStudentController {
         addRoot1.getChildren().clear();
         addRoot1.getChildren().add(FXMLLoader.load(getClass().getResource("/View/AddStudentClassForm.fxml")));
 
+    }
+
+    public void setClassIDcmb() {
+        var model = new ClassModel();
+
+        try {
+            List<ClassDto> dtoList = model.getAllClass();
+
+            for (ClassDto classDto : dtoList) {
+                txtSubject.getItems().add(classDto.getClass_id());
+
+            }
+            txtSubject.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue != null) {
+                    txtFieldSubject.appendText(newValue + "\n"); // Append the selected item to the TextArea
+                }
+            });
+
+
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }
 

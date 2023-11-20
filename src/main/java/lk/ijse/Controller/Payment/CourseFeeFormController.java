@@ -57,6 +57,7 @@ public class CourseFeeFormController {
             boolean isSuccess = setPaymentModel.setPaymentDetails(setPaymentDto);
             if (isSuccess) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Payment Change Success!").show();
+
                 clearField();
             }
         } catch (SQLException e) {

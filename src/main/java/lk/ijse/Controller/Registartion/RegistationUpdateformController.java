@@ -5,15 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import lk.ijse.dto.ClassDto;
 import lk.ijse.dto.StudentfullDetailsDto;
+import lk.ijse.model.ClassModel;
 import lk.ijse.model.StudentfullDetailsModel;
 
 import java.io.File;
@@ -56,9 +55,11 @@ public class RegistationUpdateformController {
     public Button openBrowser;
     public FileInputStream fileInputStream;
     public Image image;
+    public ComboBox cmbSubjct;
     private StudentfullDetailsModel up = new StudentfullDetailsModel();
 
     public void initialize() {
+        setClassIDcmb();
 
     }
 
@@ -134,8 +135,6 @@ public class RegistationUpdateformController {
 
 
     }
-
-
     public void OpenBrowserOnAction(ActionEvent actionEvent) {
         FileChooser chooser = new FileChooser();
         File file =chooser.showOpenDialog(openBrowser.getScene().getWindow());
@@ -145,6 +144,28 @@ public class RegistationUpdateformController {
             imageView.setImage(image);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void setClassIDcmb() {
+        var model = new ClassModel();
+
+        try {
+            List<ClassDto> dtoList = model.getAllClass();
+
+            for (ClassDto classDto : dtoList) {
+                cmbSubjct.getItems().add(classDto.getClass_id());
+
+            }
+            cmbSubjct.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue != null) {
+                    txtUpdateSubject.appendText(newValue + "\n"); // Append the selected item to the TextArea
+                }
+            });
+
+
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
         }
     }
 }

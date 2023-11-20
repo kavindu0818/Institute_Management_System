@@ -3,10 +3,7 @@ package lk.ijse.Controller.Attendance;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.Tm.AttendanceDetailsViewTm;
 import lk.ijse.Tm.AttendanceTm;
@@ -34,14 +31,13 @@ public class AttendanceDetailsFormController {
     public TableColumn colClassName;
     public DatePicker txtAttendanceDate;
     public TextField txtSerachAttendnceClass;
+    public ComboBox cmbSubjectID;
 
     private Stu_AttendanceModel stu = new Stu_AttendanceModel();
     private ClassModel classModel = new ClassModel();
 
     public void initialize(){
-
-
-
+        setClassIDcmb();
         loadAllStudent();
         setTableclass();
         studentAttendanceDetails();
@@ -63,7 +59,7 @@ public class AttendanceDetailsFormController {
     }
 
     public void SearchClassAndDateOnAction(ActionEvent actionEvent) {
-        String clId = txtSerachAttendnceClass.getText();
+        String clId = (String) cmbSubjectID.getValue();
        // Date classDate = (Date) txtAttendanceDate.getDayCellFactory();
         LocalDate classDate = txtAttendanceDate.getValue();
 
@@ -118,5 +114,21 @@ public class AttendanceDetailsFormController {
             throw new RuntimeException(e);
         }
     }
+    public void setClassIDcmb() {
+        var model = new ClassModel();
+
+        try {
+            List<ClassDto> dtoList = model.getAllClass();
+
+            for (ClassDto classDto : dtoList) {
+                cmbSubjectID.getItems().add(classDto.getClass_id());
+
+            }
+
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
 
 }
