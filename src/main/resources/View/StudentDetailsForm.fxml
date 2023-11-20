@@ -6,9 +6,10 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="532.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.StudentDetailsFormController">
    <children>
@@ -17,32 +18,34 @@
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <TextField layoutX="26.0" layoutY="93.0" prefHeight="25.0" prefWidth="202.0" promptText="Student Id" />
-      <Button layoutX="241.0" layoutY="93.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="103.0" text="Search" />
+      <TextField fx:id="txtSearchStudentID" layoutX="29.0" layoutY="99.0" prefHeight="25.0" prefWidth="202.0" promptText="Student Id" />
+      <Button layoutX="235.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnSearchStudent" prefHeight="25.0" prefWidth="103.0" style="-fx-background-color: #040e4d; -fx-background-radius: 30;" text="Search" textFill="#f5f0f0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
       <Separator layoutX="27.0" layoutY="56.0" prefHeight="3.0" prefWidth="782.0" />
-      <TableView layoutX="26.0" layoutY="167.0" prefHeight="56.0" prefWidth="977.0">
+      <TableView fx:id="tblStudenDetails" layoutX="26.0" layoutY="167.0" prefHeight="56.0" prefWidth="977.0">
         <columns>
-          <TableColumn prefWidth="122.0" text="Student ID" />
-          <TableColumn prefWidth="145.0" text="Registaion ID" />
-            <TableColumn prefWidth="145.0" text="Student Name" />
-            <TableColumn prefWidth="257.0" text="Gmail" />
-            <TableColumn prefWidth="156.0" text="Contact Number" />
-            <TableColumn prefWidth="151.0" text="Address" />
-            <TableColumn prefWidth="122.0" text="Student ID" />
+          <TableColumn fx:id="colSDstuID" prefWidth="122.0" text="Student ID" />
+          <TableColumn fx:id="colSDregID" prefWidth="145.0" text="Registaion ID" />
+            <TableColumn fx:id="colSDstuName" prefWidth="145.0" text="Student Name" />
+            <TableColumn fx:id="colSDstuGmail" prefWidth="257.0" text="Gmail" />
+            <TableColumn fx:id="colSDstuContact" prefWidth="154.0" text="Contact Number" />
+            <TableColumn fx:id="colSDstuAddress" prefWidth="153.0" text="Address" />
         </columns>
       </TableView>
-      <TableView layoutX="20.0" layoutY="276.0" prefHeight="42.0" prefWidth="696.0">
+      <TableView fx:id="tblPerantDetails" layoutX="20.0" layoutY="268.0" prefHeight="71.0" prefWidth="696.0">
          <columns>
-            <TableColumn prefWidth="215.0" text="Perant Name" />
-            <TableColumn prefWidth="282.0" text="Gmail" />
-            <TableColumn prefWidth="198.0" text="Contact Number" />
+            <TableColumn fx:id="colPDperName" prefWidth="215.0" text="Perant Name" />
+            <TableColumn fx:id="colPDperGmail" prefWidth="282.0" text="Gmail" />
+            <TableColumn fx:id="colPDperContact" prefWidth="198.0" text="Contact Number" />
          </columns>
       </TableView>
-      <TableView layoutX="20.0" layoutY="376.0" prefHeight="125.0" prefWidth="475.0">
+      <TableView fx:id="tblAttendanceDetails" layoutX="20.0" layoutY="376.0" prefHeight="125.0" prefWidth="475.0">
          <columns>
-            <TableColumn prefWidth="130.0" text="Date" />
-            <TableColumn prefWidth="167.0" text="Subject" />
-            <TableColumn prefWidth="177.0" text="Time" />
+            <TableColumn fx:id="colADdate" prefWidth="130.0" text="Date" />
+            <TableColumn fx:id="colADsubject" prefWidth="167.0" text="Subject" />
+            <TableColumn fx:id="colADtime" prefWidth="177.0" text="Time" />
             <TableColumn prefWidth="177.0" text="Time" />
          </columns>
       </TableView>
@@ -59,12 +62,12 @@
       </Label>
       <Separator layoutX="23.0" layoutY="341.0" prefHeight="3.0" prefWidth="1031.0" />
       <Separator layoutX="526.0" layoutY="339.0" orientation="VERTICAL" prefHeight="200.0" />
-      <TableView layoutX="553.0" layoutY="375.0" prefHeight="125.0" prefWidth="475.0">
+      <TableView fx:id="tblPaymentDetails" layoutX="553.0" layoutY="375.0" prefHeight="125.0" prefWidth="475.0">
          <columns>
-            <TableColumn prefWidth="142.0" text="Payment Month" />
-            <TableColumn prefWidth="161.0" text="Subject" />
-            <TableColumn prefWidth="164.0" text="Payment Day" />
-            <TableColumn prefWidth="184.0" text="Time" />
+            <TableColumn fx:id="colPeyDmonth" prefWidth="142.0" text="Subject" />
+            <TableColumn fx:id="colPaysubject" prefWidth="161.0" text="Amount" />
+            <TableColumn fx:id="colPayDay" prefWidth="173.0" text="Payment Day" />
+            <TableColumn prefWidth="175.0" text="Time" />
          </columns>
       </TableView>
       <Label layoutX="557.0" layoutY="353.0" prefHeight="17.0" prefWidth="178.0" text="Payment Details" textFill="#2f1085">
@@ -72,5 +75,15 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
+      <Label layoutX="30.0" layoutY="79.0" text="Student ID">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Pane layoutX="862.0" layoutY="57.0" prefHeight="101.0" prefWidth="137.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fx:id="imageViewStudent" fitHeight="115.0" fitWidth="151.0" layoutX="-8.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

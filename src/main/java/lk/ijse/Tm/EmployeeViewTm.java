@@ -9,12 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class CourseDetailsTm {
-
-    private String Cus_Id;
-    private String stu_id;
-    private String stu_Name;
-    private String cus_Name;
-    private Double amount;
-
+public class EmployeeViewTm {
+   private String EmpId;
+   private String EmpName;
 }

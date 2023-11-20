@@ -15,8 +15,10 @@ import java.util.List;
 @Getter
 
 public class SetPaymentDto {
+    private String payId;
     private Double amount;
     private String cusDfull;
+    private String stuID;
 
 
 }

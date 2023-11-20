@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="342.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Employee.EmployeeDetailsFormController">
+   <children>
+      <Label layoutX="25.0" layoutY="15.0" text="Serach Employee">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtSearchEmployee" layoutX="14.0" layoutY="34.0" style="-fx-background-radius: 30;" />
+      <Button layoutX="168.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="25.0" prefWidth="34.0" style="-fx-background-radius: 100;" />
+      <Pane layoutX="36.0" layoutY="82.0" prefHeight="118.0" prefWidth="132.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fx:id="imageViewEmployee" fitHeight="116.0" fitWidth="136.0" layoutX="-3.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Label layoutX="233.0" layoutY="15.0" text="ID">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="229.0" layoutY="44.0" text=" Name">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="228.0" layoutY="71.0" text=" Gmail">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="232.0" layoutY="118.0" text="Nic">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="515.0" layoutY="42.0" text="Contact Number">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="228.0" layoutY="95.0" text=" Address">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="232.0" layoutY="142.0" text="Position">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="513.0" layoutY="20.0" text="Registration Date">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="514.0" layoutY="65.0" text="Bank Acount Nmber">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="515.0" layoutY="90.0" text="Bank Acount Branch">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="518.0" layoutY="117.0" text="Age">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="517.0" layoutY="141.0" text="Gendar">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblID" layoutX="283.0" layoutY="19.0" prefHeight="17.0" prefWidth="217.0" style="-fx-background-color: White;" />
+      <Label fx:id="lblName" layoutX="283.0" layoutY="43.0" prefHeight="17.0" prefWidth="217.0" style="-fx-background-color: White;" />
+      <Label fx:id="lblGmail" layoutX="282.0" layoutY="67.0" prefHeight="17.0" prefWidth="217.0" style="-fx-background-color: White;" />
+      <Label fx:id="lblAddress" layoutX="283.0" layoutY="92.0" prefHeight="17.0" prefWidth="217.0" style="-fx-background-color: White;" />
+      <Label fx:id="lblNic" layoutX="283.0" layoutY="118.0" prefHeight="17.0" prefWidth="217.0" style="-fx-background-color: White;" />
+      <Label fx:id="lblPosition" layoutX="284.0" layoutY="142.0" prefHeight="17.0" prefWidth="217.0" style="-fx-background-color: White;" />
+      <Label fx:id="lblRegDate" layoutX="637.0" layoutY="21.0" prefHeight="17.0" prefWidth="124.0" style="-fx-background-color: White;" />
+      <Label fx:id="lblConNum" layoutX="637.0" layoutY="44.0" prefHeight="17.0" prefWidth="124.0" style="-fx-background-color: White;" />
+      <Label fx:id="lblBankNum" layoutX="638.0" layoutY="67.0" prefHeight="17.0" prefWidth="124.0" style="-fx-background-color: White;" />
+      <Label fx:id="lblBankbranch" layoutX="639.0" layoutY="92.0" prefHeight="17.0" prefWidth="124.0" style="-fx-background-color: White;" />
+      <Label fx:id="lblAge" layoutX="639.0" layoutY="118.0" prefHeight="17.0" prefWidth="124.0" style="-fx-background-color: White;" />
+      <Label fx:id="lblGendar" layoutX="639.0" layoutY="141.0" prefHeight="17.0" prefWidth="124.0" style="-fx-background-color: White;" />
+      <Label layoutX="229.0" layoutY="183.0" prefHeight="20.0" prefWidth="149.0" text="Attendance Details" textFill="#450ea4">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblAttendanceEmployee" layoutX="227.0" layoutY="212.0" prefHeight="89.0" prefWidth="380.0">
+        <columns>
+          <TableColumn fx:id="colAttendanceID" prefWidth="112.0" text="Attendance ID" />
+          <TableColumn fx:id="colDay" prefWidth="139.0" text="Day" />
+            <TableColumn fx:id="colTime" prefWidth="128.0" text="Time" />
+        </columns>
+      </TableView>
+      <Button layoutX="666.0" layoutY="306.0" mnemonicParsing="false" onAction="#btnOKOnAction" prefHeight="20.0" prefWidth="72.0" style="-fx-background-radius: 20; -fx-background-color: #00300c;" text="Ok" textFill="#fffbfb">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

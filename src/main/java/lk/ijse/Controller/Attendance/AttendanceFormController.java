@@ -1,4 +1,4 @@
-package lk.ijse.Controller;
+package lk.ijse.Controller.Attendance;
 
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
@@ -30,6 +31,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -53,6 +55,7 @@ public class AttendanceFormController {
     public TableColumn Datecol;
     public TableColumn Timecol;
     public TableColumn clssIdcol;
+    public AnchorPane Ancrootattrndnce;
     private Webcam webcam;
     private WebcamPanel webcamPanel;
     private boolean isReading = false;
@@ -191,6 +194,13 @@ public class AttendanceFormController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
+
+    }
+
+
+    public void btnAttendanceDetailsOnAction(ActionEvent actionEvent) throws IOException {
+        Ancrootattrndnce.getChildren().clear();
+        Ancrootattrndnce.getChildren().add(FXMLLoader.load(getClass().getResource("/View/AttendanceDetailsForm.fxml")));
 
     }
 

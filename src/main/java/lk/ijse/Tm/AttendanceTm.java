@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -13,7 +15,7 @@ public class AttendanceTm {
     private String regId;
     private String stuId;
     private String stuName;
-    private String date;
+    private Date date;
     private String time;
     private String classId;
 }

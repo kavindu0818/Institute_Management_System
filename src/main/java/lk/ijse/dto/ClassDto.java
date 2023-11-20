@@ -12,5 +12,6 @@ import lombok.Setter;
 public class ClassDto {
     private String class_id;
     private String tut_id;
+    private String className;
 
 }

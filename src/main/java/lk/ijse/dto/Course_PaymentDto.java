@@ -10,9 +10,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Course_PaymentDto {
-    private int cusPayId;
+    private String cusPayId;
     private double payment;
-
     private String Date;
     private String time;
     private String cusDfull;

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="RegistationDelete" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.RegistationDeleteFormController">
+<AnchorPane fx:id="RegistationDelete" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Registartion.RegistationDeleteFormController">
    <children>
       <AnchorPane fx:id="RegistationDelete2" layoutX="10.0" layoutY="10.0" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;">
          <children>
@@ -38,6 +38,7 @@
                         <Image url="@../Assets/7727852.png" />
                      </image>
                   </ImageView>
+                  <ImageView fx:id="ImageViewD" fitHeight="160.0" fitWidth="171.0" layoutX="-5.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
             <ComboBox layoutX="789.0" layoutY="217.0" prefHeight="25.0" prefWidth="187.0" promptText="Subject" />

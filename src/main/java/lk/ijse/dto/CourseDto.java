@@ -14,5 +14,7 @@ public class CourseDto {
     private String cusId;
     private String cusName;
     private String CusFee;
+    private String courseStartDay;
+    private String courseDuration;
 
 }

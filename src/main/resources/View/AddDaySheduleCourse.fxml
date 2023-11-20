@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
 
+<AnchorPane prefHeight="209.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddDaySheduleCourseController">
+   <children>
+      <AnchorPane layoutX="-1.0" layoutY="2.0" prefHeight="209.0" prefWidth="639.0">
+         <children>
+            <ComboBox fx:id="cmbCourseDaySahdule" layoutX="57.0" layoutY="67.0" prefHeight="25.0" prefWidth="173.0" />
+            <Label layoutX="59.0" layoutY="44.0" text="Course">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="pickerCorseDayShedule" layoutX="245.0" layoutY="67.0" promptText="PicDate" />
+            <Label layoutX="246.0" layoutY="44.0" text="Date">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCousreSatrtTime" layoutX="453.0" layoutY="67.0" />
+            <Label layoutX="456.0" layoutY="44.0" text="Start Time">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCorseEndTime" layoutX="59.0" layoutY="128.0" prefHeight="25.0" prefWidth="174.0" />
+            <Label layoutX="61.0" layoutY="107.0" text="End Time">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button layoutX="489.0" layoutY="141.0" mnemonicParsing="false" onAction="#btnCourseOnAction" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #05470b;" text="Add" textFill="#fffdfd">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

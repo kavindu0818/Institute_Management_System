@@ -18,4 +18,11 @@ public class EmployeeDto {
     private String nic;
     private String address;
     private String position;
+    private String date;
+    private String bankAccountNum;
+
+    private String bankBranchName;
+    private Integer age;
+    private String gendar;
+    private byte[] image;
 }

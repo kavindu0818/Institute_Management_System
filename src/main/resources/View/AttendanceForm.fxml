@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.AttendanceFormController">
+<AnchorPane fx:id="Ancrootattrndnce" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Attendance.AttendanceFormController">
    <children>
       <Label layoutX="22.0" layoutY="7.0" prefHeight="46.0" prefWidth="272.0" text="Attendance Mark">
          <font>
@@ -59,8 +59,9 @@
       <Label fx:id="ScannerLable" layoutX="432.0" layoutY="70.0" prefHeight="52.0" prefWidth="149.0" />
       <AnchorPane fx:id="mainPane" layoutX="344.0" layoutY="53.0" prefHeight="240.0" prefWidth="363.0" style="-fx-background-color: white;">
          <children>
-            <AnchorPane fx:id="miniPane" layoutX="13.0" layoutY="3.0" prefHeight="229.0" prefWidth="327.0" style="-fx-background-color: black;" />
+            <AnchorPane fx:id="miniPane" layoutX="14.0" layoutY="3.0" prefHeight="229.0" prefWidth="327.0" style="-fx-background-color: black;" />
          </children>
       </AnchorPane>
+      <Button layoutX="906.0" layoutY="54.0" mnemonicParsing="false" onAction="#btnAttendanceDetailsOnAction" style="-fx-background-radius: 20; -fx-background-color: blue;" text="Attendance Details" />
    </children>
 </AnchorPane>

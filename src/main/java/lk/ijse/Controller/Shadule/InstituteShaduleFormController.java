@@ -1,3 +1,5 @@
+package lk.ijse.Controller.Shadule;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextArea;
@@ -14,6 +16,7 @@ public class InstituteShaduleFormController {
     public TextField txtGmailTo;
     public TextArea txtGmailMessage;
     public TextField txtGmailSubject;
+    public AnchorPane AncShadule1;
 
     private GmailMain gmail = new GmailMain();
 
@@ -36,4 +39,17 @@ public class InstituteShaduleFormController {
         gmail.addGmailDEtails(from,to,sub,msg);
 
     }
+
+    public void AddDayShaduleClass(ActionEvent actionEvent) throws IOException {
+        AncShadule1.getChildren().clear();
+        AncShadule1.getChildren().add(FXMLLoader.load(getClass().getResource("/view/DaySheduleClass.fxml")));
+
+    }
+
+    public void AddDaySheduleCourse(ActionEvent actionEvent) throws IOException {
+        AncShadule1.getChildren().clear();
+        AncShadule1.getChildren().add(FXMLLoader.load(getClass().getResource("/view/AddDaySheduleCourse.fxml ")));
+    }
+
+
 }

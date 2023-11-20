@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.AttendanceDetailsFormController">
+<AnchorPane prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Attendance.AttendanceDetailsFormController">
    <children>
-      <TableView layoutY="197.0" prefHeight="296.0" prefWidth="908.0">
+      <TableView fx:id="tblAttendanceView" layoutX="20.0" layoutY="203.0" prefHeight="309.0" prefWidth="704.0">
         <columns>
-          <TableColumn prefWidth="223.0" text="Student ID" />
-          <TableColumn prefWidth="178.0" text="Student Name" />
-            <TableColumn prefWidth="181.0" text="Date" />
-            <TableColumn prefWidth="221.0" text="Time" />
+          <TableColumn fx:id="colStudentId" prefWidth="129.0" text="Student ID" />     
+          <TableColumn fx:id="colStudentName" prefWidth="213.0" text="Student Name" />
+            <TableColumn fx:id="colAttendnceDate" prefWidth="126.0" text="Date" />
+            <TableColumn fx:id="colAttendanceTime" minWidth="0.0" prefWidth="95.0" text="Time" />
+            <TableColumn fx:id="ColAttendanceMarkId" prefWidth="139.0" text="Attendanc Mark ID" />
         </columns>
       </TableView>
+      <Label layoutX="475.0" layoutY="11.0" prefHeight="30.0" prefWidth="200.0" text="Attendance Details">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblClassDetailsView" layoutX="741.0" layoutY="203.0" prefHeight="309.0" prefWidth="264.0">
+        <columns>
+          <TableColumn fx:id="colClassId" prefWidth="112.0" text="Class ID" />
+          <TableColumn fx:id="colClassName" prefWidth="151.0" text="Class Name" />
+        </columns>
+      </TableView>
+      <DatePicker fx:id="txtAttendanceDate" layoutX="30.0" layoutY="102.0" prefHeight="25.0" prefWidth="214.0" promptText="Date" />
+      <TextField fx:id="txtSerachAttendnceClass" layoutX="30.0" layoutY="67.0" prefHeight="25.0" prefWidth="214.0" promptText="Class ID" />
+      <Button layoutX="164.0" layoutY="146.0" mnemonicParsing="false" onAction="#SearchClassAndDateOnAction" prefHeight="25.0" prefWidth="80.0" text="Serach" />
    </children>
 </AnchorPane>

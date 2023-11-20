@@ -1,10 +1,12 @@
-package lk.ijse.Controller;
+package lk.ijse.Controller.Registartion;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dto.StudentfullDetailsDto;
 import lk.ijse.model.StudentfullDetailsModel;
@@ -30,6 +32,7 @@ public class RegistationDeleteFormController {
     public TextField txtDPid;
     public TextField txtDPGmail;
     public TextField txtDeleteSerachStuId;
+    public ImageView ImageViewD;
 
     private StudentfullDetailsModel sdModel = new StudentfullDetailsModel();
 
@@ -82,8 +85,12 @@ public class RegistationDeleteFormController {
                 txtDPContact.setText(studentDto.getPerant_contactNo());
                 txtDPid.setText(studentDto.getPerant_id());
                 txtDPGmail.setText(studentDto.getPerant_Gmail());
+                Image fxImage = sdModel.convertBytesToJavaFXImage(studentDto.getImage());
+                ImageViewD.setImage(fxImage);
+               // ImageViewD.setImage(studentDto.getImage());
+
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                new Alert(Alert.AlertType.INFORMATION, "Studnet not found").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

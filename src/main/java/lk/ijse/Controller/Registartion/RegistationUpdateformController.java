@@ -1,19 +1,32 @@
-package lk.ijse.Controller;
+package lk.ijse.Controller.Registartion;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import lk.ijse.dto.StudentfullDetailsDto;
 import lk.ijse.model.StudentfullDetailsModel;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import java.util.List;
+
+///import static com.sun.tools.doclint.Entity.image;
 
 
 public class RegistationUpdateformController {
@@ -39,6 +52,10 @@ public class RegistationUpdateformController {
     public TextField txtUpdatePerantGmail;
     public TextField txtUpdateName;
     public TextField txtUpdatePerantName;
+    public ImageView imageView;
+    public Button openBrowser;
+    public FileInputStream fileInputStream;
+    public Image image;
     private StudentfullDetailsModel up = new StudentfullDetailsModel();
 
     public void initialize() {
@@ -72,8 +89,12 @@ public class RegistationUpdateformController {
                 txtUpdatePerantContact.setText(studentDto.getPerant_contactNo());
                 txtUpdatePerantId.setText(studentDto.getPerant_id());
                 txtUpdatePerantGmail.setText(studentDto.getPerant_Gmail());
+                Image fxImage = up.convertBytesToJavaFXImage(studentDto.getImage());
+                imageView.setImage(fxImage);
+
+
             } else {
-                new Alert(Alert.AlertType.INFORMATION, "customer not found").show();
+                new Alert(Alert.AlertType.INFORMATION, "Student not found").show();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -95,8 +116,10 @@ public class RegistationUpdateformController {
         String perantCon = txtUpdatePerantContact.getText();
         String perantId = txtUpdatePerantId.getText();
         String perantGmail = txtUpdatePerantGmail.getText();
+        Image image = imageView.getImage();
+        byte[] ima = up.imagenToByte(image);
 
-        var su = new StudentfullDetailsDto(stu_id,reg_id,Stuname,regDate,stuGmail,stuContact,sub,address,stuAge,stuGrade,perantId,perantName,perantGmail,perantCon);
+        var su = new StudentfullDetailsDto(stu_id,reg_id,Stuname,regDate,stuGmail,stuContact,sub,address,stuAge,stuGrade,perantId,perantName,perantGmail,perantCon,ima);
 
         try {
             boolean isSaved = up.updateSave(su);
@@ -108,7 +131,20 @@ public class RegistationUpdateformController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+
     }
 
 
+    public void OpenBrowserOnAction(ActionEvent actionEvent) {
+        FileChooser chooser = new FileChooser();
+        File file =chooser.showOpenDialog(openBrowser.getScene().getWindow());
+        try {
+            fileInputStream=new FileInputStream(file);
+            image=new Image(fileInputStream);
+            imageView.setImage(image);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

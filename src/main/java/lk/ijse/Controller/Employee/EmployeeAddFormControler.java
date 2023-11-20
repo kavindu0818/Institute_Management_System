@@ -1,3 +1,5 @@
+package lk.ijse.Controller.Employee;
+
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
@@ -64,7 +66,7 @@ public class EmployeeAddFormControler {
         byte[] ima = empM.imagenToByte(image);
         String name = firstName+ lastName;
 
-        var emp = new EmployeeDto(empId,name,gmail,contactNum,nic,address,position,date,bankAccont,age,bankName,geand,ima);
+        var emp = new EmployeeDto(empId,name,gmail,contactNum,nic,address,position,date,bankAccont,bankName,age,geand,ima);
 
         try {
             boolean isSaved = empM.saveEmployee(emp);

@@ -1,8 +1,16 @@
 package lk.ijse.model;
 
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
 import lk.ijse.db.DbConnection;
+import lk.ijse.dto.StudentAttendance;
 import lk.ijse.dto.StudentfullDetailsDto;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +22,7 @@ public class StudentfullDetailsModel {
     public static boolean saveStudentDetails(StudentfullDetailsDto sr) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO studentfull_details VALUES(?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO studentfull_details VALUES(?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, sr.getStu_id());
@@ -32,6 +40,9 @@ public class StudentfullDetailsModel {
         pstm.setString(13, sr.getPerant_Gmail());
         pstm.setString(14, sr.getPerant_contactNo());
 
+        byte[] imageSr = sr.getImage();
+        pstm.setBytes(15, imageSr);
+
 
         boolean isSaved = pstm.executeUpdate() > 0;
 
@@ -39,9 +50,8 @@ public class StudentfullDetailsModel {
     }
 
 
-
     public StudentfullDetailsDto searchCustomer(String id) throws SQLException {
-        Connection connection = DbConnection.getInstance().getConnection ();
+        Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT * FROM  studentfull_details WHERE stu_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
@@ -51,7 +61,7 @@ public class StudentfullDetailsModel {
 
         StudentfullDetailsDto dto = null;
 
-        if(resultSet.next()) {
+        if (resultSet.next()) {
             String stu_id = resultSet.getString(1);
             String reg_id = resultSet.getString(2);
             String Stuname = resultSet.getString(3);
@@ -67,14 +77,48 @@ public class StudentfullDetailsModel {
             String perant_Gmail = resultSet.getString(13);
             String perant_ContactNo = resultSet.getString(14);
 
-            dto = new  StudentfullDetailsDto(stu_id,reg_id,Stuname,regDate,stuGmail,StuContact,sub_id,adddress,age,grade,perant_id,perant_name,perant_Gmail,perant_ContactNo);
+            byte[] imageBytes = resultSet.getBytes(15);
+
+           // Image fxImage = convertBytesToJavaFXImage(imageBytes);
+
+
+
+            dto = new StudentfullDetailsDto(stu_id, reg_id, Stuname, regDate, stuGmail, StuContact, sub_id, adddress, age, grade, perant_id, perant_name, perant_Gmail, perant_ContactNo, imageBytes);
         }
         return dto;
-}
+    }
+
+    public byte[] imagenToByte(Image imgId) {
+        BufferedImage bufferimage = SwingFXUtils.fromFXImage(imgId, null);
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(bufferimage, "jpg", output);
+            ImageIO.write(bufferimage, "png", output);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        byte[] data = output.toByteArray();
+        return data;
+    }
+
+
+
+  public static Image convertBytesToJavaFXImage(byte[] imageData) {
+      try {
+          ByteArrayInputStream bis = new ByteArrayInputStream(imageData);
+          BufferedImage bufferedImage = ImageIO.read(bis);
+          return SwingFXUtils.toFXImage(bufferedImage, null);
+      } catch (IOException e) {
+          e.printStackTrace();
+          return null;
+      }
+  }
+
+
 
     public boolean updateSave(StudentfullDetailsDto su) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
-        String sql = "UPDATE studentfull_details SET reg_id = ?,name = ?,regDate = ?,Student_gmail = ?,Student_contactNo =?,sub_id = ?, address = ?,age =?,grade = ?,perant_id = ?,Perant_Name = ?,Perant_Gmail = ?, Perant_contactNo =? WHERE stu_id = ?";
+        String sql = "UPDATE studentfull_details SET reg_id = ?,name = ?,regDate = ?,Student_gmail = ?,Student_contactNo =?,sub_id = ?, address = ?,age =?,grade = ?,perant_id = ?,Perant_Name = ?,Perant_Gmail = ?, Perant_contactNo =?, image =? WHERE stu_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, su.getReg_id());
@@ -90,7 +134,11 @@ public class StudentfullDetailsModel {
         pstm.setString(11, su.getPerant_Name());
         pstm.setString(12, su.getPerant_Gmail());
         pstm.setString(13, su.getPerant_contactNo());
-        pstm.setString(14, su.getStu_id());
+        byte[] imageSr = su.getImage();
+        pstm.setBytes(14, imageSr);
+        pstm.setString(15, su.getStu_id());
+
+
 
         return pstm.executeUpdate() > 0;
     }
@@ -104,5 +152,40 @@ public class StudentfullDetailsModel {
         pstm.setString(1,id);
         return pstm.executeUpdate()>0;
     }
-}
+
+    public List<StudentfullDetailsDto> getClassStudent(String iD) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM  studentfull_details WHERE stu_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, iD);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        ArrayList<StudentfullDetailsDto> dtoList = new ArrayList<>();
+        while(resultSet.next()) {
+            dtoList.add(
+                    new StudentfullDetailsDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getString(5),
+                            resultSet.getString(6),
+                            resultSet.getString(7),
+                            resultSet.getString(8),
+                            resultSet.getString(9),
+                            resultSet.getString(10),
+                            resultSet.getString(11),
+                            resultSet.getString(12),
+                            resultSet.getString(13),
+                            resultSet.getString(14),
+                            resultSet.getBytes(15)
+                    )
+            );
+        }
+        return dtoList;
+    }
+    }
+
 

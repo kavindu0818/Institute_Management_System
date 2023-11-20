@@ -1,2 +1,4 @@
-package lk.ijse.Tm;public class RegistaionDetailsTm {
+package lk.ijse.Tm;
+
+public class RegistaionDetailsTm {
 }

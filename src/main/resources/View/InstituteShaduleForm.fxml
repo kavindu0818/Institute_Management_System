@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane prefHeight="532.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Shadule.InstituteShaduleFormController">
+   <children>
+      <AnchorPane layoutX="681.0" layoutY="23.0" prefHeight="488.0" prefWidth="335.0" style="-fx-background-color: #7d8a9e; -fx-background-radius: 30;">
+         <children>
+            <Label layoutX="85.0" layoutY="3.0" prefHeight="66.0" prefWidth="240.0" text="Send Gmail" textFill="#fffefe">
+               <font>
+                  <Font name="System Bold" size="33.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtGmailFrom" layoutX="27.0" layoutY="85.0" prefHeight="25.0" prefWidth="279.0" />
+            <TextField fx:id="txtGmailTo" layoutX="27.0" layoutY="135.0" prefHeight="25.0" prefWidth="279.0" />
+            <TextArea fx:id="txtGmailMessage" layoutX="31.0" layoutY="259.0" prefHeight="172.0" prefWidth="279.0" />
+            <Button layoutX="219.0" layoutY="445.0" mnemonicParsing="false" onAction="#btnSendGmailOnAction" prefHeight="25.0" prefWidth="91.0" style="-fx-background-radius: 20;" text="Send" />
+            <TextField fx:id="txtGmailSubject" layoutX="28.0" layoutY="190.0" prefHeight="25.0" prefWidth="279.0" />
+            <Label layoutX="29.0" layoutY="65.0" text="From">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="117.0" text="To">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="172.0" text="Subject">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="242.0" text="Message">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Separator layoutX="662.0" layoutY="28.0" orientation="VERTICAL" prefHeight="475.0" prefWidth="0.0" />
+      <AnchorPane fx:id="AncShedul2" layoutX="17.0" layoutY="310.0" prefHeight="209.0" prefWidth="639.0" style="-fx-background-color: #c5cedb;" />
+      <Label layoutX="17.0" layoutY="267.0" prefHeight="17.0" prefWidth="228.0" text="Add Classes Or Course">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="449.0" layoutY="280.0" onAction="#AddClassOnAction" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #150542;" text="Add Class" textFill="#f2efef">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="553.0" layoutY="280.0" onAction="#AddCourseOnAction" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #054236;" text="Add Course" textFill="#eeebeb" />
+      <AnchorPane fx:id="AncShadule1" layoutX="14.0" layoutY="49.0" prefHeight="209.0" prefWidth="639.0" style="-fx-background-color: #f8fad7;" />
+      <Label layoutX="14.0" layoutY="18.0" prefHeight="17.0" prefWidth="228.0" text="Add Day  Shadule">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="444.0" layoutY="18.0" onAction="#AddDayShaduleClass" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #bab702;" text="Add Class" textFill="#f2efef">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="553.0" layoutY="18.0" onAction="#AddDaySheduleCourse" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #940612;" text="Add Course" textFill="#eeebeb" />
+   </children>
 </AnchorPane>

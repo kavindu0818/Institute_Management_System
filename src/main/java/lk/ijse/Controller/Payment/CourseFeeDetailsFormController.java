@@ -1,4 +1,4 @@
-package lk.ijse.Controller;
+package lk.ijse.Controller.Payment;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
@@ -38,6 +38,7 @@ public class CourseFeeDetailsFormController {
     }
 
     private void setCellValueFactory() {
+
         colCusDetilStuId.setCellValueFactory(new PropertyValueFactory<>("Cus_Id"));
         colCusDetilStuName.setCellValueFactory(new PropertyValueFactory<>("stu_id"));
         colCusDetilPayMonth.setCellValueFactory(new PropertyValueFactory<>("stu_Name"));
@@ -56,11 +57,11 @@ public class CourseFeeDetailsFormController {
 
         try {
             List<Course_detailsDto> dtoList = cdMdel.getAllCourseValue(cd);
+
             System.out.println(dtoList.toString());
             for (Course_detailsDto dto : dtoList) {
                 obList.add(
                         new CourseDetailsTm(
-                                dto.getCusDfull(),
                                 dto.getCusId(),
                                 dto.getStuId(),
                                 dto.getStuName(),
@@ -69,10 +70,12 @@ public class CourseFeeDetailsFormController {
 
                         )
                 );
-                tblCourseDetails.setItems(obList);
-                tblCourseDetails.refresh();
-
             }
+            System.out.println("Athi"+ obList);
+            tblCourseDetails.setItems(obList);
+            tblCourseDetails.refresh();
+
+
        } catch (SQLException e) {
            throw new RuntimeException(e);
        }

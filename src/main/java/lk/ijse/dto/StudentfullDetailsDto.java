@@ -25,7 +25,10 @@ public class StudentfullDetailsDto {
     private String Perant_Name;
     private String Perant_Gmail;
     private String Perant_contactNo;
+    private byte[] image;
 
 
+    //public StudentfullDetailsDto(String stuId, String regID, String fullName, String registDate, String stuGmail, String stuContact, String subject, String addresss, String age, String stuGrade, String perantId, String pfullName, String perantGmail, String perantContact, javafx.scene.image.Image image) {
+    //}
 }
 

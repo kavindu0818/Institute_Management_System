@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,58 @@ public class Stu_AttendanceModel {
             dtoList.add(
                     new StudentAttendance(
                             resultSet.getString(1),
-                            resultSet.getString(2),
+                            resultSet.getDate(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getString(5),
+                            resultSet.getString(6)
+                    )
+            );
+        }
+        return dtoList;
+
+    }
+
+    public List<StudentAttendance> getClassStudent(String clId, LocalDate classDate) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM stu_attendance WHERE class_id = ? AND date = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1,clId);
+        pstm.setString(2, String.valueOf(classDate));
+        ResultSet resultSet = pstm.executeQuery();
+
+        ArrayList<StudentAttendance> dtoList = new ArrayList<>();
+        while(resultSet.next()) {
+            dtoList.add(
+                    new StudentAttendance(
+                            resultSet.getString(1),
+                            resultSet.getDate(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getString(5),
+                            resultSet.getString(6)
+                    )
+            );
+        }
+            return dtoList;
+    }
+
+    public List<StudentAttendance> getStudentAllAttendnce(String iD) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM stu_attendance WHERE stu_id =?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1,iD);
+        ResultSet resultSet = pstm.executeQuery();
+
+        ArrayList<StudentAttendance> dtoList = new ArrayList<>();
+
+        while(resultSet.next()) {
+            dtoList.add(
+                    new StudentAttendance(
+                            resultSet.getString(1),
+                            resultSet.getDate(2),
                             resultSet.getString(3),
                             resultSet.getString(4),
                             resultSet.getString(5),

@@ -1,3 +1,5 @@
+package lk.ijse.Controller.Employee;
+
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
@@ -54,7 +56,7 @@ public class EmployeeUpdateFormController {
         Image image = imageViewEmp.getImage();
         byte[] ima = empM.imagenToByte(image);
 
-        var emp = new EmployeeDto(empId,name,gmail,contactNum,nic,address,position,date,bankAccont,age,bankName,gendar,ima);
+        var emp = new EmployeeDto(empId,name,gmail,contactNum,nic,address,position,date,bankAccont,bankName,age,gendar,ima);
 
         try {
             boolean isSaved = empM.updateEmployee(emp);

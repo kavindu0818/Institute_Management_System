@@ -1,4 +1,4 @@
-package lk.ijse.Controller;
+package lk.ijse.Controller.Payment;
 
 public class PaymentDetailsController {
 }

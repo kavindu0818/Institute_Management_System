@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="RegistationPage" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-color: #DFE0E7; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.RegistationStudentController">
+<AnchorPane fx:id="RegistationPage" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-color: #DFE0E7; -fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Registartion.RegistationStudentController">
    <children>
       <Label layoutX="21.0" layoutY="6.0" prefHeight="47.0" prefWidth="236.0" text="Student Registation">
          <font>
@@ -56,24 +56,23 @@
                </image>
             </ImageView>
             <Label layoutX="71.0" layoutY="82.0" prefHeight="17.0" prefWidth="130.0" text="Add Image " />
-            <ImageView fitHeight="150.0" fitWidth="218.0" layoutX="-5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
-            <Button layoutX="54.0" layoutY="140.0" mnemonicParsing="false" onAction="#OpenBrowserOnAction" text="Open Browser" />
+            <ImageView fx:id="img" fitHeight="150.0" fitWidth="218.0" layoutX="-5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="imgSelectBtn" layoutX="54.0" layoutY="140.0" mnemonicParsing="false" onAction="#OpenBrowserOnAction" text="Open Browser" />
          </children>
       </Pane>
       <JFXTextArea fx:id="txtFieldSubject" layoutX="517.0" layoutY="241.0" prefHeight="116.0" prefWidth="211.0" style="-fx-background-color: White;" />
       <Separator layoutX="749.0" layoutY="63.0" orientation="VERTICAL" prefHeight="423.0" prefWidth="5.0" />
-      <JFXTextArea layoutX="768.0" layoutY="81.0" prefHeight="353.0" prefWidth="249.0" style="-fx-background-color: white;" />
-      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="778.0" layoutY="59.0">
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="775.0" layoutY="4.0">
          <image>
             <Image url="@../Assets/SHAJALOGO.png" />
          </image>
       </ImageView>
-      <Button layoutX="765.0" layoutY="17.0" mnemonicParsing="false" onAction="#UpdateRegistationOnAction" prefHeight="21.0" prefWidth="104.0" style="-fx-background-color: #F2C12E; -fx-background-radius: 20;" text="Update" textFill="#fff8f8">
+      <Button layoutX="630.0" layoutY="6.0" mnemonicParsing="false" onAction="#UpdateRegistationOnAction" prefHeight="21.0" prefWidth="91.0" style="-fx-background-color: #F2C12E; -fx-background-radius: 20;" text="Update" textFill="#fff8f8">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="878.0" layoutY="17.0" mnemonicParsing="false" onAction="#RegistationDeleteOnAction" prefHeight="17.0" prefWidth="104.0" style="-fx-background-color: #8C1F28; -fx-background-radius: 20;" text="Delete" textFill="#fff8f8">
+      <Button layoutX="732.0" layoutY="5.0" mnemonicParsing="false" onAction="#RegistationDeleteOnAction" prefHeight="21.0" prefWidth="91.0" style="-fx-background-color: #8C1F28; -fx-background-radius: 20;" text="Delete" textFill="#fff8f8">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
@@ -89,5 +88,16 @@
          </font>
       </Button>
       <JFXTextField fx:id="txtStuAge" layoutX="608.0" layoutY="165.0" prefHeight="25.0" prefWidth="104.0" promptText="Age" />
+      <Button layoutX="834.0" layoutY="5.0" mnemonicParsing="false" onAction="#AddCourseOnAction" prefHeight="21.0" prefWidth="91.0" style="-fx-background-color: #F2C12E; -fx-background-radius: 20;" text="Add Course" textFill="#fff8f8">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="932.0" layoutY="4.0" mnemonicParsing="false" onAction="#AddClassOnAction" prefHeight="21.0" prefWidth="91.0" style="-fx-background-color: #F2C12E; -fx-background-radius: 20;" text="Add Class" textFill="#fff8f8">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Button>
+      <AnchorPane fx:id="addRoot1" layoutX="760.0" layoutY="126.0" prefHeight="397.0" prefWidth="263.0" style="-fx-background-color: white;" />
    </children>
 </AnchorPane>

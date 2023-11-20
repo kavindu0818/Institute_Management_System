@@ -1,2 +1,4 @@
-package PACKAGE_NAME;public class DaySheduleClassController {
+package lk.ijse.Controller.Shadule;
+
+public class DaySheduleClassController {
 }

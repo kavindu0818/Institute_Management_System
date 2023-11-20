@@ -3,7 +3,6 @@ package lk.ijse.model;
 
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.Class_DetailsDto;
-import lk.ijse.dto.StudentfullDetailsDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,5 +35,66 @@ public class Class_DetailsModel {
         }
         return dto;
 
+    }
+
+    public List<Class_DetailsDto> getFullId(String sID) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM  class_Details WHERE stu_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, sID);
+
+        ResultSet resultSet = pstm.executeQuery();
+        ArrayList<Class_DetailsDto> dtoList = new ArrayList<>();
+        // ClassDto dto = null;
+
+        while(resultSet.next()) {
+            dtoList.add(
+                    new Class_DetailsDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4)
+
+                    )
+            );
+        }
+        return dtoList;
+
+    }
+
+    public boolean saveClassDetails(Class_DetailsDto ad) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "INSERT INTO class_details VALUES(?, ?, ?, ?)";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, ad.getFull_id());
+
+        pstm.setString(2, ad.getStu_id());
+        pstm.setString(3, ad.getClass_id());
+        pstm.setString(4, ad.getStu_name());
+
+
+        boolean isSaved = pstm.executeUpdate() > 0;
+
+        return isSaved;
+    }
+
+    public boolean saveValue(String attendance, String stuId, String classID, String stuName) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "INSERT INTO class_details VALUES(?, ?, ?, ?)";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1, attendance);
+        pstm.setString(2, stuId);
+        pstm.setString(3, classID);
+        pstm.setString(4,stuName);
+
+
+        boolean isSaved = pstm.executeUpdate() > 0;
+
+        return isSaved;
     }
 }

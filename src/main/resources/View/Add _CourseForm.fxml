@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
 
+<AnchorPane prefHeight="209.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Shadule.AddCourseFormController">
+   <children>
+      <JFXTextField fx:id="txtCourseID" layoutX="43.0" layoutY="53.0" prefHeight="25.0" prefWidth="184.0" />
+      <Label layoutX="43.0" layoutY="40.0" text="Course ID">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtCourseName" layoutX="248.0" layoutY="53.0" prefHeight="25.0" prefWidth="184.0" />
+      <Label layoutX="249.0" layoutY="42.0" text="Course Name">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtTutorID" layoutX="447.0" layoutY="53.0" prefHeight="25.0" prefWidth="184.0" />
+      <Label layoutX="448.0" layoutY="41.0" text="Tutor ID">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtCourseFees" layoutX="41.0" layoutY="114.0" prefHeight="25.0" prefWidth="184.0" />
+      <Label layoutX="43.0" layoutY="96.0" text="Course Fee">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtxCourseTimeDuration" layoutX="246.0" layoutY="113.0" prefHeight="25.0" prefWidth="184.0" />
+      <Label layoutX="249.0" layoutY="98.0" text="Course Time Duration">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="43.0" layoutY="149.0" text="Course Start Day">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="509.0" layoutY="157.0" onAction="#btnCourseAddOnAction" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #99030b;" text="Add" textFill="#fcf9f9" />
+      <DatePicker fx:id="DatePicker" layoutX="41.0" layoutY="170.0" />
+   </children>
 </AnchorPane>

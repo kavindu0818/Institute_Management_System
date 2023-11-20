@@ -17,6 +17,12 @@ public class DashBoardController {
     public AnchorPane Twonc;
     public AnchorPane MainDashobordAncPage;
 
+    public void initialize() throws IOException {
+        Twonc.getChildren().clear();
+        Twonc.getChildren().add(FXMLLoader.load(getClass().getResource("/view/DashboardOriginal.fxml")));
+
+    }
+
     public void RegistationOnAction(ActionEvent actionEvent) throws IOException {
         Twonc.getChildren().clear();
         Twonc.getChildren().add(FXMLLoader.load(getClass().getResource("/view/RegistationMain.fxml")));
@@ -49,6 +55,12 @@ public class DashBoardController {
     public void PaymentOnAction(ActionEvent actionEvent) throws IOException {
         Twonc.getChildren().clear();
         Twonc.getChildren().add(FXMLLoader.load(getClass().getResource("/view/PaymentForm.fxml")));
+    }
+
+    public void btnShaduleOnAction(ActionEvent actionEvent) throws IOException {
+        Twonc.getChildren().clear();
+        Twonc.getChildren().add(FXMLLoader.load(getClass().getResource("/view/InstituteShaduleForm.fxml")));
+
     }
 }
 

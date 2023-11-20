@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="RegistationUpdate" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.RegistationUpdateformController">
+<AnchorPane fx:id="RegistationUpdate" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Registartion.RegistationUpdateformController">
    <children>
       <Label layoutX="476.0" layoutY="17.0" prefHeight="17.0" prefWidth="238.0" text="Registation Update">
          <font>
@@ -36,6 +36,8 @@
                   <Image url="@../Assets/7727852.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="imageView" fitHeight="157.0" fitWidth="171.0" layoutX="-7.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="openBrowser" layoutX="34.0" layoutY="149.0" mnemonicParsing="false" onAction="#OpenBrowserOnAction" text="Open Browser" />
          </children>
       </Pane>
       <ComboBox layoutX="789.0" layoutY="217.0" prefHeight="25.0" prefWidth="187.0" promptText="Subject" />

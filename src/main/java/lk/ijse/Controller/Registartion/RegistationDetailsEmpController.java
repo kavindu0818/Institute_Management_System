@@ -1,4 +1,4 @@
-package lk.ijse.Controller;
+package lk.ijse.Controller.Registartion;
 
 public class RegistationDetailsEmpController {
 }

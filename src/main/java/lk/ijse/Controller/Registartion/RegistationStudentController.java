@@ -1,4 +1,4 @@
-package lk.ijse.Controller;
+package lk.ijse.Controller.Registartion;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
@@ -6,15 +6,23 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import lk.ijse.dto.*;
 import lk.ijse.model.PerantModel;
 import lk.ijse.model.RegistationModel;
 import lk.ijse.model.StudentModel;
 import lk.ijse.model.StudentfullDetailsModel;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+
 
 public class RegistationStudentController {
     public AnchorPane RegistationPage;
@@ -36,10 +44,16 @@ public class RegistationStudentController {
     public JFXTextField txtPerantNic;
     public JFXTextArea txtFieldSubject;
     public JFXTextField txtStuAge;
+    public Button imgSelectBtn;
+    public FileInputStream fileInputStream;
+    public Image image;
+    public ImageView img;
+    public AnchorPane addRoot1;
 
     private RegistationModel reg = new RegistationModel();
     private StudentModel stu = new StudentModel();
     private PerantModel pr = new PerantModel();
+    private StudentfullDetailsModel studentfullDetailsModel = new StudentfullDetailsModel();
 
     private StudentfullDetailsModel sfd = new StudentfullDetailsModel();
 
@@ -59,6 +73,16 @@ public class RegistationStudentController {
     }
 
     public void OpenBrowserOnAction(ActionEvent actionEvent) {
+
+            FileChooser chooser = new FileChooser();
+            File file =chooser.showOpenDialog(imgSelectBtn.getScene().getWindow());
+            try {
+                fileInputStream=new FileInputStream(file);
+                image=new Image(fileInputStream);
+                img.setImage(image);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+   }
     }
 
     public void RegisstaationSaveOnAction(ActionEvent actionEvent) {
@@ -81,8 +105,10 @@ public class RegistationStudentController {
         String age = txtStuAge.getText();
         String fullName = stuNameFirst + stuNameLast;
         String PfullName = perFistname + perLastname;
+        Image image = img.getImage();
+        byte[] ima = studentfullDetailsModel.imagenToByte(image);
 
-        var sr = new StudentfullDetailsDto(stuId, regID, fullName, registDate, stuGmail, stuContact, subject, addresss, age, stuGrade, perantId, PfullName, perantGmail, perantContact);
+        var sr = new StudentfullDetailsDto(stuId, regID, fullName, registDate, stuGmail, stuContact, subject, addresss, age, stuGrade, perantId, PfullName, perantGmail, perantContact, ima);
 
         try {
             boolean isSaved = StudentfullDetailsModel.saveStudentDetails(sr);
@@ -122,5 +148,16 @@ public class RegistationStudentController {
     }
 
 
+    public void AddCourseOnAction(ActionEvent actionEvent) throws IOException {
+        addRoot1.getChildren().clear();
+        addRoot1.getChildren().add(FXMLLoader.load(getClass().getResource("/View/AddStudentCourse.fxml")));
+
     }
+
+    public void AddClassOnAction(ActionEvent actionEvent) throws IOException {
+        addRoot1.getChildren().clear();
+        addRoot1.getChildren().add(FXMLLoader.load(getClass().getResource("/View/AddStudentClassForm.fxml")));
+
+    }
+}
 

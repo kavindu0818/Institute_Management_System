@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="471.0" prefWidth="482.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.ClassFeeDetailsFormController">
+<AnchorPane prefHeight="471.0" prefWidth="482.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Payment.ClassFeeDetailsFormController">
    <children>
-      <JFXTextField layoutX="120.0" layoutY="54.0" prefHeight="25.0" prefWidth="280.0" />
-      <JFXTextField layoutX="121.0" layoutY="86.0" prefHeight="25.0" prefWidth="280.0" />
-      <Label layoutX="78.0" layoutY="61.0" prefHeight="17.0" prefWidth="72.0" text="Class Id" />
-      <Label layoutX="81.0" layoutY="95.0" prefHeight="17.0" prefWidth="72.0" text="Month" />
-      <JFXButton layoutX="298.0" layoutY="131.0" prefHeight="25.0" prefWidth="98.0" text="Search Details" />
-      <TableView layoutX="14.0" layoutY="182.0" prefHeight="200.0" prefWidth="453.0">
+      <Label layoutX="46.0" layoutY="65.0" prefHeight="17.0" prefWidth="72.0" text="Class Id">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <JFXButton layoutX="176.0" layoutY="176.0" onAction="#SearchDetailsClassFessOnAction" prefHeight="25.0" prefWidth="98.0" style="-fx-background-color: #2d0340;" text="Search Details" textFill="#fcf7f7" />
+      <TableView fx:id="tblClassFeesDetailsView" layoutX="14.0" layoutY="231.0" prefHeight="200.0" prefWidth="453.0" style="-fx-background-color: white; -fx-border-color: #054003;">
         <columns>
-          <TableColumn prefWidth="75.0" text="Student_ID" />
-          <TableColumn prefWidth="141.0" text="Student Name" />
-            <TableColumn prefWidth="110.0" text="Date" />
-            <TableColumn prefWidth="135.0" text="Amount" />
+          <TableColumn fx:id="colStuId" prefWidth="75.0" text="Student_ID" />
+          <TableColumn fx:id="colStuName" prefWidth="141.0" text="Student Name" />
+            <TableColumn fx:id="colDate" prefWidth="110.0" text="Date" />
+            <TableColumn fx:id="colAmount" prefWidth="135.0" text="Amount" />
         </columns>
       </TableView>
       <JFXButton layoutX="309.0" layoutY="394.0" prefHeight="25.0" prefWidth="98.0" text="Ok" />
       <Label layoutX="185.0" layoutY="16.0" prefHeight="21.0" prefWidth="136.0" text="Class Fees Details">
          <font>
             <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbClassID" layoutX="41.0" layoutY="83.0" prefHeight="25.0" prefWidth="233.0" />
+      <ComboBox fx:id="cmbMonth" layoutX="42.0" layoutY="142.0" prefHeight="25.0" prefWidth="233.0" />
+      <Label layoutX="45.0" layoutY="124.0" prefHeight="17.0" prefWidth="72.0" text="Month">
+         <font>
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
    </children>
