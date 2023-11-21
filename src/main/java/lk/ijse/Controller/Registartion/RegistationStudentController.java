@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import lk.ijse.Controller.regex.Regex;
 import lk.ijse.dto.*;
 import lk.ijse.model.*;
 
@@ -88,44 +89,131 @@ public class RegistationStudentController {
     }
 
     public void RegisstaationSaveOnAction(ActionEvent actionEvent) {
-        String regID = txtRegisterId.getText();
-        String stuNameFirst = txtFirstName.getText();
-        String stuNameLast = txtLastName.getText();
-        String stuId = txtStudentId.getText();
-        String registDate = txtRegistationDate.getText();
-        String subject = txtFieldSubject.getText();
-        String stuGmail = txtGmail.getText();
-        String addresss = txtAddress.getText();
-        String stuContact = txtContact.getText();
-        String stuGrade = txtGrade.getText();
-        String perFistname = txtPerantFirstName.getText();
-        String perLastname = txtPerantLastName.getText();
-        String perantContact = txtPerantContact.getText();
-        String perantId = txtParentId.getText();
-        String perantGmail = txtPerandtGmail.getText();
-        String perantNic = txtPerantNic.getText();
-        String age = txtStuAge.getText();
-        String fullName = stuNameFirst + stuNameLast;
-        String PfullName = perFistname + perLastname;
-        Image image = img.getImage();
-        byte[] ima = studentfullDetailsModel.imagenToByte(image);
+        if (isCheckValue()) {
+            String regID = txtRegisterId.getText();
+            String stuNameFirst = txtFirstName.getText();
+            String stuNameLast = txtLastName.getText();
+            String stuId = txtStudentId.getText();
+            String registDate = txtRegistationDate.getText();
+            String subject = txtFieldSubject.getText();
+            String stuGmail = txtGmail.getText();
+            String addresss = txtAddress.getText();
+            String stuContact = txtContact.getText();
+            String stuGrade = txtGrade.getText();
+            String perFistname = txtPerantFirstName.getText();
+            String perLastname = txtPerantLastName.getText();
+            String perantContact = txtPerantContact.getText();
+            String perantId = txtParentId.getText();
+            String perantGmail = txtPerandtGmail.getText();
+            String perantNic = txtPerantNic.getText();
+            String age = txtStuAge.getText();
+            String fullName = stuNameFirst + stuNameLast;
+            String PfullName = perFistname + perLastname;
+            Image image = img.getImage();
+            byte[] ima = studentfullDetailsModel.imagenToByte(image);
 
-        var sr = new StudentfullDetailsDto(stuId, regID, fullName, registDate, stuGmail, stuContact, subject, addresss, age, stuGrade, perantId, PfullName, perantGmail, perantContact, ima);
+            if (regID.isEmpty() || stuNameFirst.isEmpty() || stuNameLast.isEmpty() || stuId.isEmpty() || registDate.isEmpty() || subject.isEmpty() || stuGmail.isEmpty() || addresss.isEmpty() || stuContact.isEmpty() ||
+                    stuGrade.isEmpty() || perFistname.isEmpty() || perLastname.isEmpty() || perantContact.isEmpty() || perantId.isEmpty() ||
+                    age.isEmpty() || fullName.isEmpty() || PfullName.isEmpty() || image.isBackgroundLoading()) {
 
-        try {
-            boolean isSaved = StudentfullDetailsModel.saveStudentDetails(sr);
-
-            if (isSaved) {
-                new Alert(Alert.AlertType.INFORMATION, "Student Save!").show();
-                clearFields();
-            } else {
-                new Alert(Alert.AlertType.WARNING, "Try Agin").show();
+                new Alert(Alert.AlertType.ERROR, "Field Not found").showAndWait();
+                return;
             }
 
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            var sr = new StudentfullDetailsDto(stuId, regID, fullName, registDate, stuGmail, stuContact, subject, addresss, age, stuGrade, perantId, PfullName, perantGmail, perantContact, ima);
+
+            try {
+                boolean isSaved = StudentfullDetailsModel.saveStudentDetails(sr);
+
+                if (isSaved) {
+                    new Alert(Alert.AlertType.INFORMATION, "Student Save!").show();
+                    clearFields();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Try Agin").show();
+                }
+
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+
+            }
+        }
+    }
+
+    private boolean isCheckValue() {
+        if (!(Regex.getRegistrationCodePattern().matcher(txtRegisterId.getText()).matches())) {
+            new Alert(Alert.AlertType.WARNING,"Registration Not Valid").show();
+             return false;
+        }
+
+        if (!(Regex.getNamePattern().matcher(txtFirstName.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"First Name Not Valid").show();
+            return false;
 
         }
+        if (!(Regex.getNamePattern().matcher(txtLastName.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Last Name Not Valid").show();
+            return false;
+        }
+
+        if (!(Regex.getCodePattern().matcher(txtStudentId.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Student Id Not Valid").show();
+            return false;
+
+        }
+        if (!(Regex.getEmailPattern().matcher(txtGmail.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Gmail Not Valid").show();
+            return false;
+
+        }
+
+        if (!(Regex.getMobilePattern().matcher(txtContact.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Contact Number Not Valid").show();
+            return false;
+
+        }
+        if (!(Regex.getGradePattern().matcher(txtGrade.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Grade Not Valid").show();
+            return false;
+
+        }
+        if (!(Regex.getNamePattern().matcher(txtPerantFirstName.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Perent First Name Not Valid").show();
+            return false;
+        }
+        if (!(Regex.getNamePattern().matcher(txtPerantLastName.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Perant Last Name Not Valid").show();
+            return false;
+
+        }
+        if (!(Regex.getMobilePattern().matcher(txtPerantContact.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Perant Contact Nummber Not Valid").show();
+            return false;
+
+        }
+
+        if (!(Regex.getEmailPattern().matcher(txtPerandtGmail.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Perant Gamil Not Valid").show();
+            return false;
+
+        }
+        if (!(Regex.getOldIDPattern().matcher(txtPerantNic.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Perant Nic Not Valid").show();
+            return false;
+
+        }
+        if (!(Regex.getAgePattern().matcher(txtStuAge.getText()).matches())) {
+            new Alert(Alert.AlertType.WARNING, "Student Age Not Valid").show();
+            return false;
+        }
+
+
+        if (!(Regex.getDatePattern().matcher(txtRegistationDate.getText()).matches())) {
+            new Alert(Alert.AlertType.WARNING, "Registation Date Not Valid").show();
+            return false;
+        }
+
+        return true;
+
     }
 
     public void clearFields() {

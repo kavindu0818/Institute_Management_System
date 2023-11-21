@@ -25,4 +25,5 @@ public class EmployeeDto {
     private Integer age;
     private String gendar;
     private byte[] image;
+    private String empAttendanceID;
 }

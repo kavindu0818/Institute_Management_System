@@ -37,6 +37,7 @@ public class EmployeeUpdateFormController {
     public TextField txtSearchEmpUpdate;
     public JFXTextField txtGender;
     public JFXTextField txtRegistationDate;
+    public JFXTextField txtEmpAttendnceMarkID;
 
     private EmployeeModel empM = new EmployeeModel();
 
@@ -55,8 +56,10 @@ public class EmployeeUpdateFormController {
         String gendar = txtGender.getText();
         Image image = imageViewEmp.getImage();
         byte[] ima = empM.imagenToByte(image);
+        String empAm = txtEmpAttendnceMarkID.getText();
 
-        var emp = new EmployeeDto(empId,name,gmail,contactNum,nic,address,position,date,bankAccont,bankName,age,gendar,ima);
+
+        var emp = new EmployeeDto(empId,name,gmail,contactNum,nic,address,position,date,bankAccont,bankName,age,gendar,ima,empAm);
 
         try {
             boolean isSaved = empM.updateEmployee(emp);

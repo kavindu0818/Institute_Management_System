@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Course_paymentModel {
-    public static boolean savePayment(String payId,double amount, String cusDfull,String stuID) throws SQLException {
+    public static boolean savePayment(String payId, double amount, String cusDfull, String stuID) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         java.util.Date date = new java.util.Date();
@@ -19,20 +19,20 @@ public class Course_paymentModel {
         PreparedStatement pstm = connection.prepareStatement(sql);
 
 
-       // return splitOrderId(null);
+        // return splitOrderId(null);
 
         pstm.setString(1, payId);
         pstm.setDouble(2, amount);
         pstm.setString(3, String.valueOf(sqldate));
         pstm.setString(4, String.valueOf(sqltime));
         pstm.setString(5, cusDfull);
-        pstm.setString(6,stuID);
+        pstm.setString(6, stuID);
 
         boolean isSaved = pstm.executeUpdate() > 0;
 
         return isSaved;
     }
-    private static String splitOrderId(String currentOrderId) {
+   /* private static String splitOrderId(String currentOrderId) {
         if(currentOrderId != null) {
             String[] split = currentOrderId.split("P0");
 
@@ -48,20 +48,27 @@ public class Course_paymentModel {
         } else {
             return "C001";
         }
-    }
+    }*/
 
-    public static String generateNextOrderId() throws SQLException {
+    public static int generateNextCourseFeeId() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
         String sql = "SELECT coursePayment_Id FROM course_payment ORDER BY coursePayment_Id DESC LIMIT 1";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         ResultSet resultSet = pstm.executeQuery();
-        if(resultSet.next()) {
-            return splitOrderId(resultSet.getString(1));
+        if (resultSet.next()) {
+            return splitOrderId(Integer.parseInt(resultSet.getString(1)));
         }
-        return splitOrderId(null);
+        return splitOrderId(0);
     }
 
+    private static int splitOrderId(int id) {
+        if (id == 0) {
+            return 1;
+        }
+        return ++id;
+
+    }
 }
 

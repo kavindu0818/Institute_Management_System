@@ -141,18 +141,7 @@ public class ClassFeeFormController {
         cmbMonth.setItems(dataSet);
     }
 
-    public void setLblDate() {
-        LocalDate currentDate = LocalDate.now();
 
-        // Format the date using a specific pattern (you can adjust the pattern as needed)
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String formattedDate = currentDate.format(formatter);
-
-        // Set the formatted date to the label
-        lblDate.setText(formattedDate);
-        StackPane root = new StackPane(lblDate);
-        Scene scene = new Scene(root, 300, 200);
-    }
 
     private void setDateAndTime() {
         Timeline time = new Timeline(

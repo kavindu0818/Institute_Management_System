@@ -38,7 +38,8 @@
             <TextField fx:id="txtSearchEmpUpdate" layoutX="224.0" layoutY="36.0" prefHeight="25.0" prefWidth="176.0" style="-fx-background-radius: 30;" />
             <Button layoutX="403.0" layoutY="36.0" mnemonicParsing="false" onAction="#btnSerachOnAction" prefHeight="25.0" prefWidth="60.0" style="-fx-background-radius: 30;" text="Serach" />
             <JFXTextField fx:id="txtGender" layoutX="441.0" layoutY="253.0" prefHeight="25.0" prefWidth="156.0" promptText="Gender" />
-            <JFXTextField fx:id="txtRegistationDate" layoutX="470.0" layoutY="173.0" prefHeight="25.0" prefWidth="210.0" promptText="Registation Date" />
+            <JFXTextField fx:id="txtRegistationDate" layoutX="460.0" layoutY="173.0" prefHeight="25.0" prefWidth="132.0" promptText="Registation Date" />
+            <JFXTextField fx:id="txtEmpAttendnceMarkID" layoutX="622.0" layoutY="171.0" prefHeight="25.0" prefWidth="132.0" promptText="Attendance Mark ID" />
          </children>
       </AnchorPane>
       <Label layoutX="228.0" layoutY="14.0" prefHeight="17.0" prefWidth="147.0" text="Search Employee ID">

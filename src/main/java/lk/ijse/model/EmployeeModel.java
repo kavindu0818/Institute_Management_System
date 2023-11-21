@@ -51,7 +51,7 @@ public class EmployeeModel {
 
     public boolean saveEmployee(EmployeeDto emp) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
-        String sql = "INSERT INTO employee VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO employee VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setString(1, emp.getEmp_id());
@@ -70,7 +70,9 @@ public class EmployeeModel {
 
         byte[] imageSr = emp.getImage();
         pstm.setBytes(13, imageSr);
+        pstm.setString(14, emp.getEmpAttendanceID());
         boolean isSaved = pstm.executeUpdate() > 0;
+
 
         return isSaved;
 
@@ -103,11 +105,13 @@ public class EmployeeModel {
             String empGender = resultSet.getString(12);
 
             byte[] imageBytes = resultSet.getBytes(13);
+            String empAttenID = resultSet.getString(14);
+
 
             // Image fxImage = convertBytesToJavaFXImage(imageBytes);
 
 
-            dto = new EmployeeDto(emp_id, empName, empGamil, empContact, empNic, empAddress, empPosition, empDate, empBankAccount, empBankBranch,empAge, empGender, imageBytes);
+            dto = new EmployeeDto(emp_id, empName, empGamil, empContact, empNic, empAddress, empPosition, empDate, empBankAccount, empBankBranch,empAge, empGender, imageBytes,empAttenID);
         }
         return dto;
     }
@@ -116,7 +120,7 @@ public class EmployeeModel {
     public boolean updateEmployee(EmployeeDto emp) throws SQLException {
 
             Connection connection = DbConnection.getInstance().getConnection();
-            String sql = "UPDATE employee SET name = ?,gmail = ?,contactNo = ?,nic = ?,address =?,position = ?, registrationDate = ?,bankAccountNum =?,bankBranchName =?,age = ?,gendar = ?,image =? WHERE emp_id = ?";
+            String sql = "UPDATE employee SET name = ?,gmail = ?,contactNo = ?,nic = ?,address =?,position = ?, registrationDate = ?,bankAccountNum =?,bankBranchName =?,age = ?,gendar = ?,image =?,empAttendnceId =? WHERE emp_id = ?";
 
             PreparedStatement pstm = connection.prepareStatement(sql);
 
@@ -134,7 +138,8 @@ public class EmployeeModel {
 
             byte[] imageSr = emp.getImage();
             pstm.setBytes(12, imageSr);
-            pstm.setString(13, emp.getEmp_id());
+            pstm.setString(13, emp.getEmpAttendanceID());
+            pstm.setString(14, emp.getEmp_id());
 
       //  System.out.println(toString(emp));
 
@@ -170,11 +175,13 @@ public class EmployeeModel {
             String empGender = resultSet.getString(12);
 
             byte[] imageBytes = resultSet.getBytes(13);
+            String empAttendId = resultSet.getString(14);
 
             // Image fxImage = convertBytesToJavaFXImage(imageBytes);
 
 
-            dto = new EmployeeDto(emp_id, empName, empGamil, empContact, empNic, empAddress, empPosition, empDate, empBankAccount,  empBankBranch,empAge, empGender, imageBytes);
+            dto = new EmployeeDto(emp_id, empName, empGamil, empContact, empNic, empAddress, empPosition, empDate, empBankAccount,  empBankBranch,empAge, empGender, imageBytes,empAttendId
+            );
         }
         return dto;
 
@@ -205,7 +212,8 @@ public class EmployeeModel {
                             resultSet.getString(10),
                             resultSet.getInt(11),
                             resultSet.getString(12),
-                            resultSet.getBytes(13)
+                            resultSet.getBytes(13),
+                            resultSet.getString(14)
                     )
             );
         }
@@ -213,6 +221,44 @@ public class EmployeeModel {
         return dtoList;
     }
 
+    public EmployeeDto loardEmpValues(String aId) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM employee WHERE empAttendnceId  = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, aId);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        EmployeeDto dto = null;
+
+        if (resultSet.next()) {
+            String emp_id = resultSet.getString(1);
+            String empName = resultSet.getString(2);
+            String empGamil = resultSet.getString(3);
+            String empContact = resultSet.getString(4);
+            String empNic = resultSet.getString(5);
+            String empAddress = resultSet.getString(6);
+            String empPosition = resultSet.getString(7);
+            String empDate = resultSet.getString(8);
+            String empBankAccount = resultSet.getString(9);
+            String empBankBranch = resultSet.getString(10);
+            Integer empAge = resultSet.getInt(11);
+            String empGender = resultSet.getString(12);
+
+            byte[] imageBytes = resultSet.getBytes(13);
+            String empAttendId = resultSet.getString(14);
+
+            // Image fxImage = convertBytesToJavaFXImage(imageBytes);
+
+
+            dto = new EmployeeDto(emp_id, empName, empGamil, empContact, empNic, empAddress, empPosition, empDate, empBankAccount,  empBankBranch,empAge, empGender, imageBytes,empAttendId
+            );
+        }
+        return dto;
+
+
+    }
 }
 
 

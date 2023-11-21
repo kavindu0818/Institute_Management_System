@@ -55,8 +55,8 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lblDateAndTime" layoutX="278.0" layoutY="157.0" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: w;" />
-      <Label layoutX="281.0" layoutY="141.0" text="Date And Time">
+      <Label fx:id="lblDateAndTime" layoutX="278.0" layoutY="154.0" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: w;" />
+      <Label layoutX="281.0" layoutY="130.0" text="Date And Time">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

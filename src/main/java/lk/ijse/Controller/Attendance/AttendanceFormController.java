@@ -23,8 +23,11 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.Tm.AttendanceTm;
 import lk.ijse.dto.Class_DetailsDto;
+import lk.ijse.dto.EmployeeDto;
 import lk.ijse.dto.StudentAttendance;
 import lk.ijse.model.Class_DetailsModel;
+import lk.ijse.model.EmpAttendanceModel;
+import lk.ijse.model.EmployeeModel;
 import lk.ijse.model.Stu_AttendanceModel;
 
 import javax.swing.*;
@@ -40,6 +43,10 @@ import java.util.ResourceBundle;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static lk.ijse.model.Class_PaymentModel.generateNextOrderId;
 
 public class AttendanceFormController {
 
@@ -59,14 +66,19 @@ public class AttendanceFormController {
     private Webcam webcam;
     private WebcamPanel webcamPanel;
     private boolean isReading = false;
+    private String num;
 
     private Class_DetailsModel clModel = new Class_DetailsModel();
     private Stu_AttendanceModel stModdel = new Stu_AttendanceModel();
+    private EmployeeModel em = new EmployeeModel();
+    private EmpAttendanceModel ea = new EmpAttendanceModel();
 
 
-    public void initialize(){
+    public void initialize() {
         setCellValueFactory();
         loadAllCustomer();
+        generateNextOrderId();
+
     }
 
     private void setCellValueFactory() {
@@ -179,25 +191,77 @@ public class AttendanceFormController {
     public void txtScannerValueOnAction(ActionEvent actionEvent) {
         String aId = txtScannerValue.getText();
 
-        try {
-            Class_DetailsDto dtoList = clModel.loardValues(aId);
-            boolean isSaved = stModdel.saveAttendnceDetails(dtoList);
-            if (isSaved){
-                new Alert(Alert.AlertType.CONFIRMATION, "save attendance").show();
-                loadAllCustomer();
-            }else {
-                new Alert(Alert.AlertType.ERROR, "Not value save!").show();
+        String input = aId;
+        String stuRegex = "^SA/[A-Z]{2}/\\d{4}$";
+        String empRegex = "^EA/\\d{4}$";
 
+
+        Pattern Spattern = Pattern.compile(stuRegex);
+        Pattern Epattern = Pattern.compile(empRegex);
+
+        Matcher Smatcher = Spattern.matcher(input);
+        Matcher Ematcher = Epattern.matcher(input);
+
+        if (Smatcher.matches() || Ematcher.matches()) {
+
+            if (Smatcher.matches()) {
+                try {
+                    Class_DetailsDto dtoList = clModel.loardValues(aId);
+                    boolean isSaved = stModdel.saveAttendnceDetails(dtoList);
+                    if (isSaved) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "save attendance").show();
+                        loadAllCustomer();
+                    } else {
+                        new Alert(Alert.AlertType.ERROR, "Not value save!").show();
+
+                    }
+
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                }
             }
 
+            if (Ematcher.matches()) {
+               // String empAttendanceID = null;
+              //  String empId = null;
+
+                if (Ematcher.matches()) {
+                    try {
+                        EmployeeDto dtoList = em.loardEmpValues(aId);
+
+                        String empAttendanceID = null;
+                        String empId = null;
+                        if (dtoList != null) {
+                            empAttendanceID = dtoList.getEmpAttendanceID();
+                            empId = dtoList.getEmp_id();
+                        }
+
+                        boolean isSaved = ea.saveEmpAttendance(num, empAttendanceID, empId);
+
+                        if (isSaved) {
+                            new Alert(Alert.AlertType.INFORMATION, "Employee Attendanece Save").show();
+                        } else {
+                            new Alert(Alert.AlertType.WARNING, "Employee Attendance Not Save").show();
+                        }
+                    } catch (SQLException e) {
+                        new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+
+                    }
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Not Valid This id").show();
+                }
+            }
+        }
+    }
+
+    private void generateNextOrderId() {
+        try {
+            int orderID =ea.generateNextOrderId();
+            num="000"+orderID;
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-
-
     }
-
-
     public void btnAttendanceDetailsOnAction(ActionEvent actionEvent) throws IOException {
         Ancrootattrndnce.getChildren().clear();
         Ancrootattrndnce.getChildren().add(FXMLLoader.load(getClass().getResource("/View/AttendanceDetailsForm.fxml")));
