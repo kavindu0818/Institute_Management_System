@@ -80,10 +80,11 @@ public class AttendanceDetailsFormController {
 
                         )
                 );
+
+
                 tblAttendanceView.setItems(obList);
                 tblAttendanceView.refresh();
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

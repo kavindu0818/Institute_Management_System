@@ -22,7 +22,7 @@ public class StudentfullDetailsModel {
     public static boolean saveStudentDetails(StudentfullDetailsDto sr) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO studentfull_details VALUES(?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO studentfull_details VALUES(?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, sr.getStu_id());
@@ -35,13 +35,12 @@ public class StudentfullDetailsModel {
         pstm.setString(8, sr.getAddress());
         pstm.setString(9, sr.getAge());
         pstm.setString(10, sr.getGrade());
-        pstm.setString(11, sr.getPerant_id());
-        pstm.setString(12, sr.getPerant_Name());
-        pstm.setString(13, sr.getPerant_Gmail());
-        pstm.setString(14, sr.getPerant_contactNo());
+        pstm.setString(11, sr.getPerant_Name());
+        pstm.setString(12, sr.getPerant_Gmail());
+        pstm.setString(13, sr.getPerant_contactNo());
 
         byte[] imageSr = sr.getImage();
-        pstm.setBytes(15, imageSr);
+        pstm.setBytes(14, imageSr);
 
 
         boolean isSaved = pstm.executeUpdate() > 0;
@@ -72,18 +71,18 @@ public class StudentfullDetailsModel {
             String adddress = resultSet.getString(8);
             String age = resultSet.getString(9);
             String grade = resultSet.getString(10);
-            String perant_id = resultSet.getString(11);
-            String perant_name = resultSet.getString(12);
-            String perant_Gmail = resultSet.getString(13);
-            String perant_ContactNo = resultSet.getString(14);
+           // String perant_id = resultSet.getString(11);
+            String perant_name = resultSet.getString(11);
+            String perant_Gmail = resultSet.getString(12);
+            String perant_ContactNo = resultSet.getString(13);
 
-            byte[] imageBytes = resultSet.getBytes(15);
+            byte[] imageBytes = resultSet.getBytes(14);
 
            // Image fxImage = convertBytesToJavaFXImage(imageBytes);
 
 
 
-            dto = new StudentfullDetailsDto(stu_id, reg_id, Stuname, regDate, stuGmail, StuContact, sub_id, adddress, age, grade, perant_id, perant_name, perant_Gmail, perant_ContactNo, imageBytes);
+            dto = new StudentfullDetailsDto(stu_id, reg_id, Stuname, regDate, stuGmail, StuContact, sub_id, adddress, age, grade,perant_name, perant_Gmail, perant_ContactNo, imageBytes);
         }
         return dto;
     }
@@ -118,7 +117,7 @@ public class StudentfullDetailsModel {
 
     public boolean updateSave(StudentfullDetailsDto su) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
-        String sql = "UPDATE studentfull_details SET reg_id = ?,name = ?,regDate = ?,Student_gmail = ?,Student_contactNo =?,sub_id = ?, address = ?,age =?,grade = ?,perant_id = ?,Perant_Name = ?,Perant_Gmail = ?, Perant_contactNo =?, image =? WHERE stu_id = ?";
+        String sql = "UPDATE studentfull_details SET reg_id = ?,name = ?,regDate = ?,Student_gmail = ?,Student_contactNo =?,sub_id = ?, address = ?,age =?,grade = ?,Perant_Name = ?,Perant_Gmail = ?, Perant_contactNo =?, image =? WHERE stu_id = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1, su.getReg_id());
@@ -130,13 +129,13 @@ public class StudentfullDetailsModel {
         pstm.setString(7, su.getAddress());
         pstm.setString(8, su.getAge());
         pstm.setString(9, su.getGrade());
-        pstm.setString(10, su.getPerant_id());
-        pstm.setString(11, su.getPerant_Name());
-        pstm.setString(12, su.getPerant_Gmail());
-        pstm.setString(13, su.getPerant_contactNo());
+      //  pstm.setString(10, su.getPerant_id());
+        pstm.setString(10, su.getPerant_Name());
+        pstm.setString(11, su.getPerant_Gmail());
+        pstm.setString(12, su.getPerant_contactNo());
         byte[] imageSr = su.getImage();
-        pstm.setBytes(14, imageSr);
-        pstm.setString(15, su.getStu_id());
+        pstm.setBytes(13, imageSr);
+        pstm.setString(14, su.getStu_id());
 
 
 
@@ -179,8 +178,7 @@ public class StudentfullDetailsModel {
                             resultSet.getString(11),
                             resultSet.getString(12),
                             resultSet.getString(13),
-                            resultSet.getString(14),
-                            resultSet.getBytes(15)
+                            resultSet.getBytes(14)
                     )
             );
         }

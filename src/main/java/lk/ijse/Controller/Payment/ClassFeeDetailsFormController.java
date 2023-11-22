@@ -30,30 +30,41 @@ public class ClassFeeDetailsFormController {
 
     public ClassModel model = new ClassModel();
     public Class_PaymentModel cfp = new Class_PaymentModel();
+    public TableView tblClassPaymentDetails;
+    public TableColumn colStuId1;
+    public TableColumn colStuName2;
+    public TableColumn colDate1;
+    public TableColumn colAmount1;
 
     public void initialize(){
         setData();
         setClassIDcmb();
-        setTable();
+
     }
 
     public void setTable(){
-        colStuId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
-        colStuName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
-        colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        colStuId1.setCellValueFactory(new PropertyValueFactory<>("studentId"));
+        colStuName2.setCellValueFactory(new PropertyValueFactory<>("studentName"));
+        colDate1.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        colAmount1.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
 
     }
 
     public void SearchDetailsClassFessOnAction(ActionEvent actionEvent) {
+        // Ensure that ComboBox items are properly initialized
         String classId = (String) cmbClassID.getValue();
         String month = (String) cmbMonth.getValue();
+
+        System.out.println(classId);
+        System.out.println(month);
 
         ObservableList<ClassFeesDetailsTm> obList = FXCollections.observableArrayList();
 
         try {
+            // Ensure that the class providing getClassStudent is properly initialized (cfp)
             List<Class_paymentDto> dtoList = cfp.getClassStudent(classId, month);
+            System.out.println(dtoList.toString());
 
             for (Class_paymentDto dto : dtoList) {
                 obList.add(new ClassFeesDetailsTm(
@@ -64,6 +75,9 @@ public class ClassFeeDetailsFormController {
                 ));
             }
             System.out.println(obList.toString());
+
+            // Ensure that the TableView (tblClassFeesDetailsView) and its columns are properly defined
+            // and associated with corresponding properties in ClassFeesDetailsTm.
 
             // Set the items to the table after the loop is complete
             tblClassFeesDetailsView.setItems(obList);
@@ -104,5 +118,35 @@ public class ClassFeeDetailsFormController {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    public void btnSearchOnAction(ActionEvent actionEvent) {
+        setTable();
+        String classId = (String) cmbClassID.getValue();
+        String month = (String) cmbMonth.getValue();
+
+        ObservableList<ClassFeesDetailsTm> obList = FXCollections.observableArrayList();
+
+        try {
+            List<Class_paymentDto> dtoList = cfp.readyClassFessDetails(classId, month);
+            for (Class_paymentDto dto : dtoList) {
+                System.out.println("aaaaaaa");
+                obList.add(
+                        new ClassFeesDetailsTm(
+                                dto.getStu_Id(),
+                                dto.getName(),
+                                dto.getDate(),
+                                dto.getAmount()
+                        )
+                );
+
+
+                tblClassPaymentDetails.setItems(obList);
+                tblClassPaymentDetails.refresh();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

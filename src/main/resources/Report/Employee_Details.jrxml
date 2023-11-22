@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Employee_Details" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a8de56c8-2d79-4285-b26a-0b78733d479c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<queryString language="SQL">
+		<![CDATA[select *from employee]]>
+	</queryString>
+	<field name="emp_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="emp_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="emp_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name"/>
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="gmail" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gmail"/>
+		<property name="com.jaspersoft.studio.field.label" value="gmail"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="contactNo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="contactNo"/>
+		<property name="com.jaspersoft.studio.field.label" value="contactNo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="nic" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nic"/>
+		<property name="com.jaspersoft.studio.field.label" value="nic"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="address"/>
+		<property name="com.jaspersoft.studio.field.label" value="address"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="position" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="position"/>
+		<property name="com.jaspersoft.studio.field.label" value="position"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="registrationDate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="registrationDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="registrationDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="bankAccountNum" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="bankAccountNum"/>
+		<property name="com.jaspersoft.studio.field.label" value="bankAccountNum"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="bankBranchName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="bankBranchName"/>
+		<property name="com.jaspersoft.studio.field.label" value="bankBranchName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="age" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="age"/>
+		<property name="com.jaspersoft.studio.field.label" value="age"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="gendar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gendar"/>
+		<property name="com.jaspersoft.studio.field.label" value="gendar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="image" class="byte[]">
+		<property name="com.jaspersoft.studio.field.name" value="image"/>
+		<property name="com.jaspersoft.studio.field.label" value="image"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="empAttendnceId" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="empAttendnceId"/>
+		<property name="com.jaspersoft.studio.field.label" value="empAttendnceId"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<group name="emp_id">
+		<groupExpression><![CDATA[$F{emp_id}]]></groupExpression>
+	</group>
+	<group name="name">
+		<groupExpression><![CDATA[$F{name}]]></groupExpression>
+	</group>
+	<group name="gmail">
+		<groupExpression><![CDATA[$F{gmail}]]></groupExpression>
+	</group>
+	<group name="contactNo">
+		<groupExpression><![CDATA[$F{contactNo}]]></groupExpression>
+	</group>
+	<group name="nic">
+		<groupExpression><![CDATA[$F{nic}]]></groupExpression>
+	</group>
+	<group name="address">
+		<groupExpression><![CDATA[$F{address}]]></groupExpression>
+	</group>
+	<group name="position">
+		<groupExpression><![CDATA[$F{position}]]></groupExpression>
+	</group>
+	<group name="registrationDate">
+		<groupExpression><![CDATA[$F{registrationDate}]]></groupExpression>
+	</group>
+	<group name="bankAccountNum">
+		<groupExpression><![CDATA[$F{bankAccountNum}]]></groupExpression>
+	</group>
+	<group name="bankBranchName">
+		<groupExpression><![CDATA[$F{bankBranchName}]]></groupExpression>
+	</group>
+	<group name="age">
+		<groupExpression><![CDATA[$F{age}]]></groupExpression>
+	</group>
+	<group name="gendar">
+		<groupExpression><![CDATA[$F{gendar}]]></groupExpression>
+	</group>
+	<group name="image">
+		<groupExpression><![CDATA[$F{image}]]></groupExpression>
+	</group>
+	<group name="empAttendnceId">
+		<groupExpression><![CDATA[$F{empAttendnceId}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="253" splitType="Stretch">
+			<image>
+				<reportElement x="167" y="-22" width="340" height="231" uuid="02f14353-9c24-40d0-9552-f50d3876c15f"/>
+				<imageExpression><![CDATA["D:/Institute Management System/Institute_Management_System/src/main/resources/Assets/harfeLogo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="330" y="3" width="286" height="79" uuid="ceaf5d70-6a09-42f5-8cf5-cbe87e3f3bd8"/>
+				<textElement>
+					<font size="60" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SAHAJA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="67" width="220" height="41" uuid="3807f451-3b21-4d51-9c06-9286257ac7c9"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Higher Education Center]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="591" y="120" width="218" height="30" uuid="cb8d8844-0b0d-4351-80bd-bfc518091ec8"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Gmail:     sahaja@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="592" y="142" width="248" height="30" uuid="7fb2915e-1ca5-4924-9a84-aec83a657723"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Contact:  0774257738 / 0375623789]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="181" width="199" height="30" uuid="190a2e4a-5b80-4227-962c-91617400e881"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee Details Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="23" y="4" width="100" height="30" uuid="8aa03668-7665-4a28-9fbd-b937a674ba69">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="51d0e99c-7312-483e-a77f-7ba06af0b40e"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="3" width="100" height="30" uuid="62fb3a20-8c6d-4fde-ab76-3da2936f28f4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="86c79b83-c5bd-40e2-a8b9-a065775af8e6"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="4" width="100" height="30" uuid="f9c17c03-ec2b-409a-bd63-e85f00274873">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd3c418a-eb70-45ad-a853-9093dc639c9f"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Position]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="3" width="100" height="30" uuid="b1e84a6d-3063-4a7e-bf37-e05d9f9229e3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="702fca1b-6664-4557-a27f-edc2f4ec42f5"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contact Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="561" y="2" width="100" height="30" uuid="baa46baf-2dcd-4c6b-bad2-36e63ade1a86">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e96d49e-aeff-413f-9673-11009cb14a36"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gmail]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="714" y="0" width="100" height="30" uuid="66f54326-efa1-4582-a4b9-177701759d6a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="78d67e15-9268-48d0-be45-459fa8b3317b"/>
+				</reportElement>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField>
+				<reportElement x="22" y="13" width="100" height="30" uuid="a076431c-ceb8-409d-918d-d6953ea4a22b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="51d0e99c-7312-483e-a77f-7ba06af0b40e"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{emp_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="12" width="100" height="30" uuid="ffb93b96-2528-4f2e-a78b-7bfc34f60ae0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="86c79b83-c5bd-40e2-a8b9-a065775af8e6"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="289" y="11" width="100" height="30" uuid="ae8c4977-9e5c-42ce-933b-c56ca1ff8040">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd3c418a-eb70-45ad-a853-9093dc639c9f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{position}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="11" width="100" height="30" uuid="1fc5ed61-65ae-431a-a7a8-60eb71c34fbd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="702fca1b-6664-4557-a27f-edc2f4ec42f5"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{contactNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="546" y="11" width="134" height="30" uuid="96ab463c-62bf-4332-8652-bcbe8ad9f832">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e96d49e-aeff-413f-9673-11009cb14a36"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{gmail}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="708" y="10" width="100" height="30" uuid="905c4a86-f4d7-4f3a-941a-d4da8caacf71">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="78d67e15-9268-48d0-be45-459fa8b3317b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="55" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

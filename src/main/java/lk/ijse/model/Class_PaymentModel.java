@@ -67,32 +67,34 @@ public class Class_PaymentModel {
     }*/
 
     public List<Class_paymentDto> getClassStudent(String classId, String month) throws SQLException {
-            Connection connection = DbConnection.getInstance().getConnection();
+        Connection connection = DbConnection.getInstance().getConnection();
 
-            String sql = "SELECT * FROM class_payment WHERE class_id = ? AND paymentMonth = ?";
-            PreparedStatement pstm = connection.prepareStatement(sql);
-            pstm.setString(1,classId);
-            pstm.setString(2, month);
-            ResultSet resultSet = pstm.executeQuery();
+        String sql = "SELECT * FROM class_payment WHERE class_Id= ? AND paymentMonth = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, classId);
+        pstm.setString(2, month);
+        ResultSet resultSet = pstm.executeQuery();
 
-            ArrayList<Class_paymentDto> dtoList = new ArrayList<>();
-            while(resultSet.next()) {
-                dtoList.add(
-                        new Class_paymentDto(
-                                resultSet.getString(1),
-                                resultSet.getString(2),
-                                resultSet.getString(3),
-                                resultSet.getString(4),
-                                resultSet.getString(5),
-                                resultSet.getString(6),
+        ArrayList<Class_paymentDto> dList = new ArrayList<>();
+        while (resultSet.next()) {
+            dList.add(
+                    new Class_paymentDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getString(5),
+                            resultSet.getString(6),
+                            resultSet.getString(7),
+                            resultSet.getDouble(8)
+                    )
+            );
+        }
+        resultSet.close();
+        pstm.close();
+        connection.close();
 
-                                resultSet.getString(7),
-                                resultSet.getDouble(8)
-                        )
-                );
-            }
-
-            return dtoList;
+        return dList;
         }
 
     public boolean stuPaymentSave(String num,String classId, String stuId, String name, String month, String stuFullId, double amount) throws SQLException {
@@ -148,6 +150,36 @@ public class Class_PaymentModel {
         return dtoList;
     }
 
+    public List<Class_paymentDto> readyClassFessDetails(String classId, String month) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM class_payment WHERE class_Id= ? AND paymentMonth =?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1,classId);
+        pstm.setString(2,month);
+        ResultSet resultSet = pstm.executeQuery();
+
+        ArrayList<Class_paymentDto> dtoList = new ArrayList<>();
+        while(resultSet.next()) {
+            System.out.println("aaaaaaaaaaaaaaaa");
+            dtoList.add(
+                    new Class_paymentDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getString(5),
+                            resultSet.getString(6),
+
+                            resultSet.getString(7),
+                            resultSet.getDouble(8)
+                    )
+            );
+        }
+
+        return dtoList;
+
     }
+}
 
 

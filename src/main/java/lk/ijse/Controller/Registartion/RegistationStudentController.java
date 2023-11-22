@@ -3,10 +3,13 @@ package lk.ijse.Controller.Registartion;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +23,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -48,6 +52,8 @@ public class RegistationStudentController {
     public Image image;
     public ImageView img;
     public AnchorPane addRoot1;
+    public JFXComboBox cmbGrade;
+    public DatePicker DatePickerRegID;
 
     private RegistationModel reg = new RegistationModel();
     private StudentModel stu = new StudentModel();
@@ -58,6 +64,7 @@ public class RegistationStudentController {
 
     public void initialize(){
         setClassIDcmb();
+        setData();
     }
 
     public void SubmitOnAction(ActionEvent actionEvent) throws SQLException {
@@ -94,18 +101,17 @@ public class RegistationStudentController {
             String stuNameFirst = txtFirstName.getText();
             String stuNameLast = txtLastName.getText();
             String stuId = txtStudentId.getText();
-            String registDate = txtRegistationDate.getText();
+            String registDate = String.valueOf(DatePickerRegID.getValue());
             String subject = txtFieldSubject.getText();
             String stuGmail = txtGmail.getText();
             String addresss = txtAddress.getText();
             String stuContact = txtContact.getText();
-            String stuGrade = txtGrade.getText();
+            String stuGrade = (String) cmbGrade.getValue();
             String perFistname = txtPerantFirstName.getText();
             String perLastname = txtPerantLastName.getText();
             String perantContact = txtPerantContact.getText();
-            String perantId = txtParentId.getText();
             String perantGmail = txtPerandtGmail.getText();
-            String perantNic = txtPerantNic.getText();
+
             String age = txtStuAge.getText();
             String fullName = stuNameFirst + stuNameLast;
             String PfullName = perFistname + perLastname;
@@ -113,14 +119,14 @@ public class RegistationStudentController {
             byte[] ima = studentfullDetailsModel.imagenToByte(image);
 
             if (regID.isEmpty() || stuNameFirst.isEmpty() || stuNameLast.isEmpty() || stuId.isEmpty() || registDate.isEmpty() || subject.isEmpty() || stuGmail.isEmpty() || addresss.isEmpty() || stuContact.isEmpty() ||
-                    stuGrade.isEmpty() || perFistname.isEmpty() || perLastname.isEmpty() || perantContact.isEmpty() || perantId.isEmpty() ||
+                    stuGrade.isEmpty() || perFistname.isEmpty() || perLastname.isEmpty() || perantContact.isEmpty() ||
                     age.isEmpty() || fullName.isEmpty() || PfullName.isEmpty() || image.isBackgroundLoading()) {
 
                 new Alert(Alert.AlertType.ERROR, "Field Not found").showAndWait();
                 return;
             }
 
-            var sr = new StudentfullDetailsDto(stuId, regID, fullName, registDate, stuGmail, stuContact, subject, addresss, age, stuGrade, perantId, PfullName, perantGmail, perantContact, ima);
+            var sr = new StudentfullDetailsDto(stuId, regID, fullName, registDate, stuGmail, stuContact, subject, addresss, age, stuGrade, PfullName, perantGmail, perantContact, ima);
 
             try {
                 boolean isSaved = StudentfullDetailsModel.saveStudentDetails(sr);
@@ -171,7 +177,7 @@ public class RegistationStudentController {
             return false;
 
         }
-        if (!(Regex.getGradePattern().matcher(txtGrade.getText()).matches())){
+        if (!(Regex.getGradePattern().matcher((CharSequence) cmbGrade.getValue()).matches())){
             new Alert(Alert.AlertType.WARNING,"Grade Not Valid").show();
             return false;
 
@@ -196,19 +202,9 @@ public class RegistationStudentController {
             return false;
 
         }
-        if (!(Regex.getOldIDPattern().matcher(txtPerantNic.getText()).matches())){
-            new Alert(Alert.AlertType.WARNING,"Perant Nic Not Valid").show();
-            return false;
 
-        }
         if (!(Regex.getAgePattern().matcher(txtStuAge.getText()).matches())) {
             new Alert(Alert.AlertType.WARNING, "Student Age Not Valid").show();
-            return false;
-        }
-
-
-        if (!(Regex.getDatePattern().matcher(txtRegistationDate.getText()).matches())) {
-            new Alert(Alert.AlertType.WARNING, "Registation Date Not Valid").show();
             return false;
         }
 
@@ -270,6 +266,20 @@ public class RegistationStudentController {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+    }
+    public void setData() {
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Grade 6");
+        list.add("Grade 7");
+        list.add("Grade 8");
+        list.add("Grade 9");
+        list.add("Grade 10");
+        list.add("Grade 11");
+        list.add("Grade 12");
+        list.add("Grade 13");
+        ObservableList<String> dataSet = FXCollections.observableArrayList(list);
+        cmbGrade.setItems(dataSet);
     }
 }
 

@@ -5,13 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.awt.*;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-public class SubjectDto {
-    private String sub_id;
-    private String subjectName;
 
-
+public class UserDto {
+    private String password;
+    private String userName;
+    private byte[] image;
 }

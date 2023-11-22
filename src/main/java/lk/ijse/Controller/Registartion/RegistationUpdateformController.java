@@ -88,7 +88,6 @@ public class RegistationUpdateformController {
                 txtUpdateSubject.setText(studentDto.getSub_id());
                 txtUpdatePerantName.setText(studentDto.getPerant_Name());
                 txtUpdatePerantContact.setText(studentDto.getPerant_contactNo());
-                txtUpdatePerantId.setText(studentDto.getPerant_id());
                 txtUpdatePerantGmail.setText(studentDto.getPerant_Gmail());
                 Image fxImage = up.convertBytesToJavaFXImage(studentDto.getImage());
                 imageView.setImage(fxImage);
@@ -120,7 +119,7 @@ public class RegistationUpdateformController {
         Image image = imageView.getImage();
         byte[] ima = up.imagenToByte(image);
 
-        var su = new StudentfullDetailsDto(stu_id,reg_id,Stuname,regDate,stuGmail,stuContact,sub,address,stuAge,stuGrade,perantId,perantName,perantGmail,perantCon,ima);
+        var su = new StudentfullDetailsDto(stu_id,reg_id,Stuname,regDate,stuGmail,stuContact,sub,address,stuAge,stuGrade,perantName,perantGmail,perantCon,ima);
 
         try {
             boolean isSaved = up.updateSave(su);

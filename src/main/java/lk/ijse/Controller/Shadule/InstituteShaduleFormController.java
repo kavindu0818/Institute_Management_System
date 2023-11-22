@@ -52,4 +52,10 @@ public class InstituteShaduleFormController {
     }
 
 
+    public void AddSubjectOnAction(ActionEvent actionEvent) throws IOException {
+        AncShedul2.getChildren().clear();
+        AncShedul2.getChildren().add(FXMLLoader.load(getClass().getResource("/View/AddSubjectForm.fxml")));
+
+
+    }
 }

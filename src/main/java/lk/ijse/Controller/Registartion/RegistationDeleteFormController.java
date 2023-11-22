@@ -83,7 +83,6 @@ public class RegistationDeleteFormController {
                 txtDSubject.setText(studentDto.getSub_id());
                 txtDPName.setText(studentDto.getPerant_Name());
                 txtDPContact.setText(studentDto.getPerant_contactNo());
-                txtDPid.setText(studentDto.getPerant_id());
                 txtDPGmail.setText(studentDto.getPerant_Gmail());
                 Image fxImage = sdModel.convertBytesToJavaFXImage(studentDto.getImage());
                 ImageViewD.setImage(fxImage);

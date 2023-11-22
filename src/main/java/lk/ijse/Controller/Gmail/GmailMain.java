@@ -3,6 +3,7 @@ package lk.ijse.Controller.Gmail;
 import javafx.scene.control.Alert;
 
 import javax.security.auth.Subject;
+import java.io.File;
 
 public class GmailMain {
     public void addGmailDEtails(String From, String To, String Sub, String Text) {
@@ -19,5 +20,16 @@ public class GmailMain {
         }
     }
 
-    }
+   /* public static void sendOrderConformMailFile(String to,String subject, File file) {
+        GmailSender gEmailSender = new GmailSender();
+        String from = "kavindumaduranga184@gmail.com";
+
+        boolean b = gEmailSender.sendEmailFile(to, from, subject, text);
+        if (b) {
+            System.out.println("Email is sent successfully");
+        } else {
+            System.out.println("There is problem in sending email");
+        }
+    }*/
+}
 

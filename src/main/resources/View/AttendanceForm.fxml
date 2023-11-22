@@ -19,14 +19,14 @@
             <Font name="System Bold" size="31.0" />
          </font>
       </Label>
-      <TableView fx:id="AttendanceViewTable" layoutX="14.0" layoutY="344.0" prefHeight="170.0" prefWidth="1005.0">
+      <TableView fx:id="AttendanceViewTable" layoutX="14.0" layoutY="344.0" prefHeight="170.0" prefWidth="798.0">
         <columns>
-          <TableColumn fx:id="AttendIdCol" prefWidth="129.0" text="Attendance id" />
-          <TableColumn fx:id="stuIdcol" prefWidth="134.0" text="Student ID" />
-            <TableColumn fx:id="stuNamecol" prefWidth="219.0" text="Student Name" />
-            <TableColumn fx:id="Datecol" minWidth="6.0" prefWidth="158.0" text="Date" />
-            <TableColumn fx:id="Timecol" minWidth="0.0" prefWidth="184.0" text="Time" />
-            <TableColumn fx:id="clssIdcol" prefWidth="180.0" text="Class ID" />
+          <TableColumn fx:id="AttendIdCol" prefWidth="109.0" text="Attendance id" />
+          <TableColumn fx:id="stuIdcol" prefWidth="115.0" text="Student ID" />
+            <TableColumn fx:id="stuNamecol" prefWidth="157.0" text="Student Name" />
+            <TableColumn fx:id="Datecol" minWidth="6.0" prefWidth="146.0" text="Date" />
+            <TableColumn fx:id="Timecol" minWidth="0.0" prefWidth="124.0" text="Time" />
+            <TableColumn fx:id="clssIdcol" prefWidth="144.0" text="Class ID" />
         </columns>
       </TableView>
       <Pane layoutX="31.0" layoutY="78.0" prefHeight="86.0" prefWidth="223.0" style="-fx-background-color: white; -fx-background-radius: 20;">
@@ -36,7 +36,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="152.0" layoutY="17.0" prefHeight="30.0" prefWidth="41.0" style="-fx-background-color: white;" />
+            <Label layoutX="149.0" layoutY="5.0" prefHeight="46.0" prefWidth="60.0" style="-fx-background-color: white;" />
             <ImageView fitHeight="37.0" fitWidth="41.0" layoutX="60.0" layoutY="6.0">
                <image>
                   <Image url="@../Assets/AttendanceLogo.png" />
@@ -49,19 +49,38 @@
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="876.0" layoutY="276.0" mnemonicParsing="false" onAction="#AttendanceOffSOnAction" prefHeight="21.0" prefWidth="104.0" style="-fx-background-color: red; -fx-background-radius: 20;" text="Stop" textFill="#fff8f8">
+      <Button layoutX="876.0" layoutY="276.0" mnemonicParsing="false" onAction="#AttendanceOffSOnAction" prefHeight="21.0" prefWidth="104.0" style="-fx-background-color: #7a0509; -fx-background-radius: 20;" text="Stop" textFill="#fff8f8">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
       <Separator layoutX="22.0" layoutY="46.0" prefHeight="1.0" prefWidth="819.0" />
-      <TextField fx:id="txtScannerValue" layoutX="407.0" layoutY="309.0" onAction="#txtScannerValueOnAction" prefHeight="25.0" prefWidth="210.0" />
+      <TextField fx:id="txtScannerValue" layoutX="424.0" layoutY="307.0" onAction="#txtScannerValueOnAction" prefHeight="25.0" prefWidth="210.0" />
       <Label fx:id="ScannerLable" layoutX="432.0" layoutY="70.0" prefHeight="52.0" prefWidth="149.0" />
       <AnchorPane fx:id="mainPane" layoutX="344.0" layoutY="53.0" prefHeight="240.0" prefWidth="363.0" style="-fx-background-color: white;">
          <children>
-            <AnchorPane fx:id="miniPane" layoutX="14.0" layoutY="3.0" prefHeight="229.0" prefWidth="327.0" style="-fx-background-color: black;" />
+            <AnchorPane fx:id="miniPane" layoutY="-1.0" prefHeight="240.0" prefWidth="363.0" style="-fx-background-color: black;" />
          </children>
       </AnchorPane>
-      <Button layoutX="906.0" layoutY="54.0" mnemonicParsing="false" onAction="#btnAttendanceDetailsOnAction" style="-fx-background-radius: 20; -fx-background-color: blue;" text="Attendance Details" />
+      <Button layoutX="885.0" layoutY="57.0" mnemonicParsing="false" onAction="#btnAttendanceDetailsOnAction" style="-fx-background-radius: 20; -fx-background-color: #03072b;" text="Attendance Details" textFill="#f8f3f3">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <TableView layoutX="828.0" layoutY="343.0" prefHeight="170.0" prefWidth="191.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Employee ID" />
+          <TableColumn prefWidth="121.0" text="Employee Name" />
+        </columns>
+      </TableView>
+      <Label layoutX="34.0" layoutY="319.0" prefHeight="19.0" prefWidth="134.0" text="Student Attendance " textFill="#441594">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="828.0" layoutY="321.0" prefHeight="19.0" prefWidth="149.0" text="Employee Attendance " textFill="#441594">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

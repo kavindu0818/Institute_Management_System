@@ -18,13 +18,22 @@ import lk.ijse.Tm.AttendanceTm;
 import lk.ijse.Tm.ClassDetailsViewTm;
 import lk.ijse.dto.*;
 import lk.ijse.model.*;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.File;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import static net.sf.jasperreports.engine.JasperPrintManager.printReport;
 
 public class ClassFeeFormController {
     public AnchorPane ClassFeeAnc;
@@ -54,6 +63,8 @@ public class ClassFeeFormController {
     public String className;
     public String fromGmail ="kavindumaduranga184@gmail.com";
 
+    private static String filePath="D:\\mail";
+
     private GmailMain gm = new GmailMain();
 
     public void initialize(){
@@ -80,14 +91,20 @@ public class ClassFeeFormController {
             if (isSaved){
                 new Alert(Alert.AlertType.INFORMATION,"Payment Save").show();
                  sendMail(stuId);
+                  printReport();
+
+
             }else {
                 new Alert(Alert.AlertType.WARNING,"Not Sucsesus Payment").show();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (JRException e) {
+            throw new RuntimeException(e);
         }
 
     }
+
 
     public void sendMail(String Id) throws SQLException {
 
@@ -112,6 +129,39 @@ public class ClassFeeFormController {
             gm.addGmailDEtails(fromGmail,toStugmail,topic,text2);
 
     }
+
+
+    private void printReport() throws  JRException {
+        HashMap map = new HashMap();
+        map.put("stuID", txtSearchStudentID.getText());
+        map.put("stuName", txtStudentName.getText());
+        map.put("ClassID", cmbClass.getValue());
+        map.put("className", cmbClassName.getValue());
+        map.put("month", cmbMonth.getValue());
+        map.put("amount", Double.parseDouble(txtAmount.getText()));
+
+       // InputStream resourceAsStream = getClass().getResourceAsStream("D:\\Institute Management System\\Institute_Management_System\\src\\main\\resources\\Report\\ClassFessReport.jrxml");
+        InputStream resourceAsStream = getClass().getResourceAsStream("/Report/ClassFessReport.jrxml");
+
+        String subject="Payment Successful";
+
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                        jasperReport, //compiled report
+                        map,
+                        new JREmptyDataSource() //database connection
+                );
+
+        JasperViewer.viewReport(jasperPrint, false);
+
+       // JasperExportManager.exportReportToPdfFile(jasperPrint, filePath + "\\Receipt " + false+".pdf");
+
+       // GmailMain.sendOrderConformMailFile(toStugmail,subject,new File(filePath + "\\Receipt " +false+".pdf"));
+    }
+
 
     private void generateNextOrderId() {
         try {

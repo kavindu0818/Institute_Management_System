@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
@@ -15,32 +16,32 @@
    <children>
       <AnchorPane layoutX="14.0" layoutY="15.0" prefHeight="622.0" prefWidth="198.0" style="-fx-background-radius: 20; -fx-background-color: #080F47;">
          <children>
-            <JFXButton layoutX="32.0" layoutY="193.0" onAction="#RegistationOnAction" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Registation" textFill="#fcf6f6">
+            <JFXButton layoutX="12.0" layoutY="193.0" onAction="#RegistationOnAction" prefHeight="31.0" prefWidth="175.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Registation" textFill="#fcf6f6">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="33.0" layoutY="251.0" onAction="#AttendanceOnAction" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Attendance" textFill="#fcf6f6">
+            <JFXButton layoutX="13.0" layoutY="245.0" onAction="#AttendanceOnAction" prefHeight="31.0" prefWidth="175.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Attendance" textFill="#fcf6f6">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="35.0" layoutY="311.0" onAction="#PaymentOnAction" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Payment" textFill="#fcf6f6">
+            <JFXButton layoutX="13.0" layoutY="299.0" onAction="#PaymentOnAction" prefHeight="31.0" prefWidth="175.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Payment" textFill="#fcf6f6">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="32.0" layoutY="366.0" onAction="#StudnetDetailsOnAction" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Student Details" textFill="#fcf6f6">
+            <JFXButton layoutX="12.0" layoutY="355.0" onAction="#StudnetDetailsOnAction" prefHeight="31.0" prefWidth="175.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Student Details" textFill="#fcf6f6">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="34.0" layoutY="424.0" onAction="#EmployeeMainOnAction" prefHeight="17.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Employee" textFill="#fcf6f6">
+            <JFXButton layoutX="13.0" layoutY="408.0" onAction="#EmployeeMainOnAction" prefHeight="31.0" prefWidth="175.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Employee" textFill="#fcf6f6">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="DashBoard" layoutX="33.0" layoutY="135.0" onAction="#DashboardOnAction" prefHeight="17.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Dashboard" textFill="#fcf6f6">
+            <JFXButton fx:id="DashBoard" layoutX="17.0" layoutY="135.0" onAction="#DashboardOnAction" prefHeight="31.0" prefWidth="175.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Dashboard" textFill="#fcf6f6">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -51,12 +52,12 @@
                </image>
             </ImageView>
             <Separator layoutX="19.0" layoutY="89.0" prefHeight="5.0" prefWidth="166.0" />
-            <JFXButton layoutX="34.0" layoutY="480.0" onAction="#btnShaduleOnAction" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Shadule" textFill="#fcf6f6">
+            <JFXButton layoutX="14.0" layoutY="459.0" onAction="#btnShaduleOnAction" prefHeight="31.0" prefWidth="175.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Shadule" textFill="#fcf6f6">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="36.0" layoutY="526.0" onAction="#btnShaduleOnAction" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Report" textFill="#fcf6f6">
+            <JFXButton layoutX="15.0" layoutY="508.0" onAction="#btnOnReportOnAction" prefHeight="31.0" prefWidth="175.0" style="-fx-background-color: #878787; -fx-background-radius: 40;" text="Report" textFill="#fcf6f6">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -70,15 +71,16 @@
             <Pane layoutX="826.0" layoutY="9.0" prefHeight="61.0" prefWidth="216.0" style="-fx-background-color: white; -fx-background-radius: 20;">
                <children>
                   <ImageView fitHeight="51.0" fitWidth="63.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="61.0" fitWidth="63.0" layoutX="10.0" layoutY="1.0">
+                  <ImageView fx:id="userImageView" fitHeight="61.0" fitWidth="63.0" layoutX="10.0" layoutY="1.0" style="-fx-scale-x: 1;">
                      <image>
                         <Image url="@../Assets/Profile picture Icon.png" />
                      </image>
                   </ImageView>
-                  <JFXTextArea layoutX="73.0" layoutY="4.0" prefHeight="25.0" prefWidth="132.0" />
+                  <JFXTextArea fx:id="txtuserName" layoutX="73.0" layoutY="4.0" prefHeight="25.0" prefWidth="132.0" />
                   <Label layoutX="74.0" layoutY="39.0" prefHeight="17.0" prefWidth="63.0" text="Admin User" />
                </children>
             </Pane>
+            <Button layoutX="19.0" layoutY="22.0" mnemonicParsing="false" onAction="#btnAddUserOnAction" style="-fx-background-color: black;" text="Add User" textFill="#f5f3f3" />
          </children>
       </AnchorPane>
    </children>
