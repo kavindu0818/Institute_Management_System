@@ -133,11 +133,11 @@
                   <Image url="@../Assets/DashBordimage.jpg" />
                </image>
             </ImageView>
-            <TableView layoutX="312.0" layoutY="328.0" prefHeight="187.0" prefWidth="452.0">
+            <TableView fx:id="tblShedulView" layoutX="312.0" layoutY="328.0" prefHeight="187.0" prefWidth="452.0">
               <columns>
-                <TableColumn prefWidth="142.0" text="Class" />
-                  <TableColumn prefWidth="158.0" text="Start Time" />
-                  <TableColumn prefWidth="150.0" text="End Time" />
+                <TableColumn fx:id="colClass" prefWidth="142.0" text="Class" />
+                  <TableColumn fx:id="colStartTime" prefWidth="158.0" text="Start Time" />
+                  <TableColumn fx:id="colEndTime" prefWidth="150.0" text="End Time" />
               </columns>
             </TableView>
             <TextArea layoutX="809.0" layoutY="134.0" prefHeight="250.0" prefWidth="231.0" style="-fx-background-radius: 10;" />

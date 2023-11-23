@@ -62,6 +62,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
+            <Button layoutX="61.0" layoutY="558.0" mnemonicParsing="false" onAction="#btnAddUserOnAction" style="-fx-background-color: black;" text="Add User" textFill="#f5f3f3" />
          </children></AnchorPane>
       <ImageView fitHeight="150.0" fitWidth="216.0" layoutX="271.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" />
       <AnchorPane fx:id="Twonc" layoutX="220.0" layoutY="104.0" prefHeight="532.0" prefWidth="1052.0" style="-fx-background-color: #DFE0E7; -fx-border-radius: bold; -fx-background-radius: 20;" />
@@ -80,7 +81,6 @@
                   <Label layoutX="74.0" layoutY="39.0" prefHeight="17.0" prefWidth="63.0" text="Admin User" />
                </children>
             </Pane>
-            <Button layoutX="19.0" layoutY="22.0" mnemonicParsing="false" onAction="#btnAddUserOnAction" style="-fx-background-color: black;" text="Add User" textFill="#f5f3f3" />
          </children>
       </AnchorPane>
    </children>

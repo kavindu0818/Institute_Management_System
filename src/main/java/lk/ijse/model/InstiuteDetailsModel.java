@@ -1,2 +1,4 @@
-package lk.ijse.model;public class InstiuteDetailsModel {
+package lk.ijse.model;
+
+public class InstiuteDetailsModel {
 }

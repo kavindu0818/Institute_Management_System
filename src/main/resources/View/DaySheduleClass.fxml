@@ -8,16 +8,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="209.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Shadule.DaySheduleClassController">
    <children>
-      <ComboBox layoutX="57.0" layoutY="67.0" prefHeight="25.0" prefWidth="173.0" promptText="cmbClassName" />
+      <ComboBox fx:id="cmbClassName" layoutX="57.0" layoutY="67.0" prefHeight="25.0" prefWidth="173.0" />
       <Label layoutX="59.0" layoutY="44.0" text="Class">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <DatePicker layoutX="245.0" layoutY="67.0" promptText="PicDate" />
+      <DatePicker fx:id="dateDatePic" layoutX="245.0" layoutY="67.0" />
       <Label layoutX="246.0" layoutY="44.0" text="Date">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -35,7 +34,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="489.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #05470b;" text="Add" textFill="#fffdfd">
+      <Button layoutX="489.0" layoutY="141.0" mnemonicParsing="false" onAction="#btnAddSheduleOnAction" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #05470b;" text="Add" textFill="#fffdfd">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
