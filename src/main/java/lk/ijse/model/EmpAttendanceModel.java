@@ -1,11 +1,16 @@
 package lk.ijse.model;
 
 import lk.ijse.db.DbConnection;
+import lk.ijse.dto.AttendanceJoinDto;
+import lk.ijse.dto.EmpAttendnaceDto;
+import lk.ijse.dto.EmployeeAttendanceJoin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmpAttendanceModel {
     public boolean saveEmpAttendance(String num, String empAttendanceID, String empId) throws SQLException {
@@ -48,5 +53,31 @@ public class EmpAttendanceModel {
             return 1;
         }
         return++id;
+    }
+
+    public List<EmployeeAttendanceJoin> getAllEmployeeAttndance() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        java.util.Date date = new java.util.Date();
+        java.sql.Date sqldate = new java.sql.Date(date.getTime());
+
+        String sql = "SELECT employee.emp_id,employee_attendance.emp_id\n" +
+                "FROM employee INNER JOIN employee_attendance ON employee.emp_id=Employee_attendance.emp_id WHERE date = \"?\";";
+
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setDate(1, sqldate);
+        ResultSet resultSet = pstm.executeQuery();
+
+        ArrayList<EmployeeAttendanceJoin> dtoList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            dtoList.add(
+                    new EmployeeAttendanceJoin(
+                            resultSet.getString(1),
+                            resultSet.getString(2)
+
+                    )
+            );
+        }
+        return dtoList;
     }
 }

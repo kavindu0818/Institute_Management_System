@@ -22,6 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.DragEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.Tm.AttendanceTm;
+import lk.ijse.Tm.EmployeeAttendanceTm;
 import lk.ijse.dto.*;
 import lk.ijse.model.*;
 
@@ -80,6 +81,8 @@ public class AttendanceFormController {
         generateNextOrderId();
         generateAttendanceID();
         loadAllCourseAttendance();
+        loadAllEmployeeAttendance();
+        setEmployeeAttendance();
 
     }
 
@@ -90,6 +93,13 @@ public class AttendanceFormController {
         Datecol.setCellValueFactory(new PropertyValueFactory<>("date"));
         Timecol.setCellValueFactory(new PropertyValueFactory<>("time"));
         clssIdcol.setCellValueFactory(new PropertyValueFactory<>("classId"));
+
+
+    }
+
+    private void setEmployeeAttendance(){
+        colEmpID.setCellValueFactory(new PropertyValueFactory<>("empID"));
+        colEmployeeName.setCellValueFactory(new PropertyValueFactory<>("empName"));
 
 
     }
@@ -153,6 +163,35 @@ public class AttendanceFormController {
             throw new RuntimeException(e);
         }
     }
+
+    private void loadAllEmployeeAttendance() {
+        var model = new EmpAttendanceModel()
+                ;
+
+        ObservableList<EmployeeAttendanceTm> obList = FXCollections.observableArrayList();
+
+        try {
+            List<EmployeeAttendanceJoin> dtoList = model.getAllEmployeeAttndance();
+
+            for (EmployeeAttendanceJoin dto : dtoList) {
+                obList.add(
+                        new EmployeeAttendanceTm(
+                                dto.getEmpID(),
+                                dto.getEmpName()
+
+
+                        )
+                );
+            }
+
+            tblEmployeeAttendance.setItems(obList);
+            tblEmployeeAttendance.refresh();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
 
@@ -265,6 +304,7 @@ public class AttendanceFormController {
 
                 if (isSaved) {
                     new Alert(Alert.AlertType.INFORMATION, "Employee Attendance Save").show();
+                    loadAllEmployeeAttendance();
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Employee Attendance Not Saved").show();
                 }
@@ -277,6 +317,7 @@ public class AttendanceFormController {
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Course Attendance Save").show();
                     loadAllCourseAttendance();
+                    generateNextOrderId();
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Course Attendance Not Value Saved!").show();
                 }

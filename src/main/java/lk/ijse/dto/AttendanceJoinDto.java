@@ -10,9 +10,13 @@ import java.util.Date;
 @Getter
 public class AttendanceJoinDto {
     private String attendanceID;
-    private String stuID;
-    private String stuName;
     private Date date;
     private String time;
     private String cusID;
+    private String stuName;
+    private String stuID;
+
+
+
+
 }

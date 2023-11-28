@@ -79,11 +79,11 @@ public class CourseAttendanceModel {
                 dtoList.add(
                         new AttendanceJoinDto(
                                 resultSet.getString(1),
-                                resultSet.getString(2),
+                                resultSet.getDate(2),
                                 resultSet.getString(3),
-                                resultSet.getDate(4),
+                                resultSet.getString(4),
                                 resultSet.getString(5),
-                                resultSet.getString(6)
+                                 resultSet.getString(6)
                         )
                 );
             }
