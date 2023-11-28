@@ -66,10 +66,10 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TableView layoutX="828.0" layoutY="343.0" prefHeight="170.0" prefWidth="191.0">
+      <TableView fx:id="tblEmployeeAttendance" layoutX="828.0" layoutY="343.0" prefHeight="170.0" prefWidth="191.0" stylesheets="@../css/Table.css">
         <columns>
-          <TableColumn prefWidth="75.0" text="Employee ID" />
-          <TableColumn prefWidth="121.0" text="Employee Name" />
+          <TableColumn fx:id="colEmpID" prefWidth="75.0" text="Employee ID" />
+          <TableColumn fx:id="colEmployeeName" prefWidth="121.0" text="Employee Name" />
         </columns>
       </TableView>
       <Label layoutX="34.0" layoutY="319.0" prefHeight="19.0" prefWidth="134.0" text="Student Attendance " textFill="#441594">

@@ -22,9 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.DragEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.Tm.AttendanceTm;
-import lk.ijse.dto.Class_DetailsDto;
-import lk.ijse.dto.EmployeeDto;
-import lk.ijse.dto.StudentAttendance;
+import lk.ijse.dto.*;
 import lk.ijse.model.*;
 
 import javax.swing.*;
@@ -60,6 +58,9 @@ public class AttendanceFormController {
     public TableColumn Timecol;
     public TableColumn clssIdcol;
     public AnchorPane Ancrootattrndnce;
+    public TableView tblEmployeeAttendance;
+    public TableColumn colEmpID;
+    public TableColumn colEmployeeName;
     private Webcam webcam;
     private WebcamPanel webcamPanel;
     private boolean isReading = false;
@@ -75,9 +76,10 @@ public class AttendanceFormController {
 
     public void initialize() {
         setCellValueFactory();
-        loadAllCustomer();
+        loadAllAttendnce();
         generateNextOrderId();
         generateAttendanceID();
+        loadAllCourseAttendance();
 
     }
 
@@ -93,7 +95,7 @@ public class AttendanceFormController {
     }
 
 
-    private void loadAllCustomer() {
+    private void loadAllAttendnce() {
         var model = new Stu_AttendanceModel();
 
         ObservableList<AttendanceTm> obList = FXCollections.observableArrayList();
@@ -121,6 +123,37 @@ public class AttendanceFormController {
             throw new RuntimeException(e);
         }
     }
+
+    private void loadAllCourseAttendance() {
+        var model = new CourseAttendanceModel();
+
+        ObservableList<AttendanceTm> obList = FXCollections.observableArrayList();
+
+        try {
+            List<AttendanceJoinDto> dtoList = model.getAllAttndance();
+
+            for (AttendanceJoinDto dto : dtoList) {
+                obList.add(
+                        new AttendanceTm(
+                                dto.getAttendanceID(),
+                                dto.getStuID(),
+                                dto.getStuName(),
+                                dto.getDate(),
+                                dto.getTime(),
+                                dto.getCusID()
+
+                        )
+                );
+            }
+
+            AttendanceViewTable.setItems(obList);
+            AttendanceViewTable.refresh();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
     private boolean startWebcam() {
@@ -194,93 +227,72 @@ public class AttendanceFormController {
         String input = aId;
         String stuRegex = "^SA[0-9]{4,10}$";
         String empRegex = "^EA[0-9]{4,10}$";
-
-        String cusStuRegex = "^CSA[0-9]{4,10}$";
-
+        String cRegex = "^CSA[0-9]{4,10}$";
 
         Pattern Spattern = Pattern.compile(stuRegex);
         Pattern Epattern = Pattern.compile(empRegex);
-        Pattern Cpattern = Pattern.compile(cusStuRegex);
-
+        Pattern Cpattern = Pattern.compile(cRegex);
 
         Matcher Smatcher = Spattern.matcher(input);
         Matcher Ematcher = Epattern.matcher(input);
         Matcher Cmatcher = Cpattern.matcher(input);
 
-        if (Smatcher.matches() || Ematcher.matches()) {
-
-            if (Smatcher.matches()) {
-                try {
-                    Class_DetailsDto dtoList = clModel.loardValues(aId);
-                    boolean isSaved = stModdel.saveAttendnceDetails(dtoList);
-                    if (isSaved) {
-                        new Alert(Alert.AlertType.CONFIRMATION, "save attendance").show();
-                        loadAllCustomer();
-                    } else {
-                        new Alert(Alert.AlertType.ERROR, "Not value save!").show();
-
-                    }
-
-                } catch (SQLException e) {
-                    new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-                }
-            }
-
-            if (Ematcher.matches()) {
-               // String empAttendanceID = null;
-              //  String empId = null;
-
-                if (Ematcher.matches()) {
-                    try {
-                        EmployeeDto dtoList = em.loardEmpValues(aId);
-
-                        String empAttendanceID = null;
-                        String empId = null;
-                        if (dtoList != null) {
-                            empAttendanceID = dtoList.getEmpAttendanceID();
-                            empId = dtoList.getEmp_id();
-                        }
-
-                        boolean isSaved = ea.saveEmpAttendance(num, empAttendanceID, empId);
-
-                        if (isSaved) {
-                            new Alert(Alert.AlertType.INFORMATION, "Employee Attendanece Save").show();
-                        } else {
-                            new Alert(Alert.AlertType.WARNING, "Employee Attendance Not Save").show();
-                        }
-                    } catch (SQLException e) {
-                        new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-
-                    }
-
-
-                        if (Cmatcher.matches()) {
-                            try {
-
-                                boolean isSaved = ca.saveAttendnceDetails(aId);
-                                if (isSaved) {
-                                    new Alert(Alert.AlertType.CONFIRMATION, "save attendance").show();
-                                    loadAllCustomer();
-                                } else {
-                                    new Alert(Alert.AlertType.ERROR, "Not value save!").show();
-
-                                }
-
-                            } catch (SQLException e) {
-                                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-                            }
-                        }
+        if (Smatcher.matches()) {
+            try {
+                Class_DetailsDto dtoList = clModel.loardValues(aId);
+                boolean isSaved = stModdel.saveAttendnceDetails(dtoList);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Save attendance").show();
+                    loadAllAttendnce();
                 } else {
-                    new Alert(Alert.AlertType.WARNING, "Not Valid This id").show();
+                    new Alert(Alert.AlertType.ERROR, "Not value saved!").show();
                 }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             }
+        } else if (Ematcher.matches()) {
+            try {
+                EmployeeDto dtoList = em.loardEmpValues(aId);
+
+                String empAttendanceID = null;
+                String empId = null;
+                if (dtoList != null) {
+                    empAttendanceID = dtoList.getEmpAttendanceID();
+                    empId = dtoList.getEmp_id();
+                }
+
+                boolean isSaved = ea.saveEmpAttendance(num, empAttendanceID, empId);
+
+                if (isSaved) {
+                    new Alert(Alert.AlertType.INFORMATION, "Employee Attendance Save").show();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Employee Attendance Not Saved").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        } else if (Cmatcher.matches()) {
+            try {
+                boolean isSaved = ca.saveAttendnceDetails(aId, num1);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Course Attendance Save").show();
+                    loadAllCourseAttendance();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Course Attendance Not Value Saved!").show();
+                }
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Not Valid ID").show();
         }
     }
+
 
     private void generateNextOrderId() {
         try {
             int orderID =ca.generateNextOrderId();
-            num="000"+orderID;
+            num1="000"+orderID;
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
@@ -289,7 +301,7 @@ public class AttendanceFormController {
     private void generateAttendanceID() {
         try {
             int orderID =ea.generateNextOrderId();
-            num1="000"+orderID;
+            num="000"+orderID;
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }

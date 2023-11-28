@@ -42,8 +42,13 @@ public class Stu_AttendanceModel {
     public List<StudentAttendance> getAllStudent() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "SELECT * FROM stu_attendance";
+        java.util.Date date = new java.util.Date();
+        java.sql.Date sqldate = new java.sql.Date(date.getTime());
+        java.sql.Timestamp sqltime = new java.sql.Timestamp(date.getTime());
+
+        String sql = "SELECT * FROM stu_attendance WHERE date = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, String.valueOf(sqldate));
         ResultSet resultSet = pstm.executeQuery();
 
         ArrayList<StudentAttendance> dtoList = new ArrayList<>();
