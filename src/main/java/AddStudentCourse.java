@@ -89,7 +89,7 @@ public class AddStudentCourse {
             throw new RuntimeException(e);
         }
 
-        try{
+       /* try{
             boolean save = classDetailsModel.saveValue(attendance,stuId,classID,stuName);
             if (save){
                 new Alert(Alert.AlertType.INFORMATION,"Save Class Details").show();
@@ -99,7 +99,7 @@ public class AddStudentCourse {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
+        }*/
     }
    /* private void generateNextOrderId() {
         try {

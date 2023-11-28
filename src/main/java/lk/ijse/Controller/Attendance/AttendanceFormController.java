@@ -25,10 +25,7 @@ import lk.ijse.Tm.AttendanceTm;
 import lk.ijse.dto.Class_DetailsDto;
 import lk.ijse.dto.EmployeeDto;
 import lk.ijse.dto.StudentAttendance;
-import lk.ijse.model.Class_DetailsModel;
-import lk.ijse.model.EmpAttendanceModel;
-import lk.ijse.model.EmployeeModel;
-import lk.ijse.model.Stu_AttendanceModel;
+import lk.ijse.model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,17 +64,20 @@ public class AttendanceFormController {
     private WebcamPanel webcamPanel;
     private boolean isReading = false;
     private String num;
+    private String num1;
 
     private Class_DetailsModel clModel = new Class_DetailsModel();
     private Stu_AttendanceModel stModdel = new Stu_AttendanceModel();
     private EmployeeModel em = new EmployeeModel();
     private EmpAttendanceModel ea = new EmpAttendanceModel();
 
+    private CourseAttendanceModel ca = new CourseAttendanceModel();
 
     public void initialize() {
         setCellValueFactory();
         loadAllCustomer();
         generateNextOrderId();
+        generateAttendanceID();
 
     }
 
@@ -192,15 +192,20 @@ public class AttendanceFormController {
         String aId = txtScannerValue.getText();
 
         String input = aId;
-        String stuRegex = "^SA/[A-Z]{2}/\\d{4}$";
-        String empRegex = "^EA/\\d{4}$";
+        String stuRegex = "^SA[0-9]{4,10}$";
+        String empRegex = "^EA[0-9]{4,10}$";
+
+        String cusStuRegex = "^CSA[0-9]{4,10}$";
 
 
         Pattern Spattern = Pattern.compile(stuRegex);
         Pattern Epattern = Pattern.compile(empRegex);
+        Pattern Cpattern = Pattern.compile(cusStuRegex);
+
 
         Matcher Smatcher = Spattern.matcher(input);
         Matcher Ematcher = Epattern.matcher(input);
+        Matcher Cmatcher = Cpattern.matcher(input);
 
         if (Smatcher.matches() || Ematcher.matches()) {
 
@@ -247,6 +252,24 @@ public class AttendanceFormController {
                         new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
 
                     }
+
+
+                        if (Cmatcher.matches()) {
+                            try {
+
+                                boolean isSaved = ca.saveAttendnceDetails(aId);
+                                if (isSaved) {
+                                    new Alert(Alert.AlertType.CONFIRMATION, "save attendance").show();
+                                    loadAllCustomer();
+                                } else {
+                                    new Alert(Alert.AlertType.ERROR, "Not value save!").show();
+
+                                }
+
+                            } catch (SQLException e) {
+                                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                            }
+                        }
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Not Valid This id").show();
                 }
@@ -256,8 +279,17 @@ public class AttendanceFormController {
 
     private void generateNextOrderId() {
         try {
-            int orderID =ea.generateNextOrderId();
+            int orderID =ca.generateNextOrderId();
             num="000"+orderID;
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    private void generateAttendanceID() {
+        try {
+            int orderID =ea.generateNextOrderId();
+            num1="000"+orderID;
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }

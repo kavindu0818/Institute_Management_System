@@ -1,9 +1,7 @@
 package lk.ijse.model;
 
 import lk.ijse.db.DbConnection;
-import lk.ijse.dto.ClassDto;
 import lk.ijse.dto.DaySheduleDto;
-import lk.ijse.dto.StudentAttendance;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,9 +29,13 @@ public class DaySheduleModel {
 
     public List<DaySheduleDto> getAllShedul() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
+        java.util.Date date = new java.util.Date();
+        java.sql.Date sqldate = new java.sql.Date(date.getTime());
+        java.sql.Timestamp sqltime = new java.sql.Timestamp(date.getTime());
 
-        String sql = "SELECT * FROM dayshedule";
+        String sql = "SELECT * FROM dayshedule WHERE Date = ?";
         PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, String.valueOf(sqldate));
         ResultSet resultSet = pstm.executeQuery();
 
         ArrayList<DaySheduleDto> dtoList = new ArrayList<>();

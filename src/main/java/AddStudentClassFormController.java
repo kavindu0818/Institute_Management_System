@@ -1,14 +1,25 @@
+import com.google.zxing.WriterException;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import lk.ijse.Controller.QrGenarator.QrGenerator;
 import lk.ijse.dto.ClassDto;
 import lk.ijse.dto.Class_DetailsDto;
 import lk.ijse.model.ClassModel;
 import lk.ijse.model.Class_DetailsModel;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class AddStudentClassFormController {
     public JFXTextField txtStudentID;
@@ -22,6 +33,7 @@ public class AddStudentClassFormController {
     public void initialize(){
         setClassIDcmb();
     }
+
 
     public void setClassIDcmb() {
         var model = new ClassModel();
@@ -60,4 +72,18 @@ public class AddStudentClassFormController {
 
 
     }
+
+
+    public void btnQrGenaratorOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/View/QrGenarateForm.fxml"));
+        Scene scene = new Scene(anchorPane);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("User Manage");
+        stage.centerOnScreen();
+        stage.show();
+
+    }
+
 }
+

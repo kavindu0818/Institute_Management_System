@@ -19,7 +19,7 @@
             <Font name="System Bold" size="31.0" />
          </font>
       </Label>
-      <TableView fx:id="AttendanceViewTable" layoutX="14.0" layoutY="344.0" prefHeight="170.0" prefWidth="798.0">
+      <TableView fx:id="AttendanceViewTable" layoutX="14.0" layoutY="344.0" prefHeight="170.0" prefWidth="798.0" stylesheets="@../css/Table.css">
         <columns>
           <TableColumn fx:id="AttendIdCol" prefWidth="109.0" text="Attendance id" />
           <TableColumn fx:id="stuIdcol" prefWidth="115.0" text="Student ID" />

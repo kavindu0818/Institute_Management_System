@@ -8,33 +8,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="209.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Shadule.DaySheduleClassController">
+<AnchorPane prefHeight="85.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Shadule.DaySheduleClassController">
    <children>
-      <ComboBox fx:id="cmbClassName" layoutX="57.0" layoutY="67.0" prefHeight="25.0" prefWidth="173.0" />
-      <Label layoutX="59.0" layoutY="44.0" text="Class">
+      <ComboBox fx:id="cmbClassName" layoutX="37.0" layoutY="16.0" prefHeight="25.0" prefWidth="173.0" />
+      <Label layoutX="38.0" layoutY="1.0" text="Class">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <DatePicker fx:id="dateDatePic" layoutX="245.0" layoutY="67.0" />
-      <Label layoutX="246.0" layoutY="44.0" text="Date">
+      <DatePicker fx:id="dateDatePic" layoutX="223.0" layoutY="16.0" />
+      <Label layoutX="223.0" layoutY="1.0" text="Date">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="txtStartTime" layoutX="453.0" layoutY="67.0" />
-      <Label layoutX="456.0" layoutY="44.0" text="Start Time">
+      <TextField fx:id="txtStartTime" layoutX="406.0" layoutY="15.0" />
+      <Label layoutX="408.0" layoutY="-2.0" text="Start Time">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEndTime" layoutX="59.0" layoutY="128.0" prefHeight="25.0" prefWidth="174.0" />
-      <Label layoutX="61.0" layoutY="107.0" text="End Time">
+      <TextField fx:id="txtEndTime" layoutX="36.0" layoutY="55.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="38.0" layoutY="39.0" text="End Time">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="489.0" layoutY="141.0" mnemonicParsing="false" onAction="#btnAddSheduleOnAction" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #05470b;" text="Add" textFill="#fffdfd">
+      <Button layoutX="533.0" layoutY="56.0" mnemonicParsing="false" onAction="#btnAddSheduleOnAction" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #05470b;" text="Add" textFill="#fffdfd">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

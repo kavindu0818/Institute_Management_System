@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -58,22 +59,60 @@
          </font>
       </JFXButton>
       <JFXButton layoutX="469.0" layoutY="280.0" onAction="#AddCourseOnAction" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #054236;" text="Add Course" textFill="#eeebeb" />
-      <AnchorPane fx:id="AncShadule1" layoutX="14.0" layoutY="49.0" prefHeight="209.0" prefWidth="639.0" style="-fx-background-color: #f8fad7;" />
+      <AnchorPane fx:id="AncShadule1" layoutX="14.0" layoutY="49.0" prefHeight="85.0" prefWidth="639.0" style="-fx-background-color: #f8fad7;" />
       <Label layoutX="14.0" layoutY="18.0" prefHeight="17.0" prefWidth="228.0" text="Add Day  Shadule">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <JFXButton layoutX="444.0" layoutY="18.0" onAction="#AddDayShaduleClass" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #bab702;" text="Add Class" textFill="#f2efef">
+      <JFXButton layoutX="561.0" layoutY="20.0" onAction="#AddDayShaduleClass" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #bab702;" text="Add Class" textFill="#f2efef">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="553.0" layoutY="18.0" onAction="#AddDaySheduleCourse" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #940612;" text="Add Course" textFill="#eeebeb" />
       <JFXButton layoutX="563.0" layoutY="281.0" onAction="#AddSubjectOnAction" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #150542;" text="Add Subject" textFill="#f2efef">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </JFXButton>
+      <AnchorPane fx:id="AncInstitutDetails" layoutX="9.0" layoutY="172.0" prefHeight="85.0" prefWidth="639.0" style="-fx-background-color: #f8fad7;">
+         <children>
+            <JFXTextField fx:id="txtGmail" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="240.0" />
+            <JFXTextField fx:id="txtContact" layoutX="276.0" layoutY="14.0" prefHeight="25.0" prefWidth="240.0" />
+            <JFXTextField fx:id="txtfb" layoutX="12.0" layoutY="55.0" prefHeight="25.0" prefWidth="240.0" />
+            <Label layoutX="14.0" layoutY="1.0" text="Gmail">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtHall" layoutX="280.0" layoutY="55.0" prefHeight="25.0" prefWidth="240.0" />
+            <Button layoutX="577.0" layoutY="57.0" mnemonicParsing="false" onAction="#InstituteDetailsSubmitOnAction" text="Update">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="11.0" layoutY="144.0" prefHeight="17.0" prefWidth="228.0" text="Institute Details">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="286.0" layoutY="173.0" text="Contact Number">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="217.0" text="Facebook Page">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="290.0" layoutY="216.0" text="Hall">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
+      <Button layoutX="469.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" text="Notice" />
    </children>
 </AnchorPane>

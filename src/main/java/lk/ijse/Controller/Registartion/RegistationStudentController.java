@@ -57,7 +57,7 @@ public class RegistationStudentController {
 
     private RegistationModel reg = new RegistationModel();
     private StudentModel stu = new StudentModel();
-    private PerantModel pr = new PerantModel();
+
     private StudentfullDetailsModel studentfullDetailsModel = new StudentfullDetailsModel();
 
     private StudentfullDetailsModel sfd = new StudentfullDetailsModel();

@@ -15,13 +15,16 @@ import lk.ijse.Tm.ClassDetailsViewTm;
 import lk.ijse.Tm.DayShedulTm;
 import lk.ijse.dto.ClassDto;
 import lk.ijse.dto.DaySheduleDto;
+import lk.ijse.dto.InstitutMangementDto;
 import lk.ijse.model.DaySheduleModel;
+import lk.ijse.model.InstituteDetailsModel;
 import lk.ijse.model.StudentfullDetailsModel;
 import lk.ijse.model.TutorModel;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 public class DashboardOriginalController {
@@ -36,6 +39,12 @@ public class DashboardOriginalController {
     public TableColumn colClass;
     public TableColumn colStartTime;
     public TableColumn colEndTime;
+    public Label lblsetGmail;
+    public Label lblSetFb;
+    public Label lblSetContact;
+    public Label lblHall;
+    // String ld = lblDate.getText();
+    // String dl = lblDate.getText();
     private StudentfullDetailsModel sm = new StudentfullDetailsModel();
     public void initialize() {
         setLableStu();
@@ -44,6 +53,7 @@ public class DashboardOriginalController {
         date();
         getShedulValue();
         shedulTable();
+        setLabContact();
     }
 
     public void shedulTable(){
@@ -103,7 +113,23 @@ public class DashboardOriginalController {
         time.play();
     }
 
-    public void getShedulValue() {
+    public void setLabContact() {
+        var model = new InstituteDetailsModel();
+
+        try {
+            InstitutMangementDto imd = model.setAllDetails();
+
+            lblsetGmail.setText(imd.getGmail());
+            lblSetContact.setText(imd.getContact());
+            lblSetFb.setText(imd.getFb());
+            lblHall.setText(imd.getHall());
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+   /* public void getShedulValue() {
         var smt = new DaySheduleModel();
 
         ObservableList<DayShedulTm> obList = FXCollections.observableArrayList();
@@ -112,8 +138,9 @@ public class DashboardOriginalController {
             List<DaySheduleDto> dtoList = smt.getAllShedul();
 
             for (DaySheduleDto dto : dtoList) {
+                String date = dto.getDate();
 
-                if (lblDate.getText().equals(dto.getDate())) {
+                if (date.equals(lblDate.getText())) {
                     obList.add(
                             new DayShedulTm(
                                     dto.getClassName(),
@@ -122,15 +149,40 @@ public class DashboardOriginalController {
                             )
                     );
                 }
-
-                tblShedulView.setItems(obList);
-                tblShedulView.refresh();
-
             }
+
+            // Move these lines outside of the loop
+            tblShedulView.setItems(obList);
+            tblShedulView.refresh();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
+   public  void getShedulValue() {
+       var smt = new DaySheduleModel();
+
+       ObservableList<DayShedulTm> obList = FXCollections.observableArrayList();
+
+       try {
+           List<DaySheduleDto> dtoList = smt.getAllShedul();
+
+           for (DaySheduleDto dto : dtoList) {
+                   obList.add(new DayShedulTm(
+                           dto.getClassName(),
+                           dto.getStime(),
+                           dto.getETime()
+                   )
+                   );
+               }
+
+
+           tblShedulView.setItems(obList);
+           tblShedulView.refresh();
+
+       } catch (SQLException e) {
+           throw new RuntimeException(e);
+       }
+   }
 }
 
