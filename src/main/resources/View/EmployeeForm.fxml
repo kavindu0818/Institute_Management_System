@@ -39,11 +39,18 @@
           <TableColumn fx:id="colEmpName" prefWidth="108.0" text="Employee Name" />
         </columns>
       </TableView>
-      <Label layoutX="501.0" layoutY="7.0" prefHeight="17.0" prefWidth="168.0" text="Employee">
+      <Label layoutX="501.0" layoutY="7.0" prefHeight="17.0" prefWidth="168.0" text="EMPLOYEE">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <AnchorPane fx:id="AncEmployeeRoot1" layoutX="25.0" layoutY="176.0" prefHeight="342.0" prefWidth="772.0" />
+      <AnchorPane fx:id="AncEmployeeRoot1" layoutX="25.0" layoutY="176.0" prefHeight="342.0" prefWidth="772.0">
+         <children>
+            <ImageView fitHeight="333.0" fitWidth="579.0" layoutX="102.0" layoutY="4.0">
+               <image>
+                  <Image url="@../Assets/EmployeeImage.jpg" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
    </children>
 </AnchorPane>

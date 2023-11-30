@@ -31,6 +31,11 @@ public class UserFormController {
     public Image image;
     public ImageView imageView;
     public Label lbl1;
+    public JFXTextField txtUpName;
+    public JFXTextField txtUpuPass;
+    public ImageView updateUserImage;
+    public Button imageSelectbtn1;
+    public JFXTextField txtSearchUser;
 
     private StudentfullDetailsModel studentfullDetailsModel = new StudentfullDetailsModel();
     private UserModel um = new UserModel();
@@ -104,4 +109,55 @@ public class UserFormController {
         time.setCycleCount(Animation.INDEFINITE);
         time.play();
 }
+
+    public void btnUpdateOnAction(ActionEvent actionEvent) throws SQLException {
+        String name = txtUpName.getText();
+        String pas = txtUpuPass.getText();
+        Image image = updateUserImage.getImage();
+        byte[] ima = studentfullDetailsModel.imagenToByte(image);
+
+        var up = new UserDto(pas,name,ima);
+
+        System.out.println(up.getPassword() + up.getUserName());
+        try {
+             boolean isSave = um.updateUser(up);
+             if (isSave){
+                new Alert(Alert.AlertType.INFORMATION,"Update Save").show();
+
+             }else{
+                    new Alert(Alert.AlertType.WARNING,"Update Not Save").show();
+             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void btnOpenUpdate(ActionEvent actionEvent) {
+        FileChooser chooser = new FileChooser();
+        File file = chooser.showOpenDialog(imageSelectbtn.getScene().getWindow());
+        try {
+            fileInputStream = new FileInputStream(file);
+            image = new Image(fileInputStream);
+            updateUserImage.setImage(image);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void txtButtonUpdateSSerachOnActon(ActionEvent actionEvent) throws SQLException {
+        String us = txtSearchUser.getText();
+
+        UserDto dto = um.getUserValue(us);
+        if (dto != null) {
+            txtUpName.setText(dto.getPassword());
+            txtUpuPass.setText(dto.getUserName());
+            Image fxImage = um.convertBytesToJavaFXImage(dto.getImage());
+            updateUserImage.setImage(fxImage);
+        }
+
+
+
+    }
 }

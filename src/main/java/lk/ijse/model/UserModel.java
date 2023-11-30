@@ -86,4 +86,26 @@ public class UserModel {
             return null;
         }
     }
+
+    public boolean updateUser(UserDto up) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        System.out.println(up.getPassword()+"Ok " + up.getUserName());
+        String sql ="UPDATE User SET userName=?, image=? WHERE password=?";
+
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+
+        pstm.setString(1,up.getUserName());
+
+        byte[] imageSr = up.getImage();
+        pstm.setBytes(2, imageSr);
+
+        pstm.setString(3, up.getPassword());
+
+        return pstm.executeUpdate() > 0;
+
+    }
+
+
 }

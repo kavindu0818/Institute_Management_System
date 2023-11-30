@@ -22,6 +22,8 @@ public class LoginFormController {
     public TextField txtPassword;
     public JFXTextField txtUserNameID;
 
+    public static String pasw;
+
     private DashBoardController db = new DashBoardController();
     private UserModel um = new UserModel();
 
@@ -30,6 +32,8 @@ public class LoginFormController {
         String userName = txtUserNameID.getText();
         String passwrd = txtPassword.getText();
 
+        pasw = passwrd;
+
         UserDto dto = um.selectUserValue();
 
         if (dto != null) {
@@ -37,16 +41,16 @@ public class LoginFormController {
             String un = dto.getUserName();
 
             if (pw.equals(passwrd) && un.equals(userName)) {
-
-
-                db.setUserDetails(pw);
                 loginDashboard();
-
 
             } else {
                 new Alert(Alert.AlertType.WARNING, "Check Your Password And userName").show();
             }
         }
+    }
+
+    public static String getpasw(){
+        return pasw;
     }
 
     public void loginDashboard() throws IOException {

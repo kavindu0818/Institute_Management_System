@@ -65,14 +65,28 @@
       <ImageView fitHeight="150.0" fitWidth="216.0" layoutX="271.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" />
       <AnchorPane fx:id="Twonc" layoutX="220.0" layoutY="104.0" prefHeight="532.0" prefWidth="1052.0" style="-fx-background-color: #DFE0E7; -fx-border-radius: bold; -fx-background-radius: 20;">
          <children>
-            <ImageView fitHeight="51.0" fitWidth="53.0" layoutX="833.0" layoutY="-72.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="lblUserName" layoutX="890.0" layoutY="-67.0" prefHeight="25.0" prefWidth="124.0" />
-            <ImageView fx:id="imageView2" fitHeight="150.0" fitWidth="200.0" layoutX="568.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="lbl5" layoutX="265.0" layoutY="221.0" prefHeight="17.0" prefWidth="160.0" />
          </children></AnchorPane>
       <AnchorPane fx:id="shortAnc" layoutX="219.0" layoutY="18.0" prefHeight="79.0" prefWidth="1052.0" style="-fx-background-color: #DFE0E7; -fx-background-radius: 20;">
          <children>
             <TextField layoutX="161.0" layoutY="32.0" prefHeight="25.0" prefWidth="498.0" promptText="Search" style="-fx-background-radius: 20;" />
+            <ImageView fitHeight="64.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" />
+            <AnchorPane layoutX="747.0" layoutY="3.0" prefHeight="72.0" prefWidth="289.0" style="-fx-background-color: WHite; -fx-background-radius: 30;">
+               <children>
+                  <Label fx:id="lbl10" layoutX="121.0" layoutY="14.0" prefHeight="38.0" prefWidth="136.0" style="-fx-background-color: White;" textFill="#1b1a1a">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="UserImage" fitHeight="72.0" fitWidth="86.0" layoutX="23.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+                  <Separator layoutX="123.0" layoutY="48.0" prefHeight="5.0" prefWidth="136.0" />
+                  <Label layoutX="167.0" layoutY="48.0" prefHeight="17.0" prefWidth="95.0" text="User">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

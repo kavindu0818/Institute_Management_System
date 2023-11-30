@@ -26,6 +26,8 @@ public class DashBoardController {
     public ImageView imageView2;
     public Label lbl5;
     public AnchorPane shortAnc;
+    public Label lbl10;
+    public ImageView UserImage;
 
 
     @FXML
@@ -33,7 +35,7 @@ public class DashBoardController {
     @FXML
     private ImageView imageView;
 
-    private String us = "kmw";
+    private String us;
 
     private UserModel um = new UserModel();
 
@@ -41,6 +43,8 @@ public class DashBoardController {
         Twonc.getChildren().clear();
         Twonc.getChildren().add(FXMLLoader.load(getClass().getResource("/view/DashboardOriginal.fxml")));
 
+
+        us = LoginFormController.getpasw();
         setPic();
     }
 
@@ -110,15 +114,16 @@ public class DashBoardController {
         UserDto dto = um.getUserValue(us);
         if (dto != null) {
             System.out.println(dto.getUserName());
-            lblUserName.setText(dto.getUserName());
+            lbl10.setText(dto.getUserName());
+            Image fxImage = um.convertBytesToJavaFXImage(dto.getImage());
+            UserImage.setImage(fxImage);
         }
     }
 
 
 
 
-            /*Image fxImage = um.convertBytesToJavaFXImage(dto.getImage());
-            imageView2.setImage(fxImage);*/
+
 
 
 
