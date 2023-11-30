@@ -62,6 +62,9 @@ public class AttendanceFormController {
     public TableView tblEmployeeAttendance;
     public TableColumn colEmpID;
     public TableColumn colEmployeeName;
+    public Label lblNomalClassStu;
+    public Label lblCourseStu;
+    public Label lbllEmployeeCount;
     private Webcam webcam;
     private WebcamPanel webcamPanel;
     private boolean isReading = false;
@@ -83,6 +86,7 @@ public class AttendanceFormController {
         loadAllCourseAttendance();
         loadAllEmployeeAttendance();
         setEmployeeAttendance();
+        setLableStuddentNomal();
 
     }
 
@@ -165,8 +169,7 @@ public class AttendanceFormController {
     }
 
     private void loadAllEmployeeAttendance() {
-        var model = new EmpAttendanceModel()
-                ;
+        var model = new EmpAttendanceModel();
 
         ObservableList<EmployeeAttendanceTm> obList = FXCollections.observableArrayList();
 
@@ -283,6 +286,7 @@ public class AttendanceFormController {
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Save attendance").show();
                     loadAllAttendnce();
+                    setLableStuddentNomal();
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Not value saved!").show();
                 }
@@ -305,6 +309,9 @@ public class AttendanceFormController {
                 if (isSaved) {
                     new Alert(Alert.AlertType.INFORMATION, "Employee Attendance Save").show();
                     loadAllEmployeeAttendance();
+                    generateAttendanceID();
+                    setLableStuddentNomal();
+
                 } else {
                     new Alert(Alert.AlertType.WARNING, "Employee Attendance Not Saved").show();
                 }
@@ -318,6 +325,7 @@ public class AttendanceFormController {
                     new Alert(Alert.AlertType.CONFIRMATION, "Course Attendance Save").show();
                     loadAllCourseAttendance();
                     generateNextOrderId();
+                    setLableStuddentNomal();
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Course Attendance Not Value Saved!").show();
                 }
@@ -353,5 +361,42 @@ public class AttendanceFormController {
 
     }
 
+    public void setLableStuddentNomal() {
+        var model = new Stu_AttendanceModel();
 
+        try {
+            int count = model.howMachStudent();
+
+            lblNomalClassStu.setText(String.valueOf(count));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        var Cmodel = new CourseAttendanceModel();
+
+        try {
+            int count = Cmodel.howMachCourseStudent();
+
+            lblCourseStu.setText(String.valueOf(count));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        var Emodel = new EmpAttendanceModel();
+
+        try {
+            int count = Emodel.howMachEmployeeAttendance();
+
+            lbllEmployeeCount.setText(String.valueOf(count));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void btnCourseAttendanceDetailsOnAction(ActionEvent actionEvent) throws IOException {
+        Ancrootattrndnce.getChildren().clear();
+        Ancrootattrndnce.getChildren().add(FXMLLoader.load(getClass().getResource("/View/CourseAttendanceDetailsForm.fxml")));
+
+    }
 }

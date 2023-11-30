@@ -22,8 +22,8 @@
          </font>
       </Label>
       <TextField fx:id="StuNameCourse" layoutX="37.0" layoutY="204.0" prefHeight="25.0" prefWidth="434.0" />
-      <TextField fx:id="txtAmountCourse" layoutX="37.0" layoutY="300.0" prefHeight="25.0" prefWidth="267.0" />
-      <Button layoutX="326.0" layoutY="353.0" mnemonicParsing="false" onAction="#PaymentSubmitOnAction" prefHeight="25.0" prefWidth="97.0" style="-fx-background-radius: 30; -fx-background-color: #024509;" text="Pay" textFill="#f8f8f8">
+      <TextField fx:id="txtAmountCourse" layoutX="36.0" layoutY="344.0" prefHeight="25.0" prefWidth="267.0" />
+      <Button layoutX="329.0" layoutY="368.0" mnemonicParsing="false" onAction="#PaymentSubmitOnAction" prefHeight="25.0" prefWidth="97.0" style="-fx-background-radius: 30; -fx-background-color: #024509;" text="Pay" textFill="#f8f8f8">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -50,13 +50,19 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="37.0" layoutY="282.0" text="Amount">
+      <Label layoutX="37.0" layoutY="327.0" text="Amount">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
       <Label fx:id="lblDateAndTime" layoutX="278.0" layoutY="154.0" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: w;" />
       <Label layoutX="281.0" layoutY="130.0" text="Date And Time">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbCourse" layoutX="35.0" layoutY="303.0" prefHeight="25.0" prefWidth="225.0" />
+      <Label layoutX="37.0" layoutY="286.0" text="Course">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

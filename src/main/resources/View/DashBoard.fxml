@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -9,7 +8,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="MainDashobordAncPage" prefHeight="650.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.DashBoardController">
@@ -65,22 +63,16 @@
             <Button layoutX="61.0" layoutY="558.0" mnemonicParsing="false" onAction="#btnAddUserOnAction" style="-fx-background-color: black;" text="Add User" textFill="#f5f3f3" />
          </children></AnchorPane>
       <ImageView fitHeight="150.0" fitWidth="216.0" layoutX="271.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true" />
-      <AnchorPane fx:id="Twonc" layoutX="220.0" layoutY="104.0" prefHeight="532.0" prefWidth="1052.0" style="-fx-background-color: #DFE0E7; -fx-border-radius: bold; -fx-background-radius: 20;" />
-      <AnchorPane layoutX="219.0" layoutY="18.0" prefHeight="79.0" prefWidth="1052.0" style="-fx-background-color: #DFE0E7; -fx-background-radius: 20;">
+      <AnchorPane fx:id="Twonc" layoutX="220.0" layoutY="104.0" prefHeight="532.0" prefWidth="1052.0" style="-fx-background-color: #DFE0E7; -fx-border-radius: bold; -fx-background-radius: 20;">
+         <children>
+            <ImageView fitHeight="51.0" fitWidth="53.0" layoutX="833.0" layoutY="-72.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lblUserName" layoutX="890.0" layoutY="-67.0" prefHeight="25.0" prefWidth="124.0" />
+            <ImageView fx:id="imageView2" fitHeight="150.0" fitWidth="200.0" layoutX="568.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lbl5" layoutX="265.0" layoutY="221.0" prefHeight="17.0" prefWidth="160.0" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="shortAnc" layoutX="219.0" layoutY="18.0" prefHeight="79.0" prefWidth="1052.0" style="-fx-background-color: #DFE0E7; -fx-background-radius: 20;">
          <children>
             <TextField layoutX="161.0" layoutY="32.0" prefHeight="25.0" prefWidth="498.0" promptText="Search" style="-fx-background-radius: 20;" />
-            <Pane layoutX="826.0" layoutY="9.0" prefHeight="61.0" prefWidth="216.0" style="-fx-background-color: white; -fx-background-radius: 20;">
-               <children>
-                  <ImageView fitHeight="51.0" fitWidth="63.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="userImageView" fitHeight="61.0" fitWidth="63.0" layoutX="10.0" layoutY="1.0" style="-fx-scale-x: 1;">
-                     <image>
-                        <Image url="@../Assets/Profile picture Icon.png" />
-                     </image>
-                  </ImageView>
-                  <JFXTextArea fx:id="txtuserName" layoutX="73.0" layoutY="4.0" prefHeight="25.0" prefWidth="132.0" />
-                  <Label layoutX="74.0" layoutY="39.0" prefHeight="17.0" prefWidth="63.0" text="Admin User" />
-               </children>
-            </Pane>
          </children>
       </AnchorPane>
    </children>

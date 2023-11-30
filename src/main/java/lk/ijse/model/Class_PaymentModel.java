@@ -84,7 +84,7 @@ public class Class_PaymentModel {
                             resultSet.getString(3),
                             resultSet.getString(4),
                             resultSet.getString(5),
-                            resultSet.getString(6),
+                            resultSet.getDate(6),
                             resultSet.getString(7),
                             resultSet.getDouble(8)
                     )
@@ -139,7 +139,7 @@ public class Class_PaymentModel {
                             resultSet.getString(3),
                             resultSet.getString(4),
                             resultSet.getString(5),
-                            resultSet.getString(6),
+                            resultSet.getDate(6),
 
                             resultSet.getString(7),
                             resultSet.getDouble(8)
@@ -169,7 +169,7 @@ public class Class_PaymentModel {
                             resultSet.getString(3),
                             resultSet.getString(4),
                             resultSet.getString(5),
-                            resultSet.getString(6),
+                            resultSet.getDate(6),
 
                             resultSet.getString(7),
                             resultSet.getDouble(8)
@@ -180,6 +180,34 @@ public class Class_PaymentModel {
         return dtoList;
 
     }
-}
+
+    public List<Class_paymentDto> getAllClassPayment(String clssID, String month) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM class_payment WHERE class_Id = ? AND paymentMonth = ?";
+
+        PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setString(1, clssID);
+            pstm.setString(2, month);
+
+            ResultSet resultSet = pstm.executeQuery();
+                ArrayList<Class_paymentDto> dtoList = new ArrayList<>();
+                while (resultSet.next()) {
+                    dtoList.add(new Class_paymentDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getString(5),
+                            resultSet.getDate(6),
+                            resultSet.getString(7),
+                            resultSet.getDouble(8)
+                    ));
+                }
+                return dtoList;
+            }
+        }
+
+
 
 

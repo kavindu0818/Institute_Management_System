@@ -3,8 +3,10 @@ package lk.ijse.Controller.Attendance;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import lk.ijse.Tm.AttendanceDetailsViewTm;
 import lk.ijse.Tm.AttendanceTm;
 import lk.ijse.Tm.ClassDetailsViewTm;
@@ -13,6 +15,7 @@ import lk.ijse.dto.StudentAttendance;
 import lk.ijse.model.ClassModel;
 import lk.ijse.model.Stu_AttendanceModel;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -32,6 +35,7 @@ public class AttendanceDetailsFormController {
     public DatePicker txtAttendanceDate;
     public TextField txtSerachAttendnceClass;
     public ComboBox cmbSubjectID;
+    public AnchorPane AncClassAttendance;
 
     private Stu_AttendanceModel stu = new Stu_AttendanceModel();
     private ClassModel classModel = new ClassModel();
@@ -59,7 +63,7 @@ public class AttendanceDetailsFormController {
     }
 
     public void SearchClassAndDateOnAction(ActionEvent actionEvent) {
-        String clId = (String) cmbSubjectID.getValue();
+        String classID = (String) cmbSubjectID.getValue();
        // Date classDate = (Date) txtAttendanceDate.getDayCellFactory();
         LocalDate classDate = txtAttendanceDate.getValue();
 
@@ -68,7 +72,7 @@ public class AttendanceDetailsFormController {
 
 
         try {
-            List<StudentAttendance> dtoList = stu.getClassStudent(clId, classDate);
+            List<StudentAttendance> dtoList = stu.getClassStudent(classID, classDate);
             for (StudentAttendance dto : dtoList) {
                 obList.add(
                         new AttendanceDetailsViewTm(
@@ -132,4 +136,10 @@ public class AttendanceDetailsFormController {
     }
 
 
+    public void btnBackOnAction(ActionEvent actionEvent) throws IOException {
+        AncClassAttendance.getChildren().clear();
+        AncClassAttendance.getChildren().add(FXMLLoader.load(getClass().getResource("/View/AttendanceForm.fxml")));
+
+
+    }
 }

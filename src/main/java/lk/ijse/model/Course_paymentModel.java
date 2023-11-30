@@ -1,11 +1,15 @@
 package lk.ijse.model;
 
 import lk.ijse.db.DbConnection;
+import lk.ijse.dto.CoursePaymentJoinDto;
+import lk.ijse.dto.StudentAttendance;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Course_paymentModel {
     public static boolean savePayment(String payId, double amount, String cusDfull, String stuID) throws SQLException {
@@ -69,6 +73,31 @@ public class Course_paymentModel {
         }
         return ++id;
 
+    }
+
+    public List<CoursePaymentJoinDto> getAllPayment(String cusID, String date) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT course_payment.stu_id,course_details.stu_name,course_payment.Date,course_payment.payment\n" +
+                "FROM course_details INNER JOIN course_payment ON course_payment.cusDfull_id= course_details.cusDfull_id WHERE cus_id = ? AND Date=?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1,cusID);
+        pstm.setString(2, String.valueOf(date));
+        ResultSet resultSet = pstm.executeQuery();
+
+        ArrayList<CoursePaymentJoinDto> dtoList = new ArrayList<>();
+        while(resultSet.next()) {
+            dtoList.add(
+                    new CoursePaymentJoinDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4)
+
+                    )
+            );
+        }
+        return dtoList;
     }
 }
 

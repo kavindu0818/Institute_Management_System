@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -13,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import lk.ijse.Controller.regex.Regex;
 import lk.ijse.dto.EmployeeDto;
 import lk.ijse.model.EmployeeModel;
@@ -171,6 +173,18 @@ public class EmployeeAddFormControler {
         list.add("Female");
         ObservableList<String> dataSet = FXCollections.observableArrayList(list);
         cmd1.setItems(dataSet);
+    }
+
+    public void btnQrGenarateOnAction(ActionEvent actionEvent) throws IOException {
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/View/QrGenarateForm.fxml"));
+        Scene scene = new Scene(anchorPane);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("User Manage");
+        stage.centerOnScreen();
+        stage.show();
+
+
     }
 }
 

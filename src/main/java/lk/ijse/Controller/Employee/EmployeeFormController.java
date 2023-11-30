@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -14,6 +15,7 @@ import lk.ijse.Tm.EmployeeViewTm;
 import lk.ijse.dto.ClassDto;
 import lk.ijse.dto.EmployeeDto;
 import lk.ijse.model.EmployeeModel;
+import lk.ijse.model.StudentfullDetailsModel;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -26,12 +28,14 @@ public class EmployeeFormController {
     public TableView tblEmployeeview;
     public TableColumn colEmpID;
     public TableColumn colEmpName;
+    public Label lblEmpCount;
 
     public void initialize() {
 
         colEmpID.setCellValueFactory(new PropertyValueFactory<>("EmpId"));
         colEmpName.setCellValueFactory(new PropertyValueFactory<>("EmpName"));
         AllEmployee();
+        setLableEmp();
 
     }
 
@@ -80,6 +84,17 @@ public class EmployeeFormController {
         }
     }
 
+    public void setLableEmp() {
+        var model = new EmployeeModel();
 
+        try {
+            int count = model.howMachEmployee();
+
+            lblEmpCount.setText(String.valueOf(count));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+}
 

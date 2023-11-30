@@ -2,8 +2,7 @@ package lk.ijse.model;
 
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.AttendanceJoinDto;
-import lk.ijse.dto.CourseAttendanceDto;
-import lk.ijse.dto.StudentAttendance;
+import lk.ijse.dto.CourseAttendanceJoinDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +12,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseAttendanceModel {
+    public List<CourseAttendanceJoinDto> getAllCourseAttendance(String courseID, String date) throws SQLException {
+
+        Connection connection = DbConnection.getInstance().getConnection();
+
+
+        String sql = "SELECT course_details.stu_id, course_details.stu_name,course_attendance.date, course_attendance.time, course_attendance.cusfull_id"
+               + " FROM course_attendance " +
+                "INNER JOIN course_details ON course_attendance.cusfull_id = course_details.cusDfull_id " +
+                "WHERE cus_id = ? AND date =?";
+
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, courseID);
+        pstm.setString(2, date);
+        ResultSet resultSet = pstm.executeQuery();
+
+        ArrayList<CourseAttendanceJoinDto> dtoList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            dtoList.add(
+                    new CourseAttendanceJoinDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getDate(3),
+                            resultSet.getString(4),
+                            resultSet.getString(5)
+
+                    )
+            );
+        }
+        return dtoList;
+
+
+    }
+
     public boolean saveAttendnceDetails(String aId, String num1) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
@@ -89,7 +122,31 @@ public class CourseAttendanceModel {
             }
             return dtoList;
         }
+
+    public int howMachCourseStudent() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        java.util.Date date = new java.util.Date();
+        java.sql.Date sqldate = new java.sql.Date(date.getTime());
+
+
+        String sql ="select count(attendanceID) from course_attendance WHERE date=?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setDate(1,sqldate);
+        ResultSet resultSet = pstm.executeQuery();
+
+        int a = 0;
+
+        if (resultSet.next()){
+            return resultSet.getInt(1);
+
+        }
+        return 0;
+
     }
+
+
+    }
+
 
 
 

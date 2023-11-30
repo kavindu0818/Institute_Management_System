@@ -1,24 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="532.0" prefWidth="1052.0" style="-fx-background-radius: 20; -fx-background-color: #DFE0E7;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Payment.PaymentFormController">
    <children>
       <Separator layoutX="544.0" layoutY="14.0" orientation="VERTICAL" prefHeight="504.0" prefWidth="0.0" />
-      <AnchorPane fx:id="PaymentAnc1" layoutX="35.0" layoutY="81.0" prefHeight="408.0" prefWidth="482.0" style="-fx-background-color: white;" />
+      <AnchorPane fx:id="PaymentAnc1" layoutX="36.0" layoutY="68.0" prefHeight="408.0" prefWidth="482.0" style="-fx-background-color: white;" />
       <Button layoutX="303.0" layoutY="25.0" mnemonicParsing="false" onAction="#ClassFeesOnAction" prefHeight="25.0" prefWidth="103.0" style="-fx-background-radius: 30; -fx-background-color: #180f69;" text="Class fee" textFill="#f5efef">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <AnchorPane fx:id="PaymentAnc2" layoutX="560.0" layoutY="45.0" prefHeight="471.0" prefWidth="482.0" style="-fx-background-color: white;" />
-      <Button layoutX="784.0" layoutY="11.0" mnemonicParsing="false" onAction="#ClassFeeDetailsOnAction" prefHeight="25.0" prefWidth="121.0" style="-fx-background-radius: 00; -fx-background-color: #b9cc0e;" text="Class Fee Details" textFill="#fcf6f6">
-         <font>
-            <Font name="System Bold" size="11.0" />
-         </font></Button>
-      <Button layoutX="914.0" layoutY="10.0" mnemonicParsing="false" onAction="#CourseFeeDetailsOnAction" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #054003;" text="Course Fee Details" textFill="#f8f3f3" />
+      <AnchorPane fx:id="PaymentAnc2" layoutX="560.0" layoutY="12.0" prefHeight="504.0" prefWidth="482.0" style="-fx-background-color: white;">
+         <children>
+            <TableView fx:id="tblCoursePaymentDetails" layoutX="17.0" layoutY="103.0" prefHeight="162.0" prefWidth="449.0">
+              <columns>
+                <TableColumn fx:id="colStudentID" prefWidth="100.0" text="Student ID" />
+                <TableColumn fx:id="colStudentName" prefWidth="119.0" text="Student Name" />
+                  <TableColumn fx:id="colSudentDate" prefWidth="102.0" text="Date" />
+                  <TableColumn fx:id="colCourseAmount" prefWidth="127.0" text="Amount" />
+              </columns>
+            </TableView>
+            <Label layoutX="149.0" layoutY="1.0" prefHeight="27.0" prefWidth="278.0" text="Course Payment Details">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cmbCourseID" layoutX="22.0" layoutY="49.0" prefWidth="150.0" promptText="Course ID" />
+            <Button layoutX="368.0" layoutY="70.0" mnemonicParsing="false" onAction="#btnSearchCourseDetailsOnAction" text="Search" />
+            <Label layoutX="144.0" layoutY="279.0" prefHeight="27.0" prefWidth="278.0" text="Class Payment Details">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tblClassDetails" layoutX="17.0" layoutY="353.0" prefHeight="143.0" prefWidth="449.0">
+               <columns>
+                  <TableColumn fx:id="colstuIDClass" prefWidth="100.0" text="Student ID" />
+                  <TableColumn fx:id="colStuNameClass" prefWidth="119.0" text="Student Name" />
+                  <TableColumn fx:id="colDateeClass" prefWidth="102.0" text="Date" />
+                  <TableColumn fx:id="colAmountClass" prefWidth="127.0" text="Amount" />
+               </columns>
+            </TableView>
+            <Separator layoutX="7.0" layoutY="273.0" prefHeight="0.0" prefWidth="473.0" />
+            <ComboBox fx:id="cmbClassD" layoutX="19.0" layoutY="315.0" prefWidth="150.0" promptText="Class ID" />
+            <ComboBox fx:id="cmbMonthClass" layoutX="192.0" layoutY="314.0" prefWidth="150.0" promptText="Month" />
+            <Button layoutX="371.0" layoutY="323.0" mnemonicParsing="false" onAction="#btnSearchClassOnAction" text="Search" />
+            <DatePicker fx:id="DatePickerCourse" layoutX="180.0" layoutY="49.0" />
+         </children></AnchorPane>
       <Button layoutX="413.0" layoutY="25.0" mnemonicParsing="false" onAction="#CourseFeesOnAction" prefHeight="25.0" prefWidth="97.0" style="-fx-background-radius: 30; -fx-background-color: #05535c;" text="Course Fee" textFill="#f8eeee" />
+      <Label layoutX="81.0" layoutY="492.0" text="Course Payment" />
+      <Button layoutX="192.0" layoutY="488.0" mnemonicParsing="false" onAction="#DetailsOnAction" text="Details" />
    </children>
 </AnchorPane>

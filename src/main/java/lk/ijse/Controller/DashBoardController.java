@@ -2,15 +2,19 @@ package lk.ijse.Controller;
 
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
+import lk.ijse.dto.UserDto;
+import lk.ijse.model.UserModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class DashBoardController {
     public AnchorPane OneAnc;
@@ -18,13 +22,26 @@ public class DashBoardController {
     public static AnchorPane TwoAncMain;
     public AnchorPane Twonc;
     public AnchorPane MainDashobordAncPage;
-    public ImageView userImageView;
-    public JFXTextArea txtuserName;
+    public Label lblUserName;
+    public ImageView imageView2;
+    public Label lbl5;
+    public AnchorPane shortAnc;
 
-    public void initialize() throws IOException {
+
+    @FXML
+    private JFXTextArea txtuserName;
+    @FXML
+    private ImageView imageView;
+
+    private String us = "kmw";
+
+    private UserModel um = new UserModel();
+
+    public void initialize() throws IOException, SQLException {
         Twonc.getChildren().clear();
         Twonc.getChildren().add(FXMLLoader.load(getClass().getResource("/view/DashboardOriginal.fxml")));
 
+        setPic();
     }
 
     public void RegistationOnAction(ActionEvent actionEvent) throws IOException {
@@ -71,9 +88,7 @@ public class DashBoardController {
 
         Twonc.getChildren().clear();
         Twonc.getChildren().add(FXMLLoader.load(getClass().getResource("/view/ReportForm.fxml")));
-
     }
-
     public void btnAddUserOnAction(ActionEvent actionEvent) throws IOException {
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/View/UserForm.fxml"));
         Scene scene = new Scene(anchorPane);
@@ -82,8 +97,32 @@ public class DashBoardController {
         stage.setTitle("User Manage");
         stage.centerOnScreen();
         stage.show();
+    }
+
+    public void setUserDetails(String pw) throws SQLException {
+        //us = pw;
+
+
 
     }
+
+    public void setPic() throws SQLException {
+        UserDto dto = um.getUserValue(us);
+        if (dto != null) {
+            System.out.println(dto.getUserName());
+            lblUserName.setText(dto.getUserName());
+        }
+    }
+
+
+
+
+            /*Image fxImage = um.convertBytesToJavaFXImage(dto.getImage());
+            imageView2.setImage(fxImage);*/
+
+
+
 }
+
 
 

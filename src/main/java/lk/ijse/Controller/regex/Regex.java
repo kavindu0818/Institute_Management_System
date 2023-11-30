@@ -35,7 +35,7 @@ public class Regex {
     public static Pattern getAddressPattern() {
         return addressPattern;
     }
-    private static final Pattern empAttencodePattern = Pattern.compile("^[A-Z]{2}/\\d{4}$");
+    private static final Pattern empAttencodePattern = Pattern.compile("^EA[0-9]{4,10}$");
     private static final Pattern digitPattern = Pattern.compile("^[1-9][0-9]*$");
 
     public static Pattern getDigitPattern() {

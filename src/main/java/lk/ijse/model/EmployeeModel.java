@@ -259,6 +259,23 @@ public class EmployeeModel {
 
 
     }
+
+    public int howMachEmployee() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql ="select count(emp_id) from employee";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+
+        int a = 0;
+
+        if (resultSet.next()){
+            return resultSet.getInt(1);
+
+        }
+        return 0;
+
+    }
 }
 
 

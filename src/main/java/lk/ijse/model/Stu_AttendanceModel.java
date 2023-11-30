@@ -119,5 +119,27 @@ public class Stu_AttendanceModel {
         return dtoList;
 
     }
+
+    public int howMachStudent() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        java.util.Date date = new java.util.Date();
+        java.sql.Date sqldate = new java.sql.Date(date.getTime());
+
+
+        String sql ="select count(stu_id) from stu_attendance WHERE date=?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setDate(1,sqldate);
+        ResultSet resultSet = pstm.executeQuery();
+
+        int a = 0;
+
+        if (resultSet.next()){
+            return resultSet.getInt(1);
+
+        }
+        return 0;
+
+    }
 }
 

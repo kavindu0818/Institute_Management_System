@@ -16,10 +16,7 @@ import lk.ijse.Tm.DayShedulTm;
 import lk.ijse.dto.ClassDto;
 import lk.ijse.dto.DaySheduleDto;
 import lk.ijse.dto.InstitutMangementDto;
-import lk.ijse.model.DaySheduleModel;
-import lk.ijse.model.InstituteDetailsModel;
-import lk.ijse.model.StudentfullDetailsModel;
-import lk.ijse.model.TutorModel;
+import lk.ijse.model.*;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -43,6 +40,10 @@ public class DashboardOriginalController {
     public Label lblSetFb;
     public Label lblSetContact;
     public Label lblHall;
+
+
+
+    public Label lblAllAttendance;
     // String ld = lblDate.getText();
     // String dl = lblDate.getText();
     private StudentfullDetailsModel sm = new StudentfullDetailsModel();
@@ -54,6 +55,9 @@ public class DashboardOriginalController {
         getShedulValue();
         shedulTable();
         setLabContact();
+        allAttendance();
+
+
     }
 
     public void shedulTable(){
@@ -183,6 +187,38 @@ public class DashboardOriginalController {
        } catch (SQLException e) {
            throw new RuntimeException(e);
        }
+   }
+
+   public void allAttendance(){
+
+       int clsA = 0;
+       int cosA = 0;
+
+
+
+
+       var model = new Stu_AttendanceModel();
+
+       try {
+           int count = model.howMachStudent();
+
+           clsA =count;
+       } catch (SQLException e) {
+           throw new RuntimeException(e);
+       }
+
+       var Cmodel = new CourseAttendanceModel();
+
+       try {
+           int count = Cmodel.howMachCourseStudent();
+
+           cosA = count;
+       } catch (SQLException e) {
+           throw new RuntimeException(e);
+       }
+
+       int allA = cosA + clsA;
+       lblAllAttendance.setText(String.valueOf(allA));
    }
 }
 

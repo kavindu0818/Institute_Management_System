@@ -3,6 +3,7 @@ package lk.ijse.model;
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.ClassDto;
 import lk.ijse.dto.CourseDto;
+import lk.ijse.dto.Course_detailsDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,11 +18,11 @@ public class CourseModel {
 
         String sql = "INSERT INTO course VALUES(?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1,courseID);
-        pstm.setString(2,courseName);
-        pstm.setString(3,courseFeee);
-        pstm.setString(4,date);
-        pstm.setString(5,courseDuration);
+        pstm.setString(1, courseID);
+        pstm.setString(2, courseName);
+        pstm.setString(3, courseFeee);
+        pstm.setString(4, date);
+        pstm.setString(5, courseDuration);
 
         boolean isSaved = pstm.executeUpdate() > 0;
 
@@ -39,7 +40,7 @@ public class CourseModel {
         ArrayList<CourseDto> dtoList = new ArrayList<>();
         // ClassDto dto = null;
 
-        while(resultSet.next()) {
+        while (resultSet.next()) {
             dtoList.add(
                     new CourseDto(
                             resultSet.getString(1),
@@ -54,4 +55,61 @@ public class CourseModel {
         }
         return dtoList;
     }
+
+    public List<CourseDto> getCourseID() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT *FROM course ";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+
+
+        ArrayList<CourseDto> dtoList = new ArrayList<>();
+        // ClassDto dto = null;
+
+        while (resultSet.next()) {
+            dtoList.add(
+                    new CourseDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getString(5)
+
+
+                    )
+            );
+        }
+        return dtoList;
+    }
+
+    public List<CourseDto> getAllcourseID() throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT *FROM course ";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        ResultSet resultSet = pstm.executeQuery();
+
+
+        ArrayList<CourseDto> dtoList = new ArrayList<>();
+        // ClassDto dto = null;
+
+        while (resultSet.next()) {
+            dtoList.add(
+                    new CourseDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3),
+                            resultSet.getString(4),
+                            resultSet.getString(5)
+
+
+                    )
+            );
+        }
+        return dtoList;
+    }
+
 }
+
+

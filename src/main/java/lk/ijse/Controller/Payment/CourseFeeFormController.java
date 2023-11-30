@@ -14,14 +14,17 @@ import lk.ijse.Controller.Gmail.GmailMain;
 import lk.ijse.Controller.Payment.CourseFeeDetailsFormController;
 import lk.ijse.Tm.CourseDetailsTm;
 import lk.ijse.dto.*;
-import lk.ijse.model.Course_detailsModel;
-import lk.ijse.model.Course_paymentModel;
-import lk.ijse.model.SetPaymentModel;
-import lk.ijse.model.StudentfullDetailsModel;
+import lk.ijse.model.*;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
 
 public class CourseFeeFormController {
@@ -33,6 +36,7 @@ public class CourseFeeFormController {
     public TextField txtPaymentId;
     public Label lblDateAndTime;
     public ComboBox cmbCourseDetailsID;
+    public ComboBox cmbCourse;
 
     CourseFeeDetailsFormController courseFeeDetailsFormController;
 
@@ -66,6 +70,7 @@ public class CourseFeeFormController {
     public void initialize(){
         generateNextOrderId();
         setDateAndTime();
+        setComboBoxValue();
     }
 
 
@@ -81,13 +86,61 @@ public class CourseFeeFormController {
             if (isSuccess) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Payment Change Success!").show();
                 sendMail(stuiDCursePayment.getText());
-                clearField();
+                printReport();
+              //  clearField();
+
             }
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (JRException e) {
             throw new RuntimeException(e);
         }
 
     }
+    private void printReport() throws JRException {
+        HashMap map = new HashMap();
+        map.put("StuID", CoursePayStuIDSarch.getText());
+        map.put("stuName", StuNameCourse.getText());
+        map.put("Course", cmbCourse.getValue());
+        map.put("Amount",  Double.parseDouble(txtAmountCourse.getText()));
+
+
+        // InputStream resourceAsStream = getClass().getResourceAsStream("D:\\Institute Management System\\Institute_Management_System\\src\\main\\resources\\Report\\ClassFessReport.jrxml");
+        InputStream resourceAsStream = getClass().getResourceAsStream("/Report/Corse Payment Bill.jrxml");
+
+        String subject="Payment Successful";
+
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                        jasperReport, //compiled report
+                        map,
+                        new JREmptyDataSource() //database connection
+                );
+
+        JasperViewer.viewReport(jasperPrint, false);
+
+        // JasperExportManager.exportReportToPdfFile(jasperPrint, filePath + "\\Receipt " + false+".pdf");
+
+        // GmailMain.sendOrderConformMailFile(toStugmail,subject,new File(filePath + "\\Receipt " +false+".pdf"));
+    }
+    public void setComboBoxValue(){
+        var course = new CourseModel();
+        try {
+            List<CourseDto> dtoList = course.getCourseID();
+
+            for (CourseDto dto : dtoList) {
+                cmbCourse.getItems().add(dto.getCusId());
+            }
+
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+
+    }
+
 
     public void sendMail(String Id) throws SQLException {
 

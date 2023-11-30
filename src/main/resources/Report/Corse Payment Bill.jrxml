@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Corse Payment Bill" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="eec17e31-c404-484d-9687-e87f44d23714">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<parameter name="StuID" class="java.lang.String"/>
+	<parameter name="stuName" class="java.lang.String"/>
+	<parameter name="Course" class="java.lang.String"/>
+	<parameter name="Amount" class="java.lang.Double"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="284" splitType="Stretch">
+			<image>
+				<reportElement x="170" y="-20" width="387" height="207" uuid="ed3c5a67-33c3-4b24-99e4-6b9b7d11ed7a"/>
+				<imageExpression><![CDATA["D:/Institute Management System/Institute_Management_System/src/main/resources/Assets/SHAJALOGO.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="391" y="143" width="170" height="30" uuid="247528a6-f4d5-4702-8be6-1334205c0d00"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gmail:  sahaja@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="392" y="161" width="148" height="30" uuid="c8dbeb59-77d1-44ca-95e2-bf3a9d11dbbb"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contact :  0774257738]]></text>
+			</staticText>
+			<textField pattern="HH:mm">
+				<reportElement x="394" y="186" width="144" height="30" uuid="0197082a-ae66-4e45-8932-42e04716c798"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="395" y="203" width="100" height="30" uuid="a6313ac8-4bbf-4cb0-a027-43506dbfb26b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="220" y="254" width="135" height="30" uuid="355f1e1c-583d-4d4b-8fe1-826d0f8efb89"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Course Payment]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="12" width="100" height="30" uuid="013b4fc3-a45a-49a5-bcbc-532ca8eea125"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="13" width="100" height="30" uuid="ca3fdb60-b78b-46e9-8f05-7f561d3d8e3c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="16" width="100" height="30" uuid="d21416cf-fe7f-46bf-b1c4-94547910f6ae"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Course]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="16" width="100" height="30" uuid="c6dcd2d9-8563-4c56-b2e4-272dac7db64d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="51" splitType="Stretch">
+			<textField>
+				<reportElement x="16" y="16" width="100" height="30" uuid="7530a768-f0f2-4729-a9a7-ef7d99d0637c"/>
+				<textFieldExpression><![CDATA[$P{StuID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="16" width="100" height="30" uuid="d9960c4d-2ddf-421b-8e92-7a9063aa4e6f"/>
+				<textFieldExpression><![CDATA[$P{stuName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="297" y="17" width="100" height="30" uuid="d6d0297a-a39e-4f03-959d-e6288d5ed557"/>
+				<textFieldExpression><![CDATA[$P{Course}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="16" width="100" height="30" uuid="045b3a8a-456b-4444-bf1c-b054eab99830"/>
+				<textFieldExpression><![CDATA[$P{Amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

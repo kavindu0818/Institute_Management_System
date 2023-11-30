@@ -26,4 +26,19 @@ public class ReportFormController {
         JasperViewer.viewReport(jasperPrint, false);
     }
 
+    public void btnStudentDDetailsOnAction(ActionEvent actionEvent) throws JRException, SQLException {
+        InputStream resourceAsStream = getClass().getResourceAsStream("Report/StudentDetails.jrxml");
+        JasperDesign load = JRXmlLoader.load(resourceAsStream);
+        JasperReport jasperReport = JasperCompileManager.compileReport(load);
+
+        JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                        jasperReport, //compiled report
+                        null,
+                        DbConnection.getInstance().getConnection() //database connection
+                );
+
+        JasperViewer.viewReport(jasperPrint, false);
+
+    }
 }

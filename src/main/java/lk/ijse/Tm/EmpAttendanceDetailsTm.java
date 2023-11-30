@@ -1,6 +1,5 @@
 package lk.ijse.Tm;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,11 +11,8 @@ import java.util.Date;
 @AllArgsConstructor
 @Setter
 @Getter
-public class ClassFeesDetailsTm {
-   private String studentId;
-   private String studentName;
-   private Date Date;
-   private Double amount;
-
-
+public class EmpAttendanceDetailsTm {
+    private String attendnceId;
+    private Date day;
+    private String time;
 }

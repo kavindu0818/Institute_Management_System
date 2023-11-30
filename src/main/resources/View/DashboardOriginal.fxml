@@ -175,9 +175,14 @@
             </Label>
             <Pane layoutX="45.0" layoutY="303.0" prefHeight="216.0" prefWidth="231.0" style="-fx-background-color: white;">
                <children>
-                  <Label layoutX="36.0" layoutY="14.0" prefHeight="28.0" prefWidth="175.0" text="Today Attendance ">
+                  <Label layoutX="42.0" layoutY="-1.0" prefHeight="28.0" prefWidth="175.0" text="Today Attendance ">
                      <font>
                         <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblAllAttendance" layoutX="57.0" layoutY="40.0" prefHeight="125.0" prefWidth="163.0">
+                     <font>
+                        <Font name="System Bold" size="80.0" />
                      </font>
                   </Label>
                </children>

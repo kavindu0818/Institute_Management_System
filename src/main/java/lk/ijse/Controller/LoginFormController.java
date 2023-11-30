@@ -3,14 +3,18 @@ package lk.ijse.Controller;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.dto.UserDto;
 import lk.ijse.model.UserModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class LoginFormController {
     public AnchorPane root;
@@ -18,44 +22,41 @@ public class LoginFormController {
     public TextField txtPassword;
     public JFXTextField txtUserNameID;
 
+    private DashBoardController db = new DashBoardController();
     private UserModel um = new UserModel();
 
-    public void logOnAction(ActionEvent actionEvent) throws IOException {
+    public void logOnAction(ActionEvent actionEvent) throws IOException, SQLException {
 
-        /*String userName = txtUserName.getText();
+        String userName = txtUserNameID.getText();
         String passwrd = txtPassword.getText();
 
-        String un = "kavindu";
-        String pw = "kmw";
+        UserDto dto = um.selectUserValue();
 
-        if (un.equals(userName) && pw.equals(passwrd)) {
-            loginDashbord();
+        if (dto != null) {
+            String pw = dto.getPassword();
+            String un = dto.getUserName();
 
-        } else {
-            new Alert(Alert.AlertType.WARNING, "Cheak Your Password And userName").show();
-
-        }*/
-        loginDashbord();
-    }
-
-       public void loginDashbord () throws IOException {
-
-          // String userName = txtUserName.getText();
-           //String password = txtPassword.getText();
-
-          // boolean isSave = um.searchUser();
+            if (pw.equals(passwrd) && un.equals(userName)) {
 
 
-           AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/View/DashBoard.fxml"));
-           Scene scene = new Scene(anchorPane);
-           Stage stage = (Stage) root.getScene().getWindow();
-           stage.setScene(scene);
-           stage.setTitle("DashBoard Manage");
-           stage.centerOnScreen();
-           stage.show();
+                db.setUserDetails(pw);
+                loginDashboard();
+
+
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Check Your Password And userName").show();
+            }
         }
-
-
-
     }
 
+    public void loginDashboard() throws IOException {
+
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/View/DashBoard.fxml"));
+        Scene scene = new Scene(anchorPane);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("DashBoard Manage");
+        stage.centerOnScreen();
+        stage.show();
+    }
+}
