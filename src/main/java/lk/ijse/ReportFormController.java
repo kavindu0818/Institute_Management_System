@@ -1,3 +1,5 @@
+package lk.ijse;
+
 import javafx.event.ActionEvent;
 import lk.ijse.db.DbConnection;
 import net.sf.jasperreports.engine.*;
@@ -9,9 +11,7 @@ import java.io.InputStream;
 import java.sql.SQLException;
 
 public class ReportFormController {
-
-
-    public void btnEmployeeDetailsOnAction(ActionEvent actionEvent) throws JRException, SQLException {
+    public void btnEmployeeDetailsOnAction(ActionEvent actionEvent) throws SQLException, JRException {
         InputStream resourceAsStream = getClass().getResourceAsStream("Report/Employee_Details.jrxml");
         JasperDesign load = JRXmlLoader.load(resourceAsStream);
         JasperReport jasperReport = JasperCompileManager.compileReport(load);
@@ -24,6 +24,8 @@ public class ReportFormController {
                 );
 
         JasperViewer.viewReport(jasperPrint, false);
+
+
     }
 
     public void btnStudentDDetailsOnAction(ActionEvent actionEvent) throws JRException, SQLException {
@@ -39,6 +41,8 @@ public class ReportFormController {
                 );
 
         JasperViewer.viewReport(jasperPrint, false);
+
+
 
     }
 }

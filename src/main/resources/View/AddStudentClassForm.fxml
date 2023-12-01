@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="345.0" prefWidth="263.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddStudentClassFormController">
+<AnchorPane prefHeight="345.0" prefWidth="263.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.AddClassAndCourse.AddStudentClassFormController">
    <children>
       <JFXTextField fx:id="txtStudentID" layoutX="12.0" layoutY="56.0" prefHeight="25.0" prefWidth="230.0" />
       <Label layoutX="10.0" layoutY="39.0" text="Student ID">
@@ -31,19 +31,19 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtAttenAndPay" layoutX="12.0" layoutY="230.0" prefHeight="25.0" prefWidth="230.0" />
-      <Label layoutX="11.0" layoutY="213.0" prefHeight="17.0" prefWidth="248.0" text="Attendance Number And Payment Number">
+      <JFXTextField fx:id="txtAttenAndPay" layoutX="12.0" layoutY="208.0" prefHeight="25.0" prefWidth="230.0" />
+      <Label layoutX="10.0" layoutY="193.0" prefHeight="17.0" prefWidth="248.0" text="Attendance Number And Payment Number">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="153.0" layoutY="284.0" mnemonicParsing="false" onAction="#AddClassStudentOnAction" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #780c02;" text="Add" textFill="#f8f5f5">
+      <Button layoutX="152.0" layoutY="298.0" mnemonicParsing="false" onAction="#AddClassStudentOnAction" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #780c02; -fx-background-radius: 20;" text="Add" textFill="#f8f5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
       <JFXTextField fx:id="txtStudentName" layoutX="10.0" layoutY="110.0" prefHeight="25.0" prefWidth="230.0" />
-      <Button layoutX="31.0" layoutY="283.0" mnemonicParsing="false" onAction="#btnQrGenaratorOnAction" style="-fx-background-color: black;" text="Qr Genarator" textFill="#fffbfb">
+      <Button layoutX="18.0" layoutY="300.0" mnemonicParsing="false" onAction="#btnQrGenaratorOnAction" style="-fx-background-color: black;" text="Qr Genarator" textFill="#fffbfb">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

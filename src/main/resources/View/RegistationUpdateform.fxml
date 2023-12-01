@@ -14,13 +14,16 @@
 
 <AnchorPane fx:id="RegistationUpdate" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Registartion.RegistationUpdateformController">
    <children>
-      <Label layoutX="476.0" layoutY="17.0" prefHeight="17.0" prefWidth="238.0" text="Registation Update">
+      <Label layoutX="476.0" layoutY="17.0" prefHeight="17.0" prefWidth="238.0" text="Registation Update" textFill="#0d0000">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
       <TextField fx:id="txtSearchId" layoutX="44.0" layoutY="86.0" prefHeight="25.0" prefWidth="215.0" />
-      <Button layoutX="258.0" layoutY="86.0" mnemonicParsing="false" onAction="#LoarUpdateDetails" prefHeight="25.0" prefWidth="64.0" text="Search" />
+      <Button layoutX="261.0" layoutY="86.0" mnemonicParsing="false" onAction="#LoarUpdateDetails" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #03155c; -fx-background-radius: 20;" text="Search" textFill="#f8f4f4">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font></Button>
       <TextField fx:id="txtUpdateName" layoutX="579.0" layoutY="140.0" prefHeight="25.0" prefWidth="386.0" promptText="First Name" />
       <TextField fx:id="txtUpdateRegidd" layoutX="389.0" layoutY="140.0" prefHeight="25.0" prefWidth="171.0" promptText="Student Id" />
       <TextField fx:id="txtUpdateStuGmail" layoutX="223.0" layoutY="217.0" prefHeight="25.0" prefWidth="545.0" promptText="Gmail" />
@@ -37,7 +40,10 @@
                </image>
             </ImageView>
             <ImageView fx:id="imageView" fitHeight="157.0" fitWidth="171.0" layoutX="-7.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="openBrowser" layoutX="34.0" layoutY="149.0" mnemonicParsing="false" onAction="#OpenBrowserOnAction" text="Open Browser" />
+            <Button fx:id="openBrowser" layoutX="34.0" layoutY="149.0" mnemonicParsing="false" onAction="#OpenBrowserOnAction" style="-fx-background-color: #000208;" text="Open Browser" textFill="#f5f4f4">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
          </children>
       </Pane>
       <ComboBox fx:id="cmbSubjct" layoutX="789.0" layoutY="217.0" prefHeight="25.0" prefWidth="187.0" promptText="Subject" />
@@ -48,11 +54,14 @@
       <TextField fx:id="txtUpdatePerantContact" layoutX="395.0" layoutY="323.0" prefHeight="25.0" prefWidth="159.0" promptText="Contact Number" />
       <TextField fx:id="txtUpdatePerantId" layoutX="571.0" layoutY="323.0" prefHeight="25.0" prefWidth="159.0" promptText="Perant ID" />
       <TextField fx:id="txtUpdatePerantGmail" layoutX="50.0" layoutY="362.0" prefHeight="25.0" prefWidth="508.0" promptText="Gmail" />
-      <Button layoutX="852.0" layoutY="438.0" mnemonicParsing="false" onAction="#SaveUpdateOnAction" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #044040;" text="Save " textFill="#fcfcfc">
+      <Button layoutX="852.0" layoutY="438.0" mnemonicParsing="false" onAction="#SaveUpdateOnAction" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #044040; -fx-background-radius: 20;" text="Save " textFill="#fcfcfc">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button layoutX="18.0" layoutY="19.0" mnemonicParsing="false" onAction="#UpdateBackAction" text="Back" />
+      <Button layoutX="18.0" layoutY="19.0" mnemonicParsing="false" onAction="#UpdateBackAction" prefHeight="25.0" prefWidth="64.0" style="-fx-background-radius: 20; -fx-background-color: black;" text="&lt; Back" textFill="#fcfafa">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font></Button>
    </children>
 </AnchorPane>

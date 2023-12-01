@@ -122,7 +122,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="253" splitType="Stretch">
+		<band height="211" splitType="Stretch">
 			<image>
 				<reportElement x="167" y="-22" width="340" height="231" uuid="02f14353-9c24-40d0-9552-f50d3876c15f"/>
 				<imageExpression><![CDATA["D:/Institute Management System/Institute_Management_System/src/main/resources/Assets/harfeLogo.png"]]></imageExpression>
@@ -142,14 +142,14 @@
 				<text><![CDATA[Higher Education Center]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="591" y="120" width="218" height="30" uuid="cb8d8844-0b0d-4351-80bd-bfc518091ec8"/>
+				<reportElement x="582" y="120" width="218" height="30" uuid="cb8d8844-0b0d-4351-80bd-bfc518091ec8"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[Gmail:     sahaja@gmail.com]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="592" y="142" width="248" height="30" uuid="7fb2915e-1ca5-4924-9a84-aec83a657723"/>
+				<reportElement x="581" y="142" width="248" height="30" uuid="7fb2915e-1ca5-4924-9a84-aec83a657723"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>

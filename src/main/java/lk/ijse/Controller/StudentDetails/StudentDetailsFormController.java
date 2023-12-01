@@ -1,4 +1,4 @@
-package lk.ijse.Controller;
+package lk.ijse.Controller.StudentDetails;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -82,6 +82,7 @@ public class StudentDetailsFormController {
     }
 
     public void btnSearchStudent(ActionEvent actionEvent) {
+
         String iD = txtSearchStudentID.getText();
 
         ObservableList<StudentDetailsTm> obList = FXCollections.observableArrayList();
@@ -103,72 +104,94 @@ public class StudentDetailsFormController {
                 tblStudenDetails.setItems(obList);
                 tblStudenDetails.refresh();
 
+
             }
 
 
-                for (StudentfullDetailsDto dto : dtoList) {
-                    obList2.add(
-                            new ParentDetails(
-                                    dto.getPerant_Name(),
-                                    dto.getPerant_Gmail(),
-                                    dto.getPerant_contactNo()
+            for (StudentfullDetailsDto dto : dtoList) {
+                obList2.add(
+                        new ParentDetails(
+                                dto.getPerant_Name(),
+                                dto.getPerant_Gmail(),
+                                dto.getPerant_contactNo()
 
+                        )
+                );
+                tblPerantDetails.setItems(obList2);
+                tblPerantDetails.refresh();
+
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        setAttendance();
+    }
+
+        public void setAttendance() {
+            String id1 = txtSearchStudentID.getText();
+            ObservableList<AttendanceDetailsTm> obList3 = FXCollections.observableArrayList();
+
+            try {
+                List<StudentAttendance> dtoList1 = stuAttendanceModel.getStudentAllAttendnce(id1);
+                for (StudentAttendance dto : dtoList1) {
+                    obList3.add(
+                            new AttendanceDetailsTm(
+                                    dto.getDate(),
+                                    dto.getClass_id(),
+                                    dto.getTime()
                             )
                     );
-                    tblPerantDetails.setItems(obList2);
-                    tblPerantDetails.refresh();
+                    tblAttendanceDetails.setItems(obList3);
+                    tblAttendanceDetails.refresh();
 
                 }
 
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        ObservableList<AttendanceDetailsTm> obList3 = FXCollections.observableArrayList();
-
-        try{
-            List<StudentAttendance> dtoList = stuAttendanceModel.getStudentAllAttendnce(iD);
-            for (StudentAttendance dto : dtoList) {
-                obList3.add(
-                        new AttendanceDetailsTm(
-                                dto.getDate(),
-                                dto.getClass_id(),
-                                dto.getTime()
-                        )
-                );
-                tblAttendanceDetails.setItems(obList3);
-                tblAttendanceDetails.refresh();
-
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
+            setPayment();
+        }
+  public void setPayment() {
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+      String id2 = txtSearchStudentID.getText();
+
+      ObservableList<PaymentDetailsTm> obList4 = FXCollections.observableArrayList();
+      //obList4.clear();
+
+    try {
+        List<Class_paymentDto> dtoList2 = classPaymentModel.getStudentAllPayment(id2);
+        if (dtoList2 == null) {
+            obList4.clear();
         }
 
-        ObservableList<PaymentDetailsTm> obList4 = FXCollections.observableArrayList();
+        for (Class_paymentDto dto : dtoList2) {
+            obList4.add(
+                    new PaymentDetailsTm(
+                            dto.getClass_Id(),
+                            dto.getAmount(),
+                            dto.getDate()
+                    )
+            );
 
-        try{
-            List<Class_paymentDto> dtoList = classPaymentModel.getStudentAllPayment(iD);
-            for (Class_paymentDto dto : dtoList) {
-                obList4.add(
-                        new PaymentDetailsTm(
-                                dto.getClass_Id(),
-                                dto.getAmount(),
-                                dto.getDate()
-                        )
-                );
-                tblPaymentDetails.setItems(obList4);
-                tblPaymentDetails.refresh();
 
-            }
+            tblPaymentDetails.setItems(obList4);
+            tblPaymentDetails.refresh();
 
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
 
-        try{
-            StudentfullDetailsDto studentDto = up.searchCustomer(iD);
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+      setImage();
+}
+
+public void setImage(){
+    String id4 = txtSearchStudentID.getText();
+
+    try{
+            StudentfullDetailsDto studentDto = up.searchCustomer(id4);
             if (studentDto != null) {
 
                 Image fxImage = up.convertBytesToJavaFXImage(studentDto.getImage());
@@ -181,3 +204,4 @@ public class StudentDetailsFormController {
 
     }
 }
+

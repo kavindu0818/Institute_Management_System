@@ -8,66 +8,71 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="517.0" prefWidth="413.0" style="-fx-background-radius: 30;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UserFormController">
+<AnchorPane prefHeight="517.0" prefWidth="413.0" style="-fx-background-radius: 30;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.UserFormController">
    <children>
-      <Label layoutX="159.0" layoutY="19.0" text="ADD USER">
+      <Label layoutX="155.0" layoutY="1.0" text="ADD USER">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <Button fx:id="imageSelectbtn" layoutX="55.0" layoutY="205.0" mnemonicParsing="false" onAction="#btnOpenBrowserOnAction" style="-fx-background-color: black; -fx-background-radius: 20;" text="Open Browser" textFill="#eee9e9">
+      <Button fx:id="imageSelectbtn" layoutX="55.0" layoutY="197.0" mnemonicParsing="false" onAction="#btnOpenBrowserOnAction" style="-fx-background-color: black; -fx-background-radius: 20;" text="Open Browser" textFill="#eee9e9">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Button>
-      <JFXTextField fx:id="txtUserName" layoutX="191.0" layoutY="93.0" prefHeight="25.0" prefWidth="174.0" />
-      <JFXTextField fx:id="txtPassword" layoutX="192.0" layoutY="140.0" prefHeight="25.0" prefWidth="174.0" />
-      <Label layoutX="188.0" layoutY="328.0" text="User Name">
+      <JFXTextField fx:id="txtUserName" layoutX="191.0" layoutY="132.0" prefHeight="25.0" prefWidth="174.0" />
+      <JFXTextField fx:id="txtPassword" layoutX="191.0" layoutY="176.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="188.0" layoutY="343.0" text="User Name">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <Label layoutX="194.0" layoutY="126.0" text="User Password">
+      <Label layoutX="189.0" layoutY="162.0" text="User Password">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <Button layoutX="278.0" layoutY="173.0" mnemonicParsing="false" onAction="#btnAddUseronAction" prefHeight="27.0" prefWidth="91.0" style="-fx-background-color: #012e0d; -fx-background-radius: 20;" text="Add" textFill="#f2ecec">
+      <Button layoutX="278.0" layoutY="219.0" mnemonicParsing="false" onAction="#btnAddUseronAction" prefHeight="27.0" prefWidth="91.0" style="-fx-background-color: #012e0d; -fx-background-radius: 20;" text="Add" textFill="#f2ecec">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <ImageView fx:id="imageView" fitHeight="115.0" fitWidth="160.0" layoutX="15.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="lbl1" layoutX="117.0" layoutY="357.0" prefHeight="32.0" prefWidth="214.0" />
-      <Label layoutX="140.0" layoutY="244.0" prefHeight="17.0" prefWidth="208.0" text="UPDATE USER">
+      <ImageView fx:id="imageView" fitHeight="115.0" fitWidth="160.0" layoutX="15.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="125.0" layoutY="264.0" prefHeight="17.0" prefWidth="208.0" text="UPDATE USER">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtUpName" layoutX="187.0" layoutY="342.0" prefHeight="25.0" prefWidth="174.0" />
-      <Label layoutX="191.0" layoutY="75.0" text="User Name">
+      <JFXTextField fx:id="txtUpName" layoutX="187.0" layoutY="359.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="191.0" layoutY="116.0" text="User Name">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtUpuPass" layoutX="189.0" layoutY="382.0" prefHeight="25.0" prefWidth="174.0" />
-      <Label layoutX="188.0" layoutY="369.0" text="User Password">
+      <JFXTextField fx:id="txtUpuPass" layoutX="189.0" layoutY="404.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="188.0" layoutY="389.0" text="User Password">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Label>
-      <Separator layoutX="14.0" layoutY="236.0" prefHeight="4.0" prefWidth="383.0" />
-      <ImageView fx:id="updateUserImage" fitHeight="115.0" fitWidth="160.0" layoutX="17.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="imageSelectbtn1" layoutX="53.0" layoutY="411.0" mnemonicParsing="false" onAction="#btnOpenUpdate" style="-fx-background-color: black; -fx-background-radius: 20;" text="Open Browser" textFill="#eee9e9">
+      <Separator layoutX="14.0" layoutY="261.0" prefHeight="4.0" prefWidth="383.0" />
+      <ImageView fx:id="updateUserImage" fitHeight="115.0" fitWidth="160.0" layoutX="17.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="imageSelectbtn1" layoutX="53.0" layoutY="431.0" mnemonicParsing="false" onAction="#btnOpenUpdate" style="-fx-background-color: black; -fx-background-radius: 20;" text="Open Browser" textFill="#eee9e9">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Button>
-      <Button layoutX="276.0" layoutY="412.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="27.0" prefWidth="91.0" style="-fx-background-color: #012e0d; -fx-background-radius: 20;" text="Update" textFill="#f2ecec">
+      <Button layoutX="276.0" layoutY="444.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="27.0" prefWidth="91.0" style="-fx-background-color: #012e0d; -fx-background-radius: 20;" text="Update" textFill="#f2ecec">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <JFXTextField fx:id="txtSearchUser" layoutX="219.0" layoutY="284.0" onAction="#txtButtonUpdateSSerachOnActon" prefHeight="25.0" prefWidth="149.0" promptText="Enter User Pasword" />
+      <JFXTextField fx:id="txtSearchUser" layoutX="212.0" layoutY="301.0" onAction="#txtButtonUpdateSSerachOnActon" prefHeight="25.0" prefWidth="149.0" promptText="Enter User ID" />
+      <JFXTextField fx:id="txtUserID" layoutX="189.0" layoutY="84.0" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="189.0" layoutY="68.0" text="User ID">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

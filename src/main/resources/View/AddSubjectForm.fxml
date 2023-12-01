@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="209.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AddSubjectFormController">
+<AnchorPane prefHeight="209.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Shadule.AddSubjectFormController">
    <children>
       <Label layoutX="81.0" layoutY="80.0" prefHeight="17.0" prefWidth="95.0" text="Subject ID">
          <font>

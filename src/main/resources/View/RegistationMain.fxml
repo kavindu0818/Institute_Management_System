@@ -54,7 +54,7 @@
             </ImageView>
             <Label layoutX="71.0" layoutY="82.0" prefHeight="17.0" prefWidth="130.0" text="Add Image " />
             <ImageView fx:id="img" fitHeight="127.0" fitWidth="200.0" layoutX="-5.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="imgSelectBtn" layoutX="61.0" layoutY="128.0" mnemonicParsing="false" onAction="#OpenBrowserOnAction" style="-fx-background-color: black;" text="Open Browser" textFill="#f8f7f7">
+            <Button fx:id="imgSelectBtn" layoutX="59.0" layoutY="127.0" mnemonicParsing="false" onAction="#OpenBrowserOnAction" style="-fx-background-color: black;" text="Open Browser" textFill="#f8f7f7">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
@@ -72,7 +72,7 @@
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button layoutX="570.0" layoutY="455.0" mnemonicParsing="false" onAction="#RegisstaationSaveOnAction" prefHeight="21.0" prefWidth="104.0" style="-fx-background-color: blue; -fx-background-radius: 20;" text="Submit" textFill="#fff8f8">
+      <Button layoutX="412.0" layoutY="502.0" mnemonicParsing="false" onAction="#RegisstaationSaveOnAction" prefHeight="21.0" prefWidth="104.0" style="-fx-background-color: #040d33; -fx-background-radius: 20;" text="Submit" textFill="#fff8f8">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>

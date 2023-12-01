@@ -13,7 +13,7 @@
 
 <AnchorPane fx:id="AncClassAttendance" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Attendance.AttendanceDetailsFormController">
    <children>
-      <TableView fx:id="tblAttendanceView" layoutX="20.0" layoutY="203.0" prefHeight="309.0" prefWidth="704.0">
+      <TableView fx:id="tblAttendanceView" layoutX="20.0" layoutY="203.0" prefHeight="309.0" prefWidth="704.0" stylesheets="@../css/Table.css">
         <columns>
           <TableColumn fx:id="colStudentId" prefWidth="129.0" text="Student ID" />     
           <TableColumn fx:id="colStudentName" prefWidth="213.0" text="Student Name" />
@@ -27,7 +27,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TableView fx:id="tblClassDetailsView" layoutX="741.0" layoutY="203.0" prefHeight="309.0" prefWidth="264.0">
+      <TableView fx:id="tblClassDetailsView" layoutX="741.0" layoutY="203.0" prefHeight="309.0" prefWidth="264.0" stylesheets="@../css/Table.css">
         <columns>
           <TableColumn fx:id="colClassId" prefWidth="112.0" text="Class ID" />
           <TableColumn fx:id="colClassName" prefWidth="151.0" text="Class Name" />
@@ -44,6 +44,6 @@
             <Image url="@../Assets/AttendanceReport.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBackOnAction" text="Back" />
+      <Button layoutX="20.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="&lt;Back" textFill="#fcf6f6" />
    </children>
 </AnchorPane>

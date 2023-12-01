@@ -1,3 +1,5 @@
+package lk.ijse.Controller.AddClassAndCourse;
+
 import com.google.zxing.WriterException;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
@@ -9,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.Controller.QrGenarator.QrGenerator;
+import lk.ijse.Controller.regex.Regex;
 import lk.ijse.dto.ClassDto;
 import lk.ijse.dto.Class_DetailsDto;
 import lk.ijse.model.ClassModel;
@@ -51,26 +54,53 @@ public class AddStudentClassFormController {
         }
     }
 
-    public void AddClassStudentOnAction(ActionEvent actionEvent) {
-        String stuID = txtStudentID.getText();
-        String classID = (String) cmbClassID.getValue();
-        String stuName = txtStudentName.getText();
-        String fullID = txtAttenAndPay.getText();
 
-        var ad = new Class_DetailsDto(fullID,stuID,classID,stuName);
 
-        try{
-            boolean isSaved = cm.saveClassDetails(ad);
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Add class Details").show();
-            }else {
-                new Alert(Alert.AlertType.WARNING,"Not Add Details").show();
+    public void AddClassStudentOnAction(ActionEvent actionEvent){
+        if(isCheckValue()){
+            String stuID = txtStudentID.getText();
+            String classID = (String) cmbClassID.getValue();
+            String stuName = txtStudentName.getText();
+            String fullID = txtAttenAndPay.getText();
+
+            var ad = new Class_DetailsDto(fullID, stuID, classID, stuName);
+
+            try {
+                boolean isSaved = cm.saveClassDetails(ad);
+                if (isSaved) {
+                    new Alert(Alert.AlertType.INFORMATION, "Add class Details").show();
+                    clean();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Not Add Details").show();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
 
 
+    }
+    private boolean isCheckValue(){
+        if (!(Regex.getCodePattern().matcher(txtStudentID.getText()).matches())) {
+            new Alert(Alert.AlertType.WARNING,"Student ID Not Valid").show();
+            return false;
+        }
+        if (!(Regex.getClassIDPattern().matcher(txtAttenAndPay.getText()).matches())) {
+            new Alert(Alert.AlertType.WARNING,"Attenddance ID Not Valid").show();
+            return false;
+        }
+        if (!(Regex.getNamePattern().matcher(txtStudentName.getText()).matches())) {
+            new Alert(Alert.AlertType.WARNING,"Student Name Not Valid").show();
+            return false;
+        }
+        return true;
+
+    }
+
+    public void clean(){
+        txtStudentID.clear();
+        txtStudentName.clear();
+        txtAttenAndPay.clear();
     }
 
 

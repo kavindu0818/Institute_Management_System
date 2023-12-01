@@ -1,4 +1,4 @@
-package lk.ijse.Controller;
+package lk.ijse.Controller.DashBoard;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
@@ -16,6 +17,7 @@ import lk.ijse.Tm.DayShedulTm;
 import lk.ijse.dto.ClassDto;
 import lk.ijse.dto.DaySheduleDto;
 import lk.ijse.dto.InstitutMangementDto;
+import lk.ijse.dto.NoticeDto;
 import lk.ijse.model.*;
 
 import java.sql.SQLException;
@@ -42,11 +44,12 @@ public class DashboardOriginalController {
     public Label lblHall;
 
 
-
     public Label lblAllAttendance;
+    public TextArea txtNoticeField;
     // String ld = lblDate.getText();
     // String dl = lblDate.getText();
     private StudentfullDetailsModel sm = new StudentfullDetailsModel();
+
     public void initialize() {
         setLableStu();
         setLabletutor();
@@ -56,11 +59,12 @@ public class DashboardOriginalController {
         shedulTable();
         setLabContact();
         allAttendance();
-
+        notice();
 
     }
 
-    public void shedulTable(){
+
+    public void shedulTable() {
         colClass.setCellValueFactory(new PropertyValueFactory<>("className"));
         colStartTime.setCellValueFactory(new PropertyValueFactory<>("startTime"));
         colEndTime.setCellValueFactory(new PropertyValueFactory<>("endTime"));
@@ -133,7 +137,37 @@ public class DashboardOriginalController {
         }
     }
 
-   /* public void getShedulValue() {
+    /* public void getShedulValue() {
+         var smt = new DaySheduleModel();
+
+         ObservableList<DayShedulTm> obList = FXCollections.observableArrayList();
+
+         try {
+             List<DaySheduleDto> dtoList = smt.getAllShedul();
+
+             for (DaySheduleDto dto : dtoList) {
+                 String date = dto.getDate();
+
+                 if (date.equals(lblDate.getText())) {
+                     obList.add(
+                             new DayShedulTm(
+                                     dto.getClassName(),
+                                     dto.getStime(),
+                                     dto.getETime()
+                             )
+                     );
+                 }
+             }
+
+             // Move these lines outside of the loop
+             tblShedulView.setItems(obList);
+             tblShedulView.refresh();
+
+         } catch (SQLException e) {
+             throw new RuntimeException(e);
+         }
+     }*/
+    public void getShedulValue() {
         var smt = new DaySheduleModel();
 
         ObservableList<DayShedulTm> obList = FXCollections.observableArrayList();
@@ -142,83 +176,68 @@ public class DashboardOriginalController {
             List<DaySheduleDto> dtoList = smt.getAllShedul();
 
             for (DaySheduleDto dto : dtoList) {
-                String date = dto.getDate();
-
-                if (date.equals(lblDate.getText())) {
-                    obList.add(
-                            new DayShedulTm(
-                                    dto.getClassName(),
-                                    dto.getStime(),
-                                    dto.getETime()
-                            )
-                    );
-                }
+                obList.add(new DayShedulTm(
+                                dto.getClassName(),
+                                dto.getStime(),
+                                dto.getETime()
+                        )
+                );
             }
 
-            // Move these lines outside of the loop
+
             tblShedulView.setItems(obList);
             tblShedulView.refresh();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }*/
-   public  void getShedulValue() {
-       var smt = new DaySheduleModel();
+    }
 
-       ObservableList<DayShedulTm> obList = FXCollections.observableArrayList();
+    public void allAttendance() {
 
-       try {
-           List<DaySheduleDto> dtoList = smt.getAllShedul();
-
-           for (DaySheduleDto dto : dtoList) {
-                   obList.add(new DayShedulTm(
-                           dto.getClassName(),
-                           dto.getStime(),
-                           dto.getETime()
-                   )
-                   );
-               }
+        int clsA = 0;
+        int cosA = 0;
 
 
-           tblShedulView.setItems(obList);
-           tblShedulView.refresh();
+        var model = new Stu_AttendanceModel();
 
-       } catch (SQLException e) {
-           throw new RuntimeException(e);
-       }
-   }
+        try {
+            int count = model.howMachStudent();
 
-   public void allAttendance(){
+            clsA = count;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
-       int clsA = 0;
-       int cosA = 0;
+        var Cmodel = new CourseAttendanceModel();
+
+        try {
+            int count = Cmodel.howMachCourseStudent();
+
+            cosA = count;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        int allA = cosA + clsA;
+        lblAllAttendance.setText(String.valueOf(allA));
+    }
+
+    private void notice() {
+        var nm = new NoticeModel();
+        try {
+            List<NoticeDto> dtoList = nm.getAllNotice();
+
+            for (NoticeDto dto : dtoList) {
+                txtNoticeField.setText(dto.getNote());
+
+            }
 
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
-
-       var model = new Stu_AttendanceModel();
-
-       try {
-           int count = model.howMachStudent();
-
-           clsA =count;
-       } catch (SQLException e) {
-           throw new RuntimeException(e);
-       }
-
-       var Cmodel = new CourseAttendanceModel();
-
-       try {
-           int count = Cmodel.howMachCourseStudent();
-
-           cosA = count;
-       } catch (SQLException e) {
-           throw new RuntimeException(e);
-       }
-
-       int allA = cosA + clsA;
-       lblAllAttendance.setText(String.valueOf(allA));
-   }
+    }
 }
 

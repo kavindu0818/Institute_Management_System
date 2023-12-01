@@ -1,4 +1,4 @@
-package lk.ijse.Controller;
+package lk.ijse.Controller.DashBoard;
 
 import com.jfoenix.controls.JFXTextArea;
 import javafx.event.ActionEvent;
@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.Controller.LoginFormController;
 import lk.ijse.dto.UserDto;
 import lk.ijse.model.UserModel;
 
@@ -111,9 +112,9 @@ public class DashBoardController {
     }
 
     public void setPic() throws SQLException {
-        UserDto dto = um.getUserValue(us);
+        UserDto dto = um.getUserValueUser(us);
         if (dto != null) {
-            System.out.println(dto.getUserName());
+
             lbl10.setText(dto.getUserName());
             Image fxImage = um.convertBytesToJavaFXImage(dto.getImage());
             UserImage.setImage(fxImage);

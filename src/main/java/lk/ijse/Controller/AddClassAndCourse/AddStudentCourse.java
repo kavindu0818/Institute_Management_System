@@ -1,7 +1,14 @@
+package lk.ijse.Controller.AddClassAndCourse;
+
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import lk.ijse.Controller.regex.Regex;
 import lk.ijse.dto.ClassDto;
 import lk.ijse.dto.Class_DetailsDto;
 import lk.ijse.dto.CourseDto;
@@ -11,6 +18,7 @@ import lk.ijse.model.Class_DetailsModel;
 import lk.ijse.model.CourseModel;
 import lk.ijse.model.Course_detailsModel;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -31,7 +39,7 @@ public class AddStudentCourse {
     private Class_DetailsModel classDetailsModel =new Class_DetailsModel();
 
     public void initialize(){
-        setClassIDcmb();
+
          setCoursecmb();
        // generateNextOrderId();
     }
@@ -68,25 +76,28 @@ public class AddStudentCourse {
     }
 
     public void AddStudentCorse(ActionEvent actionEvent) {
-        String courseId = (String) cmbCourseID.getValue();
-        String courseName = (String)cmbCourseName.getValue();
-        String stuId = txtStudentCourseID.getText();
-        String stuName = txtStudentName.getText();
-        Double amount = Double.valueOf(txtAmount.getText());
-        String attendance = txtAttendnce.getText();
-        String classID = (String) cmbClassCID.getValue();
-       // String className = (String) cmbClasCIName.getValue();
-        String paymentID = txtStudentPaymentID.getText();
-        try {
-            boolean isSaved = courseDetailsModel.saveCourseDetails(paymentID,courseId,stuId,stuName,courseName,amount);
 
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Add Course Details").show();
-            }else{
-                new Alert(Alert.AlertType.WARNING,"Not Add Course Details").show();
+        if (isCheckValue()) {
+            String courseId = (String) cmbCourseID.getValue();
+            String courseName = (String) cmbCourseName.getValue();
+            String stuId = txtStudentCourseID.getText();
+            String stuName = txtStudentName.getText();
+            Double amount = Double.valueOf(txtAmount.getText());
+           // String attendance = txtAttendnce.getText();
+           // String classID = (String) cmbClassCID.getValue();
+            // String className = (String) cmbClasCIName.getValue();
+            String paymentID = txtStudentPaymentID.getText();
+            try {
+                boolean isSaved = courseDetailsModel.saveCourseDetails(paymentID, courseId, stuId, stuName, courseName, amount);
+
+                if (isSaved) {
+                    new Alert(Alert.AlertType.INFORMATION, "Add Course Details").show();
+                } else {
+                    new Alert(Alert.AlertType.WARNING, "Not Add Course Details").show();
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
 
        /* try{
@@ -100,6 +111,33 @@ public class AddStudentCourse {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }*/
+    }
+
+    private boolean isCheckValue() {
+        if (!(Regex.getCodePattern().matcher(txtStudentCourseID.getText()).matches())) {
+            new Alert(Alert.AlertType.WARNING,"Student ID Not Valid").show();
+            return false;
+        }
+        if (!(Regex.getNamePattern().matcher(txtStudentName.getText()).matches())) {
+            new Alert(Alert.AlertType.WARNING,"Student ID Not Valid").show();
+            return false;
+        }
+        if (!(Regex.getCourseIDAttencodePattern().matcher(txtStudentPaymentID.getText()).matches())) {
+            new Alert(Alert.AlertType.WARNING,"Student ID Not Valid").show();
+            return false;
+        }
+        return true;
+    }
+
+    public void btnQrGenarator(ActionEvent actionEvent) throws IOException {
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/View/QrGenarateForm.fxml"));
+        Scene scene = new Scene(anchorPane);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setTitle("User Manage");
+        stage.centerOnScreen();
+        stage.show();
+
     }
    /* private void generateNextOrderId() {
         try {

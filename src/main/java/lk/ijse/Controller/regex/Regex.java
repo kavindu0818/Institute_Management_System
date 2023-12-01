@@ -24,25 +24,34 @@ public class Regex {
 
     private static final Pattern datePattern = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
     private static final Pattern codePattern = Pattern.compile("^S\\d{4}$");
+    private static final Pattern classAttendanceIDPattern = Pattern.compile("^SA\\d{4}$");
 
-
+    private static final Pattern usercodePattern = Pattern.compile("^U\\d{4}$");
     private static final Pattern addressPattern = Pattern.compile("^No\\s\\d+(?:,[\\s\\w]+)+$");
 
 
     private static final Pattern gradePattern = Pattern.compile("^Grade\\s\\d{1,2}$");
 
-
     public static Pattern getAddressPattern() {
         return addressPattern;
     }
     private static final Pattern empAttencodePattern = Pattern.compile("^EA[0-9]{4,10}$");
+    private static final Pattern CourseIDAttencodePattern = Pattern.compile("^CSA[0-9]{4,10}$");
     private static final Pattern digitPattern = Pattern.compile("^[1-9][0-9]*$");
+    private static final Pattern toutorcodePattern = Pattern.compile("^T\\d{4}$");
 
+    public static Pattern getToutorcodePattern(){return toutorcodePattern;}
+    public static Pattern getUsercodePattern(){return usercodePattern;}
+    private static final Pattern subjectcodePattern = Pattern.compile("^S\\d{4}$");
+
+
+    public static Pattern getSubjectcodePattern(){return subjectcodePattern;}
+    public static Pattern getCourseIDAttencodePattern(){return CourseIDAttencodePattern;}
     public static Pattern getDigitPattern() {
         return digitPattern;
     }
 
-
+    public static Pattern getClassIDPattern(){return classAttendanceIDPattern;}
 
     public static Pattern getEmpAttencodePattern() {
         return empAttencodePattern;

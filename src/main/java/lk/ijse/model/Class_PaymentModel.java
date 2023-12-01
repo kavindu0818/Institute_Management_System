@@ -45,7 +45,7 @@ public class Class_PaymentModel {
         if(resultSet.next()) {
             return splitOrderId(Integer.parseInt(resultSet.getString(1)));
         }
-        return splitOrderId(0);
+        return splitOrderId(0001);
     }
 
     private static int splitOrderId(int id) {
@@ -184,7 +184,7 @@ public class Class_PaymentModel {
     public List<Class_paymentDto> getAllClassPayment(String clssID, String month) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "SELECT * FROM class_payment WHERE class_Id = ? AND paymentMonth = ?";
+        String sql = "SELECT * FROM class_payment WHERE Class_Id = ? AND paymentMonth = ?";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
             pstm.setString(1, clssID);

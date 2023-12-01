@@ -96,5 +96,11 @@ public class EmployeeFormController {
         }
     }
 
+    public void btnAddTutorOnAction(ActionEvent actionEvent) throws IOException {
+        AncEmployeeRoot1.getChildren().clear();
+        AncEmployeeRoot1.getChildren().add(FXMLLoader.load(getClass().getResource("/View/ToutorAddForm.fxml")));
+
+
+    }
 }
 

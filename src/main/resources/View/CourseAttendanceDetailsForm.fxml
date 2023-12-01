@@ -11,19 +11,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="AncCourseAttendance" prefHeight="532.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CourseAttendanceDetailsFormController">
+<AnchorPane fx:id="AncCourseAttendance" prefHeight="532.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Attendance.CourseAttendanceDetailsFormController">
    <children>
-      <TableView fx:id="tblCourseAttendanceDetails" layoutX="16.0" layoutY="181.0" prefHeight="326.0" prefWidth="703.0">
+      <TableView fx:id="tblCourseAttendanceDetails" layoutX="16.0" layoutY="181.0" prefHeight="326.0" prefWidth="703.0" stylesheets="@../css/Table.css">
         <columns>
           <TableColumn fx:id="colStuID" prefWidth="101.0" text="Student ID" />
           <TableColumn fx:id="colStuName" prefWidth="229.0" text="Student Name" />
-            <TableColumn fx:id="colDate" prefWidth="136.0" text="Date" />
-            <TableColumn fx:id="colTime" prefWidth="114.0" text="Time" />
-            <TableColumn fx:id="colAttendanceMarkID" prefWidth="122.0" text="Attendance Mark ID" />
+            <TableColumn fx:id="colDate" prefWidth="122.0" text="Date" />
+            <TableColumn fx:id="colTime" prefWidth="111.0" text="Time" />
+            <TableColumn fx:id="colAttendanceMarkID" prefWidth="139.0" text="Attendance Mark ID" />
         </columns>
       </TableView>
-      <TableView fx:id="tblCourseDetails" layoutX="738.0" layoutY="181.0" prefHeight="333.0" prefWidth="279.0">
+      <TableView fx:id="tblCourseDetails" layoutX="738.0" layoutY="181.0" prefHeight="333.0" prefWidth="279.0" stylesheets="@../css/Table.css">
         <columns>
           <TableColumn fx:id="colCourseID" prefWidth="120.0" text="Course ID" />
           <TableColumn fx:id="colCourseName" prefWidth="157.0" text="Course" />
@@ -31,7 +30,10 @@
       </TableView>
       <ComboBox fx:id="cmbCourseID" layoutX="84.0" layoutY="40.0" prefHeight="25.0" prefWidth="174.0" promptText="Course ID" />
       <DatePicker fx:id="DatePiker" layoutX="86.0" layoutY="84.0" promptText="Date" />
-      <Button layoutX="185.0" layoutY="119.0" mnemonicParsing="false" onAction="#AttendanceDetailsSearchOnAction" prefHeight="25.0" prefWidth="78.0" text="Search" />
+      <Button layoutX="178.0" layoutY="119.0" mnemonicParsing="false" onAction="#AttendanceDetailsSearchOnAction" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #0a0359; -fx-background-radius: 20;" text="Search" textFill="#fcfafa">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font></Button>
       <Label layoutX="504.0" layoutY="6.0" prefHeight="30.0" prefWidth="200.0" text="Attendance Details">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -42,6 +44,6 @@
             <Image url="@../Assets/AttendanceReport.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="4.0" layoutY="4.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="25.0" prefWidth="61.0" text="Back" />
+      <Button layoutX="11.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnBackOnAction" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="&lt;Back" textFill="#fffafa" />
    </children>
 </AnchorPane>

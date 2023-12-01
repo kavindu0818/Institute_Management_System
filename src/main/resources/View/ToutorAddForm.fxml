@@ -1,14 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ToutorAddFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="342.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Employee.ToutorAddFormController">
+   <children>
+      <AnchorPane layoutX="11.0" layoutY="14.0" prefHeight="317.0" prefWidth="374.0" style="-fx-background-color: #82cf97;">
+         <children>
+            <Label layoutX="124.0" layoutY="-4.0" prefHeight="35.0" prefWidth="140.0" text="Add Tutor">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtTutorID" layoutX="8.0" layoutY="101.0" prefHeight="25.0" prefWidth="157.0" />
+            <Label layoutX="8.0" layoutY="87.0" text="Tutor ID">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtTutorName" layoutX="172.0" layoutY="101.0" prefHeight="25.0" prefWidth="189.0" />
+            <Label layoutX="175.0" layoutY="85.0" text="Tutor Name">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cmbSSubjectID" layoutX="95.0" layoutY="185.0" prefHeight="25.0" prefWidth="181.0" />
+            <Label layoutX="97.0" layoutY="171.0" text="Subject  ID">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Button layoutX="238.0" layoutY="269.0" mnemonicParsing="false" onAction="#btnAddTutorOnAction" prefHeight="25.0" prefWidth="84.0" style="-fx-background-radius: 20;" text="Add">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="392.0" layoutY="14.0" prefHeight="317.0" prefWidth="374.0" style="-fx-background-color: #ebf569;">
+         <children>
+            <Label layoutX="124.0" layoutY="-4.0" prefHeight="35.0" prefWidth="140.0" text="Add Update">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtUpdateTutorID" layoutX="10.0" layoutY="125.0" prefHeight="25.0" prefWidth="140.0" />
+            <Label layoutX="12.0" layoutY="110.0" text="Tutor ID">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtUpTutorName" layoutX="174.0" layoutY="125.0" prefHeight="25.0" prefWidth="189.0" />
+            <Label layoutX="176.0" layoutY="109.0" text="Tutor Name">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="101.0" layoutY="185.0" text="Subject  ID">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="36.0" text="Search Tutor">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txtSearchTutorID" layoutX="27.0" layoutY="53.0" onAction="#txtSearchTutorOnAction" prefHeight="25.0" prefWidth="140.0" promptText="Enter Tutor ID" />
+            <Button layoutX="275.0" layoutY="273.0" mnemonicParsing="false" onAction="#btnUpddateOnAction" prefHeight="25.0" prefWidth="84.0" style="-fx-background-radius: 20;" text="Update">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <JFXTextField fx:id="txtUpdateSubID" layoutX="100.0" layoutY="200.0" prefHeight="25.0" prefWidth="140.0" />
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

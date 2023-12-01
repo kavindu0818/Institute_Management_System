@@ -13,6 +13,8 @@ import java.awt.*;
 @Getter
 
 public class UserDto {
+
+    private String userID;
     private String password;
     private String userName;
     private byte[] image;

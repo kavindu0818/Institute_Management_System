@@ -1,3 +1,5 @@
+package lk.ijse;
+
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -36,6 +38,7 @@ public class UserFormController {
     public ImageView updateUserImage;
     public Button imageSelectbtn1;
     public JFXTextField txtSearchUser;
+    public JFXTextField txtUserID;
 
     private StudentfullDetailsModel studentfullDetailsModel = new StudentfullDetailsModel();
     private UserModel um = new UserModel();
@@ -44,7 +47,7 @@ public class UserFormController {
         setDate();
     }
 
-    public void btnOpenOnAction(ActionEvent actionEvent) throws SQLException {
+   /* public void btnOpenOnAction(ActionEvent actionEvent) throws SQLException {
 
         String password = txtPassword.getText();
         String userName = txtUserName.getText();
@@ -62,7 +65,7 @@ public class UserFormController {
         }
 
 
-    }
+    }*/
 
 
     public void btnOpenBrowserOnAction(ActionEvent actionEvent) {
@@ -79,17 +82,19 @@ public class UserFormController {
     }
 
     public void btnAddUseronAction(ActionEvent actionEvent) throws SQLException {
+        String userID = txtUserID.getText();
         String password = txtPassword.getText();
         String userName = txtUserName.getText();
         Image image = imageView.getImage();
         byte[] ima = studentfullDetailsModel.imagenToByte(image);
 
-        var ud = new UserDto(password, userName, ima);
+        var ud = new UserDto(userID, password, userName, ima);
 
         boolean isSave = um.setUserDetails(ud);
 
         if (isSave) {
             new Alert(Alert.AlertType.CONFIRMATION, "User Add").show();
+            clearSave();
         } else {
             new Alert(Alert.AlertType.WARNING, "User not add").show();
         }
@@ -111,19 +116,20 @@ public class UserFormController {
 }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) throws SQLException {
+        String userID = txtSearchUser.getText();
         String name = txtUpName.getText();
         String pas = txtUpuPass.getText();
         Image image = updateUserImage.getImage();
         byte[] ima = studentfullDetailsModel.imagenToByte(image);
 
-        var up = new UserDto(pas,name,ima);
+        var up = new UserDto(userID,pas,name,ima);
 
-        System.out.println(up.getPassword() + up.getUserName());
+
         try {
              boolean isSave = um.updateUser(up);
              if (isSave){
                 new Alert(Alert.AlertType.INFORMATION,"Update Save").show();
-
+                 clear();
              }else{
                     new Alert(Alert.AlertType.WARNING,"Update Not Save").show();
              }
@@ -151,13 +157,23 @@ public class UserFormController {
 
         UserDto dto = um.getUserValue(us);
         if (dto != null) {
-            txtUpName.setText(dto.getPassword());
-            txtUpuPass.setText(dto.getUserName());
+            txtUpuPass.setText(dto.getPassword());
+            txtUpName.setText(dto.getUserName());
             Image fxImage = um.convertBytesToJavaFXImage(dto.getImage());
             updateUserImage.setImage(fxImage);
         }
+    }
 
-
+    public void clear(){
+        txtSearchUser.clear();
+        txtUpName.clear();
+        txtUpuPass.clear();
 
     }
+
+   public void clearSave(){
+        txtUserID.clear();
+        txtUserName.clear();
+        txtPassword.clear();
+   }
 }

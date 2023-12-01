@@ -3,13 +3,12 @@ package lk.ijse.Controller;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.Controller.DashBoard.DashBoardController;
 import lk.ijse.dto.UserDto;
 import lk.ijse.model.UserModel;
 
@@ -47,6 +46,7 @@ public class LoginFormController {
                 new Alert(Alert.AlertType.WARNING, "Check Your Password And userName").show();
             }
         }
+
     }
 
     public static String getpasw(){

@@ -1,3 +1,5 @@
+package lk.ijse.Controller.QrGenarator;
+
 import com.google.zxing.WriterException;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;

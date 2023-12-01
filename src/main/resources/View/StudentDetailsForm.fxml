@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="532.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.StudentDetailsFormController">
+<AnchorPane prefHeight="532.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.StudentDetails.StudentDetailsFormController">
    <children>
-      <Label layoutX="27.0" layoutY="14.0" prefHeight="56.0" prefWidth="333.0" text="Student Details">
+      <Label layoutX="27.0" layoutY="14.0" prefHeight="56.0" prefWidth="333.0" text="STUDENT DETAILS">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
@@ -24,7 +24,7 @@
             <Font name="System Bold" size="12.0" />
          </font></Button>
       <Separator layoutX="27.0" layoutY="56.0" prefHeight="3.0" prefWidth="782.0" />
-      <TableView fx:id="tblStudenDetails" layoutX="26.0" layoutY="167.0" prefHeight="56.0" prefWidth="977.0">
+      <TableView fx:id="tblStudenDetails" layoutX="26.0" layoutY="167.0" prefHeight="71.0" prefWidth="977.0" stylesheets="@../css/Table.css">
         <columns>
           <TableColumn fx:id="colSDstuID" prefWidth="122.0" text="Student ID" />
           <TableColumn fx:id="colSDregID" prefWidth="145.0" text="Registaion ID" />
@@ -34,14 +34,14 @@
             <TableColumn fx:id="colSDstuAddress" prefWidth="153.0" text="Address" />
         </columns>
       </TableView>
-      <TableView fx:id="tblPerantDetails" layoutX="20.0" layoutY="268.0" prefHeight="71.0" prefWidth="696.0">
+      <TableView fx:id="tblPerantDetails" layoutX="20.0" layoutY="268.0" prefHeight="71.0" prefWidth="696.0" stylesheets="@../css/Table.css">
          <columns>
             <TableColumn fx:id="colPDperName" prefWidth="215.0" text="Perant Name" />
             <TableColumn fx:id="colPDperGmail" prefWidth="282.0" text="Gmail" />
             <TableColumn fx:id="colPDperContact" prefWidth="198.0" text="Contact Number" />
          </columns>
       </TableView>
-      <TableView fx:id="tblAttendanceDetails" layoutX="20.0" layoutY="376.0" prefHeight="125.0" prefWidth="475.0">
+      <TableView fx:id="tblAttendanceDetails" layoutX="20.0" layoutY="376.0" prefHeight="125.0" prefWidth="475.0" stylesheets="@../css/Table.css">
          <columns>
             <TableColumn fx:id="colADdate" prefWidth="130.0" text="Date" />
             <TableColumn fx:id="colADsubject" prefWidth="167.0" text="Subject" />
@@ -62,7 +62,7 @@
       </Label>
       <Separator layoutX="23.0" layoutY="341.0" prefHeight="3.0" prefWidth="1031.0" />
       <Separator layoutX="526.0" layoutY="339.0" orientation="VERTICAL" prefHeight="200.0" />
-      <TableView fx:id="tblPaymentDetails" layoutX="553.0" layoutY="375.0" prefHeight="125.0" prefWidth="475.0">
+      <TableView fx:id="tblPaymentDetails" layoutX="553.0" layoutY="375.0" prefHeight="125.0" prefWidth="475.0" stylesheets="@../css/Table.css">
          <columns>
             <TableColumn fx:id="colPeyDmonth" prefWidth="142.0" text="Subject" />
             <TableColumn fx:id="colPaysubject" prefWidth="161.0" text="Amount" />

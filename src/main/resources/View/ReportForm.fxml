@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="532.0" prefWidth="1031.0" style="-fx-background-color: #0f1026;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReportFormController">
+<AnchorPane prefHeight="532.0" prefWidth="1052.0" style="-fx-background-color: #0f1026;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.ReportFormController">
    <children>
       <Button layoutX="759.0" layoutY="110.0" mnemonicParsing="false" onAction="#btnEmployeeDetailsOnAction" prefHeight="25.0" prefWidth="153.0" style="-fx-background-color: #250a45;" text="Employee Details" textFill="#fcf8f8">
          <font>

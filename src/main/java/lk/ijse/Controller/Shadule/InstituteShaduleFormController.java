@@ -126,4 +126,10 @@ public class InstituteShaduleFormController {
         txtHall.clear();
 
     }
+
+    public void btnNoticeOnAction(ActionEvent actionEvent) throws IOException {
+        AncShadule1.getChildren().clear();
+        AncShadule1.getChildren().add(FXMLLoader.load(getClass().getResource("/View/NoticeForm.fxml")));
+    }
+
 }

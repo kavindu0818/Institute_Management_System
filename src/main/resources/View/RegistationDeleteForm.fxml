@@ -14,15 +14,18 @@
 
 <AnchorPane fx:id="RegistationDelete" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.Registartion.RegistationDeleteFormController">
    <children>
-      <AnchorPane fx:id="RegistationDelete2" layoutX="10.0" layoutY="10.0" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;">
+      <AnchorPane fx:id="RegistationDelete2" layoutX="10.0" layoutY="3.0" prefHeight="532.0" prefWidth="1031.0" style="-fx-background-radius: 20;">
          <children>
-            <Label layoutX="476.0" layoutY="17.0" prefHeight="17.0" prefWidth="238.0" text="Registation Deleted">
+            <Label layoutX="475.0" layoutY="12.0" prefHeight="17.0" prefWidth="238.0" text="Remove Student">
                <font>
-                  <Font name="System Bold" size="19.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
             </Label>
             <TextField fx:id="txtDeleteSerachStuId" layoutX="44.0" layoutY="86.0" prefHeight="25.0" prefWidth="215.0" />
-            <Button layoutX="258.0" layoutY="86.0" mnemonicParsing="false" onAction="#DeleteSearchOnAction" prefHeight="25.0" prefWidth="64.0" text="Search" />
+            <Button layoutX="261.0" layoutY="86.0" mnemonicParsing="false" onAction="#DeleteSearchOnAction" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: #03155c; -fx-background-radius: 20;" text="Search" textFill="#f2eeee">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font></Button>
             <TextField fx:id="txtDSname" layoutX="579.0" layoutY="140.0" prefHeight="25.0" prefWidth="388.0" promptText="Stdent Name" />
             <TextField fx:id="txtxRSid" layoutX="389.0" layoutY="140.0" prefHeight="25.0" prefWidth="171.0" promptText="Student Id" />
             <TextField fx:id="txtDSGmail" layoutX="223.0" layoutY="217.0" prefHeight="25.0" prefWidth="545.0" promptText="Gmail" />
@@ -49,12 +52,15 @@
             <TextField fx:id="txtDPContact" layoutX="395.0" layoutY="323.0" prefHeight="25.0" prefWidth="159.0" promptText="Contact Number" />
             <TextField fx:id="txtDPid" layoutX="571.0" layoutY="323.0" prefHeight="25.0" prefWidth="159.0" promptText="Perant ID" />
             <TextField fx:id="txtDPGmail" layoutX="48.0" layoutY="362.0" prefHeight="25.0" prefWidth="508.0" promptText="Gmail" />
-            <Button layoutX="852.0" layoutY="438.0" mnemonicParsing="false" onAction="#RegistationDeleteOnAction" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #8C1F28;" text="Deleted" textFill="#fcfcfc">
+            <Button layoutX="852.0" layoutY="438.0" mnemonicParsing="false" onAction="#RegistationDeleteOnAction" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #690106; -fx-background-radius: 20;" text="Deleted" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Button>
-            <Button layoutX="18.0" layoutY="19.0" mnemonicParsing="false" onAction="#DeleteBackAction" text="Back" />
+            <Button layoutX="18.0" layoutY="19.0" mnemonicParsing="false" onAction="#DeleteBackAction" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="&lt;Back" textFill="#f8f3f3">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </children>

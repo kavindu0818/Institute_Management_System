@@ -23,7 +23,7 @@
       </Label>
       <TextField fx:id="StuNameCourse" layoutX="37.0" layoutY="204.0" prefHeight="25.0" prefWidth="434.0" />
       <TextField fx:id="txtAmountCourse" layoutX="36.0" layoutY="344.0" prefHeight="25.0" prefWidth="267.0" />
-      <Button layoutX="329.0" layoutY="368.0" mnemonicParsing="false" onAction="#PaymentSubmitOnAction" prefHeight="25.0" prefWidth="97.0" style="-fx-background-radius: 30; -fx-background-color: #024509;" text="Pay" textFill="#f8f8f8">
+      <Button layoutX="329.0" layoutY="368.0" mnemonicParsing="false" onAction="#PaymentSubmitOnAction" prefHeight="25.0" prefWidth="97.0" style="-fx-background-radius: 30; -fx-background-color: black;" text="Pay" textFill="#f8f8f8">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
