@@ -1,6 +1,7 @@
 package lk.ijse.model;
 
 import lk.ijse.db.DbConnection;
+import lk.ijse.dto.ClassPaymentDto;
 import lk.ijse.dto.Class_paymentDto;
 
 import java.sql.Connection;
@@ -147,32 +148,30 @@ public class Class_PaymentModel {
             );
         }
 
-        return dtoList;
+
+            return dtoList;
+
     }
 
-    public List<Class_paymentDto> readyClassFessDetails(String classId, String month) throws SQLException {
+    public List<ClassPaymentDto> readyClassFessDetails(String classId, String month) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "SELECT * FROM class_payment WHERE class_Id= ? AND paymentMonth =?";
+        String sql = "SELECT class_payment.stu_Id,class_payment.name,class_payment.date,class_payment.amount FROM class_payment INNER JOIN class_details ON class_payment.full_id = class_details.ful_id  WHERE class_id= ? AND paymentMonth =?";
         PreparedStatement pstm = connection.prepareStatement(sql);
         pstm.setString(1,classId);
         pstm.setString(2,month);
         ResultSet resultSet = pstm.executeQuery();
 
-        ArrayList<Class_paymentDto> dtoList = new ArrayList<>();
+        ArrayList<ClassPaymentDto> dtoList = new ArrayList<>();
         while(resultSet.next()) {
             System.out.println("aaaaaaaaaaaaaaaa");
             dtoList.add(
-                    new Class_paymentDto(
+                    new ClassPaymentDto(
                             resultSet.getString(1),
                             resultSet.getString(2),
                             resultSet.getString(3),
-                            resultSet.getString(4),
-                            resultSet.getString(5),
-                            resultSet.getDate(6),
+                            resultSet.getDouble(4)
 
-                            resultSet.getString(7),
-                            resultSet.getDouble(8)
                     )
             );
         }
@@ -181,27 +180,24 @@ public class Class_PaymentModel {
 
     }
 
-    public List<Class_paymentDto> getAllClassPayment(String clssID, String month) throws SQLException {
+    public List<ClassPaymentDto> getAllClassPayment(String clssID, String month) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "SELECT * FROM class_payment WHERE Class_Id = ? AND paymentMonth = ?";
+        String sql = "SELECT class_payment.stu_Id,class_payment.name,class_payment.date,class_payment.amount FROM class_payment INNER JOIN class_details ON class_payment.full_id = class_details.ful_id  WHERE class_id= ? AND paymentMonth =?";
 
         PreparedStatement pstm = connection.prepareStatement(sql);
             pstm.setString(1, clssID);
             pstm.setString(2, month);
 
             ResultSet resultSet = pstm.executeQuery();
-                ArrayList<Class_paymentDto> dtoList = new ArrayList<>();
+                ArrayList<ClassPaymentDto> dtoList = new ArrayList<>();
                 while (resultSet.next()) {
-                    dtoList.add(new Class_paymentDto(
+                    dtoList.add(new ClassPaymentDto(
                             resultSet.getString(1),
                             resultSet.getString(2),
                             resultSet.getString(3),
-                            resultSet.getString(4),
-                            resultSet.getString(5),
-                            resultSet.getDate(6),
-                            resultSet.getString(7),
-                            resultSet.getDouble(8)
+                            resultSet.getDouble(4)
+
                     ));
                 }
                 return dtoList;

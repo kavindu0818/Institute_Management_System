@@ -44,28 +44,9 @@ public class UserFormController {
     private UserModel um = new UserModel();
 
     public void initialize(){
-        setDate();
+
     }
 
-   /* public void btnOpenOnAction(ActionEvent actionEvent) throws SQLException {
-
-        String password = txtPassword.getText();
-        String userName = txtUserName.getText();
-        Image image = imageView.getImage();
-        byte[] ima = studentfullDetailsModel.imagenToByte(image);
-
-        var ud = new UserDto(password, userName, ima);
-
-        boolean isSave = um.setUserDetails(ud);
-
-        if (isSave) {
-            new Alert(Alert.AlertType.CONFIRMATION, "User Add").show();
-        } else {
-            new Alert(Alert.AlertType.WARNING, "User not add").show();
-        }
-
-
-    }*/
 
 
     public void btnOpenBrowserOnAction(ActionEvent actionEvent) {
@@ -100,20 +81,6 @@ public class UserFormController {
         }
 
     }
-
-    public void setDate() {
-
-
-    Timeline time = new Timeline(
-            new KeyFrame(Duration.ZERO, e -> {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                lbl1.setText(LocalDateTime.now().format(formatter));
-            }),
-            new KeyFrame(Duration.seconds(1))
-    );
-        time.setCycleCount(Animation.INDEFINITE);
-        time.play();
-}
 
     public void btnUpdateOnAction(ActionEvent actionEvent) throws SQLException {
         String userID = txtSearchUser.getText();

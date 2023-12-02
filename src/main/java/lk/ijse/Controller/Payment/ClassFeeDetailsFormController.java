@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.Tm.AttendanceDetailsViewTm;
 import lk.ijse.Tm.ClassFeesDetailsTm;
 import lk.ijse.dto.ClassDto;
+import lk.ijse.dto.ClassPaymentDto;
 import lk.ijse.dto.Class_paymentDto;
 import lk.ijse.dto.StudentAttendance;
 import lk.ijse.model.ClassModel;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClassFeeDetailsFormController {
-    public TableView tblClassFeesDetailsView;
+  /*  public TableView tblClassFeesDetailsView;
     public TableColumn colStuId;
     public TableColumn colStuName;
     public TableColumn colDate;
@@ -49,9 +50,9 @@ public class ClassFeeDetailsFormController {
         colAmount1.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
 
-    }
 
-    public void SearchDetailsClassFessOnAction(ActionEvent actionEvent) {
+
+   /* public void SearchDetailsClassFessOnAction(ActionEvent actionEvent) {
         // Ensure that ComboBox items are properly initialized
         String classId = (String) cmbClassID.getValue();
         String month = (String) cmbMonth.getValue();
@@ -85,8 +86,8 @@ public class ClassFeeDetailsFormController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-    public void setData() {
+    }*/
+  /*  public void setData() {
 
         ArrayList<String> list = new ArrayList<>();
         list.add("January");
@@ -128,12 +129,12 @@ public class ClassFeeDetailsFormController {
         ObservableList<ClassFeesDetailsTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<Class_paymentDto> dtoList = cfp.readyClassFessDetails(classId, month);
-            for (Class_paymentDto dto : dtoList) {
+            List<ClassPaymentDto> dtoList = cfp.readyClassFessDetails(classId, month);
+            for (ClassPaymentDto dto : dtoList) {
                 System.out.println("aaaaaaa");
                 obList.add(
                         new ClassFeesDetailsTm(
-                                dto.getStu_Id(),
+                                dto.getStId(),
                                 dto.getName(),
                                 dto.getDate(),
                                 dto.getAmount()
@@ -148,5 +149,5 @@ public class ClassFeeDetailsFormController {
             throw new RuntimeException(e);
         }
 
-    }
+    }*/
 }

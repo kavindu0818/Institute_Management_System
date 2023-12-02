@@ -1,6 +1,7 @@
 package lk.ijse.model;
 
 import lk.ijse.db.DbConnection;
+import lk.ijse.dto.CfdDto;
 import lk.ijse.dto.CoursePaymentJoinDto;
 import lk.ijse.dto.StudentAttendance;
 
@@ -93,6 +94,33 @@ public class Course_paymentModel {
                             resultSet.getString(2),
                             resultSet.getString(3),
                             resultSet.getString(4)
+
+                    )
+            );
+        }
+        return dtoList;
+    }
+
+    public List<CfdDto> getStudentAllPayment(String id2) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT course_details.cus_name, course_payment.payment, course_payment.Date" +
+                " FROM course_payment" +
+                " INNER JOIN course_details ON course_payment.cusDfull_id = course_details.cusDfull_id" +
+                " WHERE course_payment.stu_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1,id2);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        ArrayList<CfdDto> dtoList = new ArrayList<>();
+        while(resultSet.next()) {
+            dtoList.add(
+                    new CfdDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3)
+
 
                     )
             );

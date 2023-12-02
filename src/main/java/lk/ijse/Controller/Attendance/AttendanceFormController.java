@@ -21,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.DragEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.Controller.Gmail.GmailMain;
 import lk.ijse.Tm.AttendanceTm;
 import lk.ijse.Tm.EmployeeAttendanceTm;
 import lk.ijse.dto.*;
@@ -71,10 +72,19 @@ public class AttendanceFormController {
     private String num;
     private String num1;
 
+    public String stuId;
+    public String perGmail;
+    public String stuGmail;
+    public String clName;
+
     private Class_DetailsModel clModel = new Class_DetailsModel();
     private Stu_AttendanceModel stModdel = new Stu_AttendanceModel();
     private EmployeeModel em = new EmployeeModel();
     private EmpAttendanceModel ea = new EmpAttendanceModel();
+    private StudentfullDetailsModel sm = new StudentfullDetailsModel();
+    private Course_detailsModel sd = new Course_detailsModel();
+    private GmailMain gm = new GmailMain();
+
 
     private CourseAttendanceModel ca = new CourseAttendanceModel();
 
@@ -285,6 +295,7 @@ public class AttendanceFormController {
                 boolean isSaved = stModdel.saveAttendnceDetails(dtoList);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Save attendance").show();
+                    classsMail();
                     loadAllAttendnce();
                     setLableStuddentNomal();
                 } else {
@@ -323,6 +334,7 @@ public class AttendanceFormController {
                 boolean isSaved = ca.saveAttendnceDetails(aId, num1);
                 if (isSaved) {
                     new Alert(Alert.AlertType.CONFIRMATION, "Course Attendance Save").show();
+                    courseSendGmail();
                     loadAllCourseAttendance();
                     generateNextOrderId();
                     setLableStuddentNomal();
@@ -335,6 +347,67 @@ public class AttendanceFormController {
         } else {
             new Alert(Alert.AlertType.WARNING, "Not Valid ID").show();
         }
+    }
+
+    public void classsMail() throws SQLException {
+        String atId = txtScannerValue.getText();
+
+        try {
+            Class_DetailsDto dto = clModel.getsendMailValue(atId);
+
+            if(dto != null){
+                stuId = dto.getStu_id();
+                clName = dto.getClass_id();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+           StudentfullDetailsDto sdto = sm.getClassMailValue(stuId);
+
+
+        if (sdto != null){
+            perGmail = sdto.getPerant_Gmail();
+        }
+
+        String from ="kavindumaduranga184@gmail.com";
+        String title ="Class Attendance";
+        String msg = "Your Student Attend Into Sahaja Class" + clName ;
+
+        gm.addGmailDEtails(from,perGmail,title,msg);
+
+    }
+
+    public void courseSendGmail() throws SQLException {
+        String csId = txtScannerValue.getText();
+
+        try {
+            Course_detailsDto dto = sd.getsendMailValue(csId);
+
+            if(dto != null){
+                stuId = dto.getStuId();
+                clName = dto.getCusName();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        StudentfullDetailsDto sdto = sm.getClassMailValue(stuId);
+
+
+        if (sdto != null){
+            perGmail = sdto.getPerant_Gmail();
+        }
+
+        String from ="kavindumaduranga184@gmail.com";
+        String title ="Course Attendance";
+        String msg = "Your Student Attend Into Sahaja Institute" + clName ;
+
+        gm.addGmailDEtails(from,perGmail,title,msg);
+
+
     }
 
 

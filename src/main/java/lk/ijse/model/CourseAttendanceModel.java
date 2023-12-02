@@ -2,7 +2,9 @@ package lk.ijse.model;
 
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.AttendanceJoinDto;
+import lk.ijse.dto.CourseAttendanceDto;
 import lk.ijse.dto.CourseAttendanceJoinDto;
+import lk.ijse.dto.CourseAttendanceStuDetailsJoinDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -145,7 +147,34 @@ public class CourseAttendanceModel {
     }
 
 
+    public List<CourseAttendanceStuDetailsJoinDto> getStudentAllAttendnce(String id1) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT course_attendance.date,  course_details.cus_name, course_attendance.time" +
+                " FROM course_details " +
+                "INNER JOIN  course_attendance ON course_details.cusDfull_id = course_attendance.cusfull_id " +
+                "WHERE stu_id = ?";
+
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id1);
+        ResultSet resultSet = pstm.executeQuery();
+
+        ArrayList<CourseAttendanceStuDetailsJoinDto> dtoList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            dtoList.add(
+                    new CourseAttendanceStuDetailsJoinDto(
+                            resultSet.getString(1),
+                            resultSet.getString(2),
+                            resultSet.getString(3)
+
+                    )
+            );
+        }
+        return dtoList;
+
     }
+}
 
 
 

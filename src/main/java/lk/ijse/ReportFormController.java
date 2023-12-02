@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class ReportFormController {
     public void btnEmployeeDetailsOnAction(ActionEvent actionEvent) throws SQLException, JRException {
-        InputStream resourceAsStream = getClass().getResourceAsStream("Report/Employee_Details.jrxml");
+        InputStream resourceAsStream = getClass().getResourceAsStream("/Report/Employee_Details.jrxml");
         JasperDesign load = JRXmlLoader.load(resourceAsStream);
         JasperReport jasperReport = JasperCompileManager.compileReport(load);
 
@@ -29,7 +29,7 @@ public class ReportFormController {
     }
 
     public void btnStudentDDetailsOnAction(ActionEvent actionEvent) throws JRException, SQLException {
-        InputStream resourceAsStream = getClass().getResourceAsStream("Report/StudentDetails.jrxml");
+        InputStream resourceAsStream = getClass().getResourceAsStream("/Report/StudentDetails.jrxml");
         JasperDesign load = JRXmlLoader.load(resourceAsStream);
         JasperReport jasperReport = JasperCompileManager.compileReport(load);
 

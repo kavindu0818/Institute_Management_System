@@ -197,12 +197,12 @@ public class PaymentFormController {
         ObservableList<ClassFeesDetailsTm> obList = FXCollections.observableArrayList();
 
         try {
-            List<Class_paymentDto> dtoList = cpm.getAllClassPayment(clssID,month);
+            List<ClassPaymentDto> dtoList = cpm.getAllClassPayment(clssID,month);
 
-            for (Class_paymentDto dto : dtoList) {
+            for (ClassPaymentDto dto : dtoList) {
                 obList.add(
                         new ClassFeesDetailsTm(
-                                dto.getStu_Id(),
+                                dto.getStId(),
                                 dto.getName(),
                                 dto.getDate(),
                                 dto.getAmount()

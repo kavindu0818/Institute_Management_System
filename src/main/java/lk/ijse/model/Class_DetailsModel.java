@@ -97,4 +97,28 @@ public class Class_DetailsModel {
 
         return isSaved;
     }
+
+    public Class_DetailsDto getsendMailValue(String atId) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM  class_Details WHERE full_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, atId);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        Class_DetailsDto dto = null;
+
+        if(resultSet.next()) {
+            String fullId = resultSet.getString(1);
+            String stuId = resultSet.getString(2);
+            String clasID = resultSet.getString(3);
+            String name = resultSet.getString(4);
+
+            dto = new Class_DetailsDto(fullId,stuId,clasID,name);
+
+    }
+        return dto;
+
+}
 }

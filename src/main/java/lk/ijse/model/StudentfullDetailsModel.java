@@ -202,6 +202,45 @@ public class StudentfullDetailsModel {
         return 0;
 
     }
+
+    public StudentfullDetailsDto getClassMailValue(String id) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM  studentfull_details WHERE stu_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, id);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        StudentfullDetailsDto dto = null;
+
+        if (resultSet.next()) {
+            String stu_id = resultSet.getString(1);
+            String reg_id = resultSet.getString(2);
+            String Stuname = resultSet.getString(3);
+            String regDate = resultSet.getString(4);
+            String stuGmail = resultSet.getString(5);
+            String StuContact = resultSet.getString(6);
+            String sub_id = resultSet.getString(7);
+            String adddress = resultSet.getString(8);
+            String age = resultSet.getString(9);
+            String grade = resultSet.getString(10);
+            // String perant_id = resultSet.getString(11);
+            String perant_name = resultSet.getString(11);
+            String perant_Gmail = resultSet.getString(12);
+            String perant_ContactNo = resultSet.getString(13);
+
+            byte[] imageBytes = resultSet.getBytes(14);
+
+            // Image fxImage = convertBytesToJavaFXImage(imageBytes);
+
+
+
+            dto = new StudentfullDetailsDto(stu_id, reg_id, Stuname, regDate, stuGmail, StuContact, sub_id, adddress, age, grade,perant_name, perant_Gmail, perant_ContactNo, imageBytes);
+        }
+        return dto;
+
+    }
 }
 
 

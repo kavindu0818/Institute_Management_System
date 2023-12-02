@@ -13,18 +13,18 @@
 
 <AnchorPane prefHeight="532.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.Controller.StudentDetails.StudentDetailsFormController">
    <children>
-      <Label layoutX="27.0" layoutY="14.0" prefHeight="56.0" prefWidth="333.0" text="STUDENT DETAILS">
+      <Label layoutX="26.0" layoutY="-8.0" prefHeight="56.0" prefWidth="333.0" text="STUDENT DETAILS">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <TextField fx:id="txtSearchStudentID" layoutX="29.0" layoutY="99.0" prefHeight="25.0" prefWidth="202.0" promptText="Student Id" />
-      <Button layoutX="235.0" layoutY="97.0" mnemonicParsing="false" onAction="#btnSearchStudent" prefHeight="25.0" prefWidth="103.0" style="-fx-background-color: #040e4d; -fx-background-radius: 30;" text="Search" textFill="#f5f0f0">
+      <TextField fx:id="txtSearchStudentID" layoutX="28.0" layoutY="69.0" prefHeight="25.0" prefWidth="202.0" promptText="Student Id" />
+      <Button layoutX="235.0" layoutY="67.0" mnemonicParsing="false" onAction="#btnSearchStudent" prefHeight="25.0" prefWidth="103.0" style="-fx-background-color: #040e4d; -fx-background-radius: 30;" text="Search" textFill="#f5f0f0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Separator layoutX="27.0" layoutY="56.0" prefHeight="3.0" prefWidth="782.0" />
-      <TableView fx:id="tblStudenDetails" layoutX="26.0" layoutY="167.0" prefHeight="71.0" prefWidth="977.0" stylesheets="@../css/Table.css">
+      <Separator layoutX="27.0" layoutY="35.0" prefHeight="3.0" prefWidth="782.0" />
+      <TableView fx:id="tblStudenDetails" layoutX="23.0" layoutY="107.0" prefHeight="71.0" prefWidth="977.0" stylesheets="@../css/Table.css">
         <columns>
           <TableColumn fx:id="colSDstuID" prefWidth="122.0" text="Student ID" />
           <TableColumn fx:id="colSDregID" prefWidth="145.0" text="Registaion ID" />
@@ -34,14 +34,14 @@
             <TableColumn fx:id="colSDstuAddress" prefWidth="153.0" text="Address" />
         </columns>
       </TableView>
-      <TableView fx:id="tblPerantDetails" layoutX="20.0" layoutY="268.0" prefHeight="71.0" prefWidth="696.0" stylesheets="@../css/Table.css">
+      <TableView fx:id="tblPerantDetails" layoutX="19.0" layoutY="216.0" prefHeight="71.0" prefWidth="567.0" stylesheets="@../css/Table.css">
          <columns>
-            <TableColumn fx:id="colPDperName" prefWidth="215.0" text="Perant Name" />
-            <TableColumn fx:id="colPDperGmail" prefWidth="282.0" text="Gmail" />
-            <TableColumn fx:id="colPDperContact" prefWidth="198.0" text="Contact Number" />
+            <TableColumn fx:id="colPDperName" prefWidth="167.0" text="Perant Name" />
+            <TableColumn fx:id="colPDperGmail" prefWidth="246.0" text="Gmail" />
+            <TableColumn fx:id="colPDperContact" prefWidth="150.0" text="Contact Number" />
          </columns>
       </TableView>
-      <TableView fx:id="tblAttendanceDetails" layoutX="20.0" layoutY="376.0" prefHeight="125.0" prefWidth="475.0" stylesheets="@../css/Table.css">
+      <TableView fx:id="tblAttendanceDetails" layoutX="18.0" layoutY="313.0" prefHeight="101.0" prefWidth="475.0" stylesheets="@../css/Table.css">
          <columns>
             <TableColumn fx:id="colADdate" prefWidth="130.0" text="Date" />
             <TableColumn fx:id="colADsubject" prefWidth="167.0" text="Subject" />
@@ -49,20 +49,20 @@
             <TableColumn prefWidth="177.0" text="Time" />
          </columns>
       </TableView>
-      <Label layoutX="23.0" layoutY="252.0" prefHeight="17.0" prefWidth="178.0" text="Perant Details" textFill="#2f1085">
+      <Label layoutX="23.0" layoutY="196.0" prefHeight="17.0" prefWidth="178.0" text="Perant Details" textFill="#2f1085">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Separator layoutX="23.0" layoutY="245.0" prefHeight="3.0" prefWidth="1031.0" />
-      <Label layoutX="23.0" layoutY="353.0" prefHeight="17.0" prefWidth="178.0" text="Attendance Details" textFill="#2f1085">
+      <Separator layoutX="23.0" layoutY="189.0" prefHeight="3.0" prefWidth="1031.0" />
+      <Label layoutX="23.0" layoutY="297.0" prefHeight="17.0" prefWidth="178.0" text="Class Attendance Details" textFill="#2f1085">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Separator layoutX="23.0" layoutY="341.0" prefHeight="3.0" prefWidth="1031.0" />
-      <Separator layoutX="526.0" layoutY="339.0" orientation="VERTICAL" prefHeight="200.0" />
-      <TableView fx:id="tblPaymentDetails" layoutX="553.0" layoutY="375.0" prefHeight="125.0" prefWidth="475.0" stylesheets="@../css/Table.css">
+      <Separator layoutX="23.0" layoutY="293.0" prefHeight="3.0" prefWidth="507.0" />
+      <Separator layoutX="527.0" layoutY="292.0" orientation="VERTICAL" prefHeight="247.0" prefWidth="5.0" />
+      <TableView fx:id="tblPaymentDetails" layoutX="552.0" layoutY="382.0" prefHeight="125.0" prefWidth="475.0" stylesheets="@../css/Table.css">
          <columns>
             <TableColumn fx:id="colPeyDmonth" prefWidth="142.0" text="Subject" />
             <TableColumn fx:id="colPaysubject" prefWidth="161.0" text="Amount" />
@@ -70,20 +70,47 @@
             <TableColumn prefWidth="175.0" text="Time" />
          </columns>
       </TableView>
-      <Label layoutX="557.0" layoutY="353.0" prefHeight="17.0" prefWidth="178.0" text="Payment Details" textFill="#2f1085">
+      <Label layoutX="557.0" layoutY="362.0" prefHeight="17.0" prefWidth="178.0" text="Class Payment Details" textFill="#2f1085">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="79.0" text="Student ID">
+      <Label layoutX="30.0" layoutY="52.0" text="Student ID">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Pane layoutX="862.0" layoutY="57.0" prefHeight="101.0" prefWidth="137.0" style="-fx-background-color: white;">
+      <Pane layoutX="862.0" layoutY="14.0" prefHeight="90.0" prefWidth="137.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fx:id="imageViewStudent" fitHeight="115.0" fitWidth="151.0" layoutX="-8.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imageViewStudent" fitHeight="101.0" fitWidth="151.0" layoutX="-8.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
+      <Button layoutX="967.0" layoutY="509.0" mnemonicParsing="false" onAction="#btnClearOnAction" text="Ok" />
+      <TableView fx:id="tblCourseAttendanceDetails" layoutX="15.0" layoutY="432.0" prefHeight="101.0" prefWidth="475.0" stylesheets="@../css/Table.css">
+         <columns>
+            <TableColumn fx:id="colCourseDdate1" prefWidth="130.0" text="Date" />
+            <TableColumn fx:id="colCoursesubject1" prefWidth="167.0" text="Subject" />
+            <TableColumn fx:id="colCoursetime1" prefWidth="177.0" text="Time" />
+            <TableColumn prefWidth="177.0" text="Time" />
+         </columns>
+      </TableView>
+      <Label layoutX="26.0" layoutY="416.0" prefHeight="17.0" prefWidth="178.0" text="Course Attendance Details" textFill="#2f1085">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblCoursePaymentDetails1" layoutX="591.0" layoutY="216.0" prefHeight="125.0" prefWidth="457.0" stylesheets="@../css/Table.css">
+         <columns>
+            <TableColumn fx:id="colCourseSubmonth1" prefWidth="142.0" text="Subject" />
+            <TableColumn fx:id="coCourselPaysubject1" prefWidth="161.0" text="Amount" />
+            <TableColumn fx:id="colCoursePayDay1" prefWidth="173.0" text="Payment Day" />
+            <TableColumn prefWidth="175.0" text="Time" />
+         </columns>
+      </TableView>
+      <Label layoutX="597.0" layoutY="195.0" prefHeight="17.0" prefWidth="178.0" text="Course Payment Details" textFill="#2f1085">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

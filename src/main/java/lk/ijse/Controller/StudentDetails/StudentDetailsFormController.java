@@ -10,12 +10,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import lk.ijse.Tm.*;
-import lk.ijse.dto.Class_paymentDto;
-import lk.ijse.dto.StudentAttendance;
-import lk.ijse.dto.StudentfullDetailsDto;
-import lk.ijse.model.Class_PaymentModel;
-import lk.ijse.model.Stu_AttendanceModel;
-import lk.ijse.model.StudentfullDetailsModel;
+import lk.ijse.dto.*;
+import lk.ijse.model.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -42,11 +38,31 @@ public class StudentDetailsFormController {
     public TableColumn colPaysubject;
     public TableColumn colPayDay;
     public ImageView imageViewStudent;
+    public TableColumn coCourselPaysubject1;
+    public TableColumn colCourseSubmonth1;
+    public TableView tblCoursePaymentDetails1;
+    public TableColumn colCoursetime1;
+    public TableColumn colCoursesubject1;
+    public TableColumn colCourseDdate1;
+    public TableView tblCourseAttendanceDetails;
+    public TableColumn colCoursePayDay1;
 
     private StudentfullDetailsModel stu = new StudentfullDetailsModel();
     private Stu_AttendanceModel stuAttendanceModel = new Stu_AttendanceModel();
     private Class_PaymentModel classPaymentModel = new Class_PaymentModel();
     private StudentfullDetailsModel up = new StudentfullDetailsModel();
+    private Course_paymentModel cfm = new Course_paymentModel();
+    private CourseAttendanceModel cam = new CourseAttendanceModel();
+
+
+    ObservableList<StudentDetailsTm> obList = FXCollections.observableArrayList();
+    ObservableList<ParentDetails> obList2 = FXCollections.observableArrayList();
+    ObservableList<PaymentDetailsTm> obList4 = FXCollections.observableArrayList();
+    ObservableList<AttendanceDetailsTm> obList3 = FXCollections.observableArrayList();
+    ObservableList<CourseStuAttenDetails> obList5 = FXCollections.observableArrayList();
+    ObservableList<CourseFeeStuDetailsTm> obList6 = FXCollections.observableArrayList();
+
+
 
     public void initialize(){
         colSDstuID.setCellValueFactory(new PropertyValueFactory<>("StudentId"));
@@ -59,6 +75,8 @@ public class StudentDetailsFormController {
         setParentTableValue();
         setAttendanceTableValue();
         setPaymentTableValue();
+        setCosAttenTableValue();
+        setCosPayTableValue();
 
     }
 
@@ -81,12 +99,25 @@ public class StudentDetailsFormController {
 
     }
 
+    public void setCosAttenTableValue(){
+        colCourseDdate1.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colCoursesubject1.setCellValueFactory(new PropertyValueFactory<>("sub"));
+        colCoursetime1.setCellValueFactory(new PropertyValueFactory<>("time"));
+
+    }
+
+    public void setCosPayTableValue(){
+        colCourseSubmonth1.setCellValueFactory(new PropertyValueFactory<>("sub"));
+        coCourselPaysubject1.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        colCoursePayDay1.setCellValueFactory(new PropertyValueFactory<>("day"));
+
+    }
+
     public void btnSearchStudent(ActionEvent actionEvent) {
 
         String iD = txtSearchStudentID.getText();
 
-        ObservableList<StudentDetailsTm> obList = FXCollections.observableArrayList();
-        ObservableList<ParentDetails> obList2 = FXCollections.observableArrayList();
+
 
         try {
             List<StudentfullDetailsDto> dtoList = stu.getClassStudent(iD);
@@ -127,11 +158,12 @@ public class StudentDetailsFormController {
             throw new RuntimeException(e);
         }
         setAttendance();
+        setCorseAttendance();
+        setCoursePayment();
     }
 
         public void setAttendance() {
             String id1 = txtSearchStudentID.getText();
-            ObservableList<AttendanceDetailsTm> obList3 = FXCollections.observableArrayList();
 
             try {
                 List<StudentAttendance> dtoList1 = stuAttendanceModel.getStudentAllAttendnce(id1);
@@ -157,12 +189,12 @@ public class StudentDetailsFormController {
 
       String id2 = txtSearchStudentID.getText();
 
-      ObservableList<PaymentDetailsTm> obList4 = FXCollections.observableArrayList();
+     // ObservableList<PaymentDetailsTm> obList4 = FXCollections.observableArrayList();
       //obList4.clear();
 
     try {
         List<Class_paymentDto> dtoList2 = classPaymentModel.getStudentAllPayment(id2);
-        if (dtoList2 == null) {
+        if ( dtoList2.isEmpty()) {
             obList4.clear();
         }
 
@@ -187,7 +219,65 @@ public class StudentDetailsFormController {
       setImage();
 }
 
-public void setImage(){
+    public void setCorseAttendance() {
+        String id1 = txtSearchStudentID.getText();
+
+        try {
+            List<CourseAttendanceStuDetailsJoinDto> dtoList1 = cam.getStudentAllAttendnce(id1);
+            for (CourseAttendanceStuDetailsJoinDto dto : dtoList1) {
+                obList5.add(
+                        new CourseStuAttenDetails(
+                                dto.getDate(),
+                                dto.getSub(),
+                                dto.getTime()
+                        )
+                );
+                tblCourseAttendanceDetails.setItems(obList5);
+                tblCourseAttendanceDetails.refresh();
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void setCoursePayment() {
+
+        String id2 = txtSearchStudentID.getText();
+
+        // ObservableList<PaymentDetailsTm> obList4 = FXCollections.observableArrayList();
+        //obList4.clear();
+
+        try {
+            List<CfdDto> dtoList2 = cfm.getStudentAllPayment(id2);
+
+
+            for (CfdDto dto : dtoList2) {
+                obList6.add(
+                        new CourseFeeStuDetailsTm(
+                                dto.getSub(),
+                                dto.getAmount(),
+                                dto.getDay()
+                        )
+                );
+
+
+                tblCoursePaymentDetails1.setItems(obList6);
+                tblCoursePaymentDetails1.refresh();
+
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        setImage();
+    }
+
+
+
+    public void setImage(){
     String id4 = txtSearchStudentID.getText();
 
     try{
@@ -201,6 +291,17 @@ public void setImage(){
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+    }
+
+    public void btnClearOnAction(ActionEvent actionEvent) {
+        txtSearchStudentID.clear();
+        obList.clear();
+        obList2.clear();
+        obList3.clear();
+        obList4.clear();
+        obList5.clear();
+        obList6.clear();
 
     }
 }

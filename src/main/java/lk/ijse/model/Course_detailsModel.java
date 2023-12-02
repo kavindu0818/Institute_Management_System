@@ -225,5 +225,29 @@ public class Course_detailsModel {
 
 
     }
+
+    public Course_detailsDto getsendMailValue(String csId) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM course_details WHERE cusDfull_id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1, csId);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        Course_detailsDto dto = null;
+        if (resultSet.next()) {
+            String cusDfull = resultSet.getString(1);
+            String cusdId = resultSet.getString(2);
+            String stuId = resultSet.getString(3);
+            String stuName = resultSet.getString(4);
+            String cusName = resultSet.getString(5);
+            double paidCusFee = resultSet.getDouble(6);
+
+            dto = new Course_detailsDto(cusDfull, cusdId, stuId, stuName, cusName, paidCusFee);
+        }
+        return dto;
+
+    }
 }
 
