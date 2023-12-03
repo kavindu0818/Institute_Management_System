@@ -20,16 +20,18 @@ public class GmailMain {
         }
     }
 
-   /* public static void sendOrderConformMailFile(String to,String subject, File file) {
+   public static void sendOrderConformMailFile(String to,String subject, File file) {
         GmailSender gEmailSender = new GmailSender();
         String from = "kavindumaduranga184@gmail.com";
 
-        boolean b = gEmailSender.sendEmailFile(to, from, subject, text);
+        boolean b = gEmailSender.sendEmailFile(to, from, subject, file);
         if (b) {
             System.out.println("Email is sent successfully");
         } else {
             System.out.println("There is problem in sending email");
         }
-    }*/
+    }
+
+
 }
 

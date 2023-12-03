@@ -8,7 +8,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import lk.ijse.Controller.Gmail.GmailMain;
 import lk.ijse.Controller.QrGenarator.QrGenerator;
+import lk.ijse.Controller.Registartion.RegistationStudentController;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +26,10 @@ public class QrGenaratorFormController {
     public ImageView pic;
     public Button btnClear;
 
+    private String stuMail;
+
+    private static String filePath;
+
     public void onAction(ActionEvent actionEvent) {
         if (!txtText.getText().isEmpty()) {
             QrGenerator qrGenerator = new QrGenerator();
@@ -29,10 +38,18 @@ public class QrGenaratorFormController {
                 qrGenerator.getGenerator(txtText.getText());
             } catch (IOException | WriterException e) {
                 new Alert(Alert.AlertType.ERROR, String.valueOf(e)).show();
-            }
-            File file = new File(qrGenerator.getPath());
+            };
+            String path = qrGenerator.getPath();
+            String data=qrGenerator.getData();
+            File file = new File(path);
             Image image = new Image(file.toURI().toString());
             pic.setImage(image);
+
+            stuMail=RegistationStudentController.returnStuMail();
+            String subject="Qr Generate Success";
+
+
+            GmailMain.sendOrderConformMailFile(stuMail,subject,new File(path + data +".png"));
 
 
         } else {

@@ -52,7 +52,7 @@ public class GmailSender {
     }
 
 
-    public boolean sendEmailFile(String to, String from,String subject, String text) {
+    public boolean sendEmailFile(String to, String from,String subject, File file) {
 
         boolean flag = false;
 
@@ -82,7 +82,7 @@ public class GmailSender {
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setFrom(new InternetAddress(from));
             message.setSubject(subject);
-            message.setText(text);
+            message.setText(subject);
             Transport.send(message);
             flag = true;
         } catch (Exception e) {

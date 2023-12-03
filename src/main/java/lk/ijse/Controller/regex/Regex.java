@@ -27,7 +27,7 @@ public class Regex {
     private static final Pattern classAttendanceIDPattern = Pattern.compile("^SA\\d{4}$");
 
     private static final Pattern usercodePattern = Pattern.compile("^U\\d{4}$");
-    private static final Pattern addressPattern = Pattern.compile("^No\\s\\d+(?:,[\\s\\w]+)+$");
+    private static final Pattern addressPattern = Pattern.compile("[a-zA-Z]{4,}");
 
 
     private static final Pattern gradePattern = Pattern.compile("^Grade\\s\\d{1,2}$");

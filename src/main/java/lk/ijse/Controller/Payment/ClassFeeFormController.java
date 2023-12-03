@@ -157,9 +157,9 @@ public class ClassFeeFormController {
 
         JasperViewer.viewReport(jasperPrint, false);
 
-       // JasperExportManager.exportReportToPdfFile(jasperPrint, filePath + "\\Receipt " + false+".pdf");
+       JasperExportManager.exportReportToPdfFile(jasperPrint, filePath + "\\Receipt " + false+".pdf");
 
-       // GmailMain.sendOrderConformMailFile(toStugmail,subject,new File(filePath + "\\Receipt " +false+".pdf"));
+       GmailMain.sendOrderConformMailFile(togmail,subject,new File(filePath + "\\Receipt " +false+".pdf"));
     }
 
 

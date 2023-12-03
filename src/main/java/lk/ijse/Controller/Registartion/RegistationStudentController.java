@@ -60,6 +60,8 @@ public class RegistationStudentController {
 
     private StudentfullDetailsModel studentfullDetailsModel = new StudentfullDetailsModel();
 
+    private static String stuMail;
+
     private StudentfullDetailsModel sfd = new StudentfullDetailsModel();
 
     public void initialize(){
@@ -104,6 +106,7 @@ public class RegistationStudentController {
             String registDate = String.valueOf(DatePickerRegID.getValue());
             String subject = txtFieldSubject.getText();
             String stuGmail = txtGmail.getText();
+            stuMail=txtGmail.getText();
             String addresss = txtAddress.getText();
             String stuContact = txtContact.getText();
             String stuGrade = (String) cmbGrade.getValue();
@@ -132,10 +135,11 @@ public class RegistationStudentController {
                 boolean isSaved = StudentfullDetailsModel.saveStudentDetails(sr);
 
                 if (isSaved) {
+                    returnStuMail();
                     new Alert(Alert.AlertType.INFORMATION, "Student Save!").show();
-                    clearFields();
+                    //clearFields();
                 } else {
-                    new Alert(Alert.AlertType.WARNING, "Try Agin").show();
+                    new Alert(Alert.AlertType.WARNING, "Try Again").show();
                 }
 
             } catch (SQLException e) {
@@ -145,7 +149,12 @@ public class RegistationStudentController {
         }
     }
 
+    public static String returnStuMail() {
+        return stuMail;
+    }
+
     private boolean isCheckValue() {
+
         if (!(Regex.getRegistrationCodePattern().matcher(txtRegisterId.getText()).matches())) {
             new Alert(Alert.AlertType.WARNING,"Registration Not Valid").show();
              return false;
@@ -221,7 +230,7 @@ public class RegistationStudentController {
         txtContact.setText("");
         txtFieldSubject.setText("");
         txtGmail.setText("");
-        txtGrade.setText("");
+
         txtParentId.setText("");
         txtPerandtGmail.setText("");
         txtPerantLastName.setText("");

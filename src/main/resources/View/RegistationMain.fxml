@@ -171,5 +171,15 @@
             <Image url="@../Assets/SHAJALOGO.png" />
          </image>
       </ImageView>
+      <Label layoutX="64.0" layoutY="488.0" text="Student ID: S0000">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="64.0" layoutY="509.0" text="Registation ID: R0000">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

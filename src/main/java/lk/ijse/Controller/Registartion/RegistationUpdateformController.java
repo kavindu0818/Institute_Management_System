@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import lk.ijse.Controller.regex.Regex;
 import lk.ijse.dto.ClassDto;
 import lk.ijse.dto.StudentfullDetailsDto;
 import lk.ijse.model.ClassModel;
@@ -102,9 +103,11 @@ public class RegistationUpdateformController {
     }
 
     public void SaveUpdateOnAction(ActionEvent actionEvent) {
+
+        if(isCheckValue()){
         String stu_id = txtUpdateId.getText();
         String reg_id = txtUpdateRegidd.getText();
-        String Stuname =txtUpdateName.getText();
+        String Stuname = txtUpdateName.getText();
         String stuContact = txtUpdateContact.getText();
         String stuGrade = txtUpdateGrade.getText();
         String stuAge = txtUpdateStuAge.getText();
@@ -119,7 +122,16 @@ public class RegistationUpdateformController {
         Image image = imageView.getImage();
         byte[] ima = up.imagenToByte(image);
 
-        var su = new StudentfullDetailsDto(stu_id,reg_id,Stuname,regDate,stuGmail,stuContact,sub,address,stuAge,stuGrade,perantName,perantGmail,perantCon,ima);
+            if (stu_id.isEmpty() || reg_id.isEmpty() || Stuname.isEmpty() || stuContact.isEmpty() || stuGrade.isEmpty() || stuAge.isEmpty() || stuGmail.isEmpty() || address.isEmpty() || stuContact.isEmpty() ||
+                    stuGrade.isEmpty() || perantName.isEmpty() || perantCon.isEmpty() || perantId.isEmpty() ||
+                    stuAge.isEmpty() || image.isBackgroundLoading()) {
+
+                new Alert(Alert.AlertType.ERROR, "Field Not found").showAndWait();
+                return;
+            }
+
+
+            var su = new StudentfullDetailsDto(stu_id, reg_id, Stuname, regDate, stuGmail, stuContact, sub, address, stuAge, stuGrade, perantName, perantGmail, perantCon, ima);
 
         try {
             boolean isSaved = up.updateSave(su);
@@ -132,6 +144,66 @@ public class RegistationUpdateformController {
             throw new RuntimeException(e);
         }
 
+     }
+    }
+
+    private boolean isCheckValue() {
+
+        if (!(Regex.getRegistrationCodePattern().matcher(txtUpdateRegidd.getText()).matches())) {
+            new Alert(Alert.AlertType.WARNING,"Registration Not Valid").show();
+            return false;
+        }
+
+        if (!(Regex.getNamePattern().matcher(txtUpdateFirstName.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"First Name Not Valid").show();
+            return false;
+
+        }
+        if (!(Regex.getNamePattern().matcher(txtUpdateName.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Last Name Not Valid").show();
+            return false;
+        }
+
+        if (!(Regex.getCodePattern().matcher(txtUpdateId.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Student Id Not Valid").show();
+            return false;
+
+        }
+        if (!(Regex.getEmailPattern().matcher(txtUpdateStuGmail.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Gmail Not Valid").show();
+            return false;
+
+        }
+
+        if (!(Regex.getMobilePattern().matcher(txtUpdateContact.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Contact Number Not Valid").show();
+            return false;
+
+        }
+
+        if (!(Regex.getNamePattern().matcher(txtUpdatePerantFName.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Perent First Name Not Valid").show();
+            return false;
+        }
+
+        if (!(Regex.getMobilePattern().matcher(txtUpdatePerantContact.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Perant Contact Nummber Not Valid").show();
+            return false;
+
+        }
+
+        if (!(Regex.getEmailPattern().matcher(txtUpdatePerantGmail.getText()).matches())){
+            new Alert(Alert.AlertType.WARNING,"Perant Gamil Not Valid").show();
+            return false;
+
+        }
+
+        if (!(Regex.getAgePattern().matcher(txtUpdateStuAge.getText()).matches())) {
+            new Alert(Alert.AlertType.WARNING, "Student Age Not Valid").show();
+            return false;
+        }
+
+        return true;
 
     }
     public void OpenBrowserOnAction(ActionEvent actionEvent) {
